@@ -1,0 +1,99 @@
+/* styles.css for My Mini Mascots */
+
+:root {
+    /* COLOURS */
+    --primary-accent: #31BBB6;
+    --primary-accent-light: #89C8BD;
+    --primary-accent-dark: #1D868A;
+    --primary-accent-deep: #164D67;
+    --secondary-accent: #FBD367;
+    --secondary-accent-dark: #D7A70B;
+    --bg-accent: #31BBB6;
+    --bg-light: #FEF9ED;
+    --bg-medium: #F3EAE0;
+    --gray-light: #BEB8B2;
+    --gray-medium: #666463;
+    --gray-dark: #333333;
+
+    /* shadows */
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.10);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.11), 0 1.5px 6px rgba(0, 0, 0, 0.09);
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.12), 0 0.5px 2px rgba(0, 0, 0, 0.10);
+
+    /* measurements */
+    --border-radius: .2rem;
+    --card-radius: 8px;
+    --banner-radius: 1.2rem;
+    --spacing: 1.5rem;
+    --content-width: 1200px;
+    --nav-width: 1200px;
+    --page-padding: 1rem;
+    --wizard-height: 100vh;
+
+    /* %%% TYPOGRAPHY %%% */
+
+    --font-heading: 'CS Marcia', serif;
+    --font-title: 'Amos', sans-serif;
+    --font-body: 'Lato', sans-serif;
+    --font-button: 'Amos', sans-serif;
+
+    /* Titles */
+    --font-size-large: 6.5rem;
+    --font-size-medium: 5.2rem;
+    --font-size-small: 3.8rem;
+
+    /* Body and captions */
+    --font-size-body: 1.2rem;
+    --font-size-caption: 1.4rem;
+
+    /* meta, tag, label, caption */
+    --font-size-micro: 0.88rem;
+    /* blog card p, button-link */
+    --font-size-small-ui: 0.97rem;
+}
+
+@media (max-width: 1440px) {
+    :root {
+        --font-size-large: 5.8rem;
+        --font-size-medium: 4.4rem;
+        --font-size-small: 2.8rem;
+        --font-size-caption: 1.2rem;
+        --font-size-body: 1.08rem;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --font-size-large: 4.5rem;
+        --font-size-medium: 3.8rem;
+        --font-size-small: 2.3rem;
+        --font-size-caption: 1.1rem;
+        --font-size-body: 1rem;
+        --font-size-micro: 0.83rem;
+        --font-size-small-ui: 0.92rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-large: 3.2rem;
+        --font-size-medium: 3.2rem;
+        --font-size-small: 1.74rem;
+        --font-size-caption: 1rem;
+        --font-size-body: 0.97rem;
+        --font-size-micro: 0.8rem;
+        --font-size-small-ui: 0.89rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-large: 2.1rem;
+        --font-size-medium: 2.8rem;
+        --font-size-small: 1.55rem;
+        --font-size-caption: 0.9rem;
+        --font-size-body: 0.92rem;
+        --font-size-micro: 0.77rem;
+        --font-size-small-ui: 0.86rem;
+    }
+}

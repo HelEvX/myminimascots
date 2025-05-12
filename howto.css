@@ -1,0 +1,128 @@
+.howto-infographic {
+    background: var(--bg-medium);
+    padding: 2.5rem 0;
+}
+
+.infographic-flex {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.infographic-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.step-tile {
+    background: var(--primary-accent-light);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--primary-accent-deep);
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+}
+
+.step-tile.active,
+.step-tile:hover {
+    background: var(--primary-accent);
+    color: #fff;
+}
+
+.infographic-details {
+    flex: 1;
+    min-width: 260px;
+    max-width: 420px;
+    position: relative;
+}
+
+.step-detail {
+    display: none;
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding: 2rem;
+    position: absolute;
+    width: 100%;
+    min-height: 320px;
+    left: 0;
+    top: 0;
+    animation: fadeIn 0.3s;
+}
+
+.step-detail.active {
+    display: block;
+}
+
+.step-detail img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.timeline {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0 0.5rem 0;
+    justify-content: center;
+}
+
+.timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    border: 2px solid var(--primary-accent);
+    transition: background 0.2s;
+}
+
+.timeline-dot.active {
+    background: var(--primary-accent);
+}
+
+.timeline-label {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--gray-medium);
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .infographic-flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .infographic-details {
+        position: static;
+        max-width: 100%;
+    }
+
+    .step-detail {
+        position: static;
+        width: 100%;
+        min-height: 0;
+    }
+}

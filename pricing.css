@@ -1,0 +1,257 @@
+.pricing-intro {
+    background: var(--bg-light);
+    padding: 2.5rem 0 1.5rem 0;
+    text-align: center;
+}
+
+.pricing-intro h1 {
+    font-family: var(--font-heading);
+    color: var(--primary-accent-dark);
+    margin-bottom: 1rem;
+}
+
+.pricing-intro p {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pricing-range {
+    background: var(--bg-medium);
+    padding: 2.5rem 0;
+}
+
+.pricing-range h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+}
+
+.pricing-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-example {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    width: 220px;
+    text-align: center;
+    padding: 1.2rem 1rem 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-example img {
+    width: 100%;
+    max-width: 120px;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.pricing-example h3 {
+    margin: 0.5rem 0 0.3rem 0;
+    font-family: var(--font-title);
+    color: var(--primary-accent-deep);
+}
+
+.pricing-example .price {
+    font-size: 1.25rem;
+    color: var(--primary-accent);
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.pricing-example .desc {
+    font-size: 0.98rem;
+    color: var(--gray-medium);
+}
+
+.pricing-example .note {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary-accent-dark);
+    margin-top: 0.2rem;
+}
+
+.pricing-note {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+}
+
+.pricing-note a {
+    color: var(--primary-accent-deep);
+    text-decoration: underline;
+}
+
+.pricing-addons {
+    background: #fff;
+    padding: 2rem 0;
+}
+
+.pricing-addons h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-accent-dark);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pricing-addons ul {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: var(--gray-medium);
+    list-style: disc inside;
+    padding-left: 0;
+}
+
+.pricing-care {
+    background: var(--primary-accent-light);
+    padding: 2.5rem 0;
+}
+
+.care-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.care-info {
+    flex: 1 1 260px;
+    min-width: 220px;
+}
+
+.care-info h2 {
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+    color: var(--primary-accent-deep);
+}
+
+.care-info ul {
+    font-size: 1.05rem;
+    color: var(--gray-medium);
+    padding-left: 1.2em;
+    list-style: disc;
+}
+
+.care-image {
+    flex: 1 1 200px;
+    min-width: 160px;
+    text-align: center;
+}
+
+.care-image img {
+    max-width: 180px;
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+}
+
+.pricing-order {
+    background: var(--secondary-accent);
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--gray-dark);
+}
+
+.pricing-order h2 {
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+}
+
+.pricing-order .button-primary {
+    margin-left: 0.5rem;
+}
+
+.pricing-shipping {
+    background: #fff;
+    padding: 2rem 0;
+}
+
+.pricing-shipping h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-accent-dark);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pricing-shipping ul {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: var(--gray-medium);
+    list-style: disc inside;
+    padding-left: 0;
+}
+
+.pricing-contact {
+    background: var(--bg-light);
+    padding: 2.5rem 0;
+}
+
+.pricing-contact h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-accent-dark);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gray-light);
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: #fff;
+    color: var(--gray-dark);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background: var(--primary-accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.7rem 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+.contact-form button:hover {
+    background: var(--primary-accent-dark);
+}
+
+@media (max-width: 900px) {
+    .pricing-examples {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .care-flex {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}

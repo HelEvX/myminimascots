@@ -1,0 +1,203 @@
+@import url('/fonts/stylesheet.css');
+@import url('/variables.css');
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    background-color: var(--bg-light);
+    color: var(--gray-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--page-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-large);
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-medium);
+    margin: 4rem 0 1.2rem 0;
+    letter-spacing: 3px;
+}
+
+h3 {
+    font-family: var(--font-title);
+    font-size: var(--font-size-small);
+    margin: 1.2rem 0 0 0;
+    letter-spacing: 1px;
+}
+
+h4 {
+    font-family: var(--font-title);
+    font-size: var(--font-size-caption);
+    margin: .5rem 0 .2rem;
+}
+
+/* buttons */
+
+.button-group {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.arrow-group {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+button {
+    border-radius: var(--border-radius);
+    border: none;
+    font-family: var(--font-button);
+    font-size: var(--font-size-caption);
+    letter-spacing: 2px;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.button-primary {
+    background: var(--gray-dark);
+    color: var(--bg-light);
+    padding: 0.75rem 2rem .5rem;
+}
+
+.button-primary:hover {
+    background: var(--primary-accent-dark);
+    color: var(--bg-light);
+}
+
+.button-secondary {
+    background: var(--secondary-accent);
+    color: var(--gray-dark);
+    padding: 0.65rem 1.4rem .45rem;
+}
+
+.button-secondary:hover {
+    background: var(--primary-accent-light);
+}
+
+.button-primary-ghost {
+    background: transparent;
+    border: 2px solid var(--primary-accent-deep);
+    color: var(--primary-accent-deep);
+    padding: 0.75rem 2rem .5rem;
+}
+
+.button-primary-ghost:hover,
+.button-primary-ghost:focus {
+    background: var(--primary-accent-deep);
+    color: var(--bg-light);
+}
+
+.button-primary-round {
+    background: var(--primary-accent-light);
+    color: var(--gray-dark);
+    font-size: var(--font-size-small);
+    padding: 2rem;
+    border-radius: 50%;
+    border: 4px solid transparent;
+}
+
+.button-primary-round:hover {
+    background: var(--bg-light);
+    border: 4px solid var(--primary-accent-dark);
+}
+
+.button-primary-icon {
+    background: var(--primary-accent-light);
+    color: var(--gray-dark);
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s, box-shadow 0.2s;
+}
+
+.button-primary-icon:hover {
+    background: var(--bg-light);
+    box-shadow: var(--shadow-md);
+}
+
+.button-primary-icon i {
+    color: var(--gray-dark);
+}
+
+/*  */
+
+.scroll-nav-btn {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 100;
+    background: var(--bg-light);
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s, box-shadow 0.2s;
+    opacity: 0.92;
+}
+
+.scroll-nav-btn:hover,
+.scroll-nav-btn:focus {
+    background: var(--secondary-accent);
+    box-shadow: var(--shadow-lg);
+    outline: none;
+}
+
+.scroll-nav-btn i {
+    color: var(--gray-dark);
+    transition: transform 0.3s cubic-bezier(.4, 2, .6, 1);
+}
+
+.scroll-nav-btn:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/* Hide on small screens */
+@media (max-width: 600px) {
+    .scroll-nav-btn {
+        width: 44px;
+        height: 44px;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
