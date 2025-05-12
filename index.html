@@ -508,7 +508,13 @@
                 <h3>Stay in the Loop!</h3>
                 <p class="newsletter-microcopy">Sign up for exclusive updates, behind-the-scenes peeks, and special
                     offers from the workshop.</p>
-                <form class="newsletter-form">
+                <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true"
+                    netlify-honeypot="bot-field">
+                    <!-- Hidden input for Netlify bot protection -->
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <p style="display:none;">
+                        <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                    </p>
                     <input type="text" name="firstName" placeholder="First Name" required>
                     <input type="email" name="email" placeholder="Email Address" required>
                     <label>
@@ -517,6 +523,7 @@
                     </label>
                     <button type="submit" class="button-primary">Subscribe</button>
                 </form>
+
             </div>
         </section>
 
