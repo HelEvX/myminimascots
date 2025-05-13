@@ -63,7 +63,7 @@
     text-rendering: optimizeLegibility;
 }
 
-/@font-face {
+@font-face {
     font-family: 'MonotailScriptSemBd';
     src: url('MonotailScript-SemiBold.woff2') format('woff2'),
         /* Modern Browsers */

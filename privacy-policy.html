@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom Mascot Request Form - My Mini Mascots</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="home.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Fredoka:700|Bree+Serif|Lato:400,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
     <!-- header -->
     <header class="site-header">
         <div class="header-container">
@@ -104,13 +104,13 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="active"><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="how-to.html" class="nav-link">How-To</a></li>
                     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
                     <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                     <li><a href="faq.html" class="nav-link">FAQ</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
-                    <li class="active"><a href="order.html" class="nav-link nav-cta">Order Now</a></li>
+                    <li><a href="order.html" class="nav-link nav-cta">Order Now</a></li>
                 </ul>
             </nav>
             <button class="nav-toggle" aria-label="Toggle navigation">
@@ -119,202 +119,44 @@
         </div>
     </header>
 
-    <main>
-        <div class="form-wrapper">
+    <section>
+        <h1>Privacy Policy</h1>
+    </section>
 
-            <!-- Step Progress Bar -->
-            <aside class="progress-bar">
-                <div class="progress-step active">
-                    <img src="images/asterisk2.svg" alt="Step 1" />
-                    <h4>Information</h4>
-                </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 2" />
-                    <h4>Design</h4>
-                </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 3" />
-                    <h4>Addons</h4>
-                </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 4" />
-                    <h4>Summary</h4>
-                </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 5" />
-                    <h4>Review</h4>
-                </div>
-            </aside>
-            <div class="form-card">
-                <form id="mascotRequestForm" name="mascotRequestForm" method="POST" data-netlify="true"
-                    netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thank-you.html">
-                    <input type="hidden" name="form-name" value="mascotRequestForm">
-                    <!-- Loading Message -->
-                    <div id="loadingMessage" style="display:none; color: #333; margin-top: 1em;">
-                        Sending your request, please wait...
-                    </div>
+    <section>
+        <h2>Introduction</h2>
+        <p>We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how
+            we collect, use, and safeguard your information when you interact with our website.</p>
+    </section>
 
-                    <!-- Step 1: Welcome & Contact -->
-                    <section class="form-step active">
-                        <h2>Welcome</h2>
-                        <p>We're delighted you are considering ordering a mascot from My Mini Mascots. We look forward
-                            to
-                            design your custom mascot with you. We've created this form to help you with your request.
-                            <br><br>
-                            <span>Important!</span> Please make sure you're familiar with <a href="/process">our
-                                workshop process</a> before continuing.
-                        </p>
-                        <div class="field-grid">
-                            <label class="name-field">Name
-                                <input type="text" name="name" required />
-                            </label>
-                            <label class="email-field">Email
-                                <input type="email" name="email" required />
-                            </label>
-                            <label class="instagram-field">Instagram Handle
-                                <input type="text" name="social" />
-                            </label>
-                            <label>WhatsApp
-                                <input type="text" name="whatsapp" placeholder="+44 7123 456789" />
-                            </label>
-                            <label class="currency-field">Currency
-                                <div class="select-wrapper">
-                                    <select name="currency" required>
-                                        <option value="">Select currency</option>
-                                        <option value="GBP">GBP (£)</option>
-                                        <option value="EUR">EUR (€)</option>
-                                        <option value="USD">USD ($)</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-arrow"></i>
-                                </div>
-                            </label>
-                            <label class="shipping-region-field">Shipping Region
-                                <div class="select-wrapper">
-                                    <select name="shipping_region" required>
-                                        <option value="">Select region</option>
-                                        <option value="uk_ireland">UK & Ireland</option>
-                                        <option value="europe">Mainland Europe</option>
-                                        <option value="outside_europe">Outside Europe</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-arrow"></i>
-                                </div>
-                            </label>
+    <section>
+        <h2>Data Collection</h2>
+        <p>We collect personal information when you fill out forms, request services, or sign up for updates. This may
+            include your name, email address, and any additional information you provide.</p>
+    </section>
 
-                        </div>
-                        <p><span>Note:</span> You will not be charged at this point. All requests are manually
-                            reviewed.</p>
-                        <button type="button" class="next button-secondary">Next</button>
-                    </section>
+    <section>
+        <h2>Data Usage</h2>
+        <p>Your data is used to process your requests, communicate with you, and improve our services. We do not sell or
+            share your personal data with third parties without your consent.</p>
+    </section>
 
-                    <!-- Step 2: Design Details -->
-                    <section class="form-step">
-                        <h2>Doll Design</h2>
-                        <div class="field-grid">
-                            <label>Your Character's Name <input type="text" name="character" required /></label>
-                            <label>Fandom/Franchise <input type="text" name="fandom" /></label>
-                            <label>Tell me a bit more about your idea <textarea name="description"></textarea></label>
-                            <label>Upload Files <input type="file" name="files" multiple
-                                    accept=".jpg,.jpeg,.png,.pdf,.webp" />
-                            </label>
-                            <label>External Link <input type="url" name="link" /></label>
-                            <label>Inscription for the Stand <input type="text" name="quote" maxlength="100" /></label>
-                        </div>
-                        <div class="color-picker">
-                            <label>
-                                <h4>Select up to 5 colors you associate with your character.</h4>
-                                <p>We will try to match these
-                                    colours to the yarn for your character's outfit.</p>
-                            </label>
-                            <div class="color-picker-squares">
-                                <input type="color" id="singleColorInput" />
+    <section>
+        <h2>GDPR Compliance</h2>
+        <p>We comply with GDPR regulations and ensure that you have control over your personal data. You can request
+            access to or deletion of your personal data at any time.</p>
+    </section>
 
-                                <div class="color-previews">
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                </div>
+    <section>
+        <h2>Cookies</h2>
+        <p>Our website uses cookies to improve your experience. By continuing to browse, you consent to the use of
+            cookies. You can manage cookies in your browser settings.</p>
+    </section>
 
-                                <button type="button" id="resetColors"
-                                    class="reset-button button-primary">Reset</button>
-                            </div>
-                        </div>
-                        <div class="button-group">
-                            <button type="button" class="prev button-secondary">Back</button>
-                            <button type="button" class="next button-secondary">Next</button>
-                        </div>
-                    </section>
-
-                    <!-- Step 3: Addons -->
-                    <section class="form-step">
-                        <h2>Add-ons</h2>
-                        <div class="addons-table">
-                            <label><input type="radio" name="doll_size" value="full" checked> Full-sized (30cm)</label>
-                            <label><input type="radio" name="doll_size" value="mini"> Keychain (10cm)</label>
-                            <label><input type="checkbox" name="addon_clothing" /> Detachable Clothes</label>
-                            <label><input type="checkbox" name="addon_hair"> Fancy hair</label>
-                            <label><input type="checkbox" name="addon_props" /> Props</label>
-                            <select name="display_stand">
-                                <option value="">No stand</option>
-                                <option value="basic">Basic wooden stand - 10 GBP</option>
-                                <option value="custom">Custom painted stand - 20 GBP</option>
-                                <option value="deluxe">Deluxe stand w/ engraving - 50 GBP</option>
-                            </select>
-                        </div>
-                        <label>Is this a gift?
-                            <select name="is_gift">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                        </label>
-                        <button type="button" id="addDoll" class="button-secondary">Add Another Doll</button>
-                        <div class="button-group">
-                            <button type="button" class="prev button-secondary">Back</button>
-                            <button type="button" class="next button-secondary">Next</button>
-                        </div>
-                    </section>
-
-                    <!-- Step 4: Summary & Agreement -->
-                    <section class="form-step">
-                        <h2>Estimate & Agreement</h2>
-                        <p>Estimated price: <span id="estimatedPrice">0</span></p>
-                        <p>Estimated timeline: <span id="estimatedTime">0</span></p>
-                        <p id="miniDollNote" style="display:none; color: var(--error);">
-                            Miniature dolls are limited in detail due to their size. For custom features and better
-                            likeness, we recommend a full-sized doll.
-                        </p>
-                        <div class="field-grid">
-                            <label><input type="checkbox" name="agree_emails" required /> I agree to be contacted about
-                                my
-                                request</label>
-                            <label><input type="checkbox" name="agree_terms" required /> I have read the <a
-                                    href="/disclaimer" target="_blank">disclaimer</a></label>
-                            <label>
-                                <input type="checkbox" name="gdpr_consent" required />
-                                I consent to the storage of my submitted information so you can respond to my request.
-                                See the <a href="/privacy-policy" target="_blank">Privacy Policy</a>.
-                            </label>
-
-                        </div>
-                        <button type="button" class="prev button-secondary">Back</button>
-                        <button type="button" class="next button-secondary">Review</button>
-                    </section>
-
-                    <!-- Step 5: Final Review -->
-                    <section class="form-step">
-                        <h2>Review Your Request</h2>
-                        <div id="summary">
-                            <!-- content gets injected here -->
-                        </div>
-                        <button type="button" class="prev button-secondary">Back</button>
-                        <button type="submit" class="button-primary">Send My Request</button>
-                    </section>
-                </form>
-            </div>
-        </div>
-    </main>
-
+    <section>
+        <h2>More Information</h2>
+        <p>For more information, contact us at [email address].</p>
+    </section>
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -424,12 +266,12 @@
             </form>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 My Mini Mascots. <a href="privacy.html">Privacy Policy</a>
+            &copy; 2025 My Mini Mascots. <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>
         </div>
     </footer>
 
+
     <script src="main.js"></script>
-    <script src="form.js"></script>
     <!-- Fontawesome Icons -->
     <script src="https://kit.fontawesome.com/7118d8a9c9.js" crossorigin="anonymous"></script>
 </body>

@@ -1,98 +1,285 @@
-const form = document.getElementById('mascotRequestForm');
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('mascotRequestForm');
 
-// Only select direct children .form-step of the form (ignores wrappers)
-const steps = Array.from(form.querySelectorAll(':scope > .form-step'));
+    // Only select direct children .form-step of the form (ignores wrappers)
+    const steps = Array.from(form.querySelectorAll(':scope > .form-step'));
 
-// Only select direct children .progress-step of .progress-bar
-const progressBar = document.querySelector('.progress-bar');
-const progressBarSteps = progressBar ? progressBar.querySelectorAll(':scope > .progress-step') : [];
+    // Only select direct children .progress-step of .progress-bar
+    const progressBar = document.querySelector('.progress-bar');
+    const progressBarSteps = progressBar ? progressBar.querySelectorAll(':scope > .progress-step') : [];
 
-let currentStep = 0;
+    let currentStep = 0;
 
-function showStep(index) {
-    steps.forEach((step, i) => step.classList.toggle('active', i === index));
-    progressBarSteps.forEach((step, i) => step.classList.toggle('active', i === index));
-}
+    function showStep(index) {
+        steps.forEach((step, i) => step.classList.toggle('active', i === index));
+        progressBarSteps.forEach((step, i) => step.classList.toggle('active', i === index));
+    }
 
-form.addEventListener('click', (e) => {
-    if (e.target.classList.contains('next')) {
-        if (validateStep(currentStep)) {
-            currentStep++;
+    form.addEventListener('click', (e) => {
+        if (e.target.classList.contains('next')) {
+            if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+
+                // Check if the NEW step (after showStep) contains the summary
+                if (steps[currentStep]?.querySelector('#summary')) {
+                    populateSummary();
+                }
+            }
+        } else if (e.target.classList.contains('prev')) {
+            currentStep--;
             showStep(currentStep);
-        }
-    } else if (e.target.classList.contains('prev')) {
-        currentStep--;
-        showStep(currentStep);
-    } else if (e.target.id === 'addDoll') {
-        alert('This feature will allow adding more dolls in a future update.');
-    }
-});
-
-form.addEventListener('submit', (e) => {
-    // Show loading message
-    const loadingMessage = document.getElementById('loadingMessage');
-    if (loadingMessage) {
-        loadingMessage.style.display = 'block';
-    }
-    // The form will submit normally, no preventDefault()
-});
-
-
-
-function validateStep(stepIndex) {
-    // Only validate inputs/selects/textareas inside the current step
-    const inputs = steps[stepIndex].querySelectorAll('input, textarea, select');
-    let valid = true;
-    inputs.forEach((input) => {
-        if (!input.checkValidity()) {
-            input.classList.add('error');
-            valid = false;
-        } else {
-            input.classList.remove('error');
+        } else if (e.target.id === 'addDoll') {
+            alert('This feature will allow adding more dolls in a future update.');
         }
     });
-    return valid;
-}
 
-showStep(currentStep);
-
-
-// Colorpicker
-
-const colorInput = document.getElementById('singleColorInput');
-const previews = document.querySelectorAll('.color-preview');
-const resetButton = document.getElementById('resetColors');
-
-let selectedColors = [];
-
-colorInput.addEventListener('input', () => {
-    if (selectedColors.length < 5) {
-        const color = colorInput.value;
-        // Avoid duplicates
-        if (!selectedColors.includes(color)) {
-            selectedColors.push(color);
-            updatePreviews();
+    form.addEventListener('submit', (e) => {
+        // Show loading message
+        const loadingMessage = document.getElementById('loadingMessage');
+        if (loadingMessage) {
+            loadingMessage.style.display = 'block';
         }
-    }
-});
+        // The form will submit normally, no preventDefault()
+    });
 
-resetButton.addEventListener('click', () => {
-    selectedColors = [];
+    function validateStep(stepIndex) {
+        // Only validate inputs/selects/textareas inside the current step
+        const inputs = steps[stepIndex].querySelectorAll('input, textarea, select');
+        let valid = true;
+        inputs.forEach((input) => {
+            if (!input.checkValidity()) {
+                input.classList.add('error');
+                valid = false;
+            } else {
+                input.classList.remove('error');
+            }
+        });
+        return valid;
+    }
+
+    showStep(currentStep);
+
+    // Colorpicker
+    const colorInput = document.getElementById('singleColorInput');
+    const previews = document.querySelectorAll('.color-preview');
+    const resetButton = document.getElementById('resetColors');
+
+    let selectedColors = [];
+
+    colorInput.addEventListener('input', () => {
+        if (selectedColors.length < 5) {
+            const color = colorInput.value;
+            // Avoid duplicates
+            if (!selectedColors.includes(color)) {
+                selectedColors.push(color);
+                updatePreviews();
+            }
+        }
+    });
+
+    resetButton.addEventListener('click', () => {
+        selectedColors = [];
+        updatePreviews();
+    });
+
+    function updatePreviews() {
+        previews.forEach((preview, i) => {
+            if (selectedColors[i]) {
+                preview.style.background = selectedColors[i];
+                preview.classList.remove('empty');
+            } else {
+                preview.style.background = 'transparent';
+                preview.classList.add('empty');
+            }
+        });
+    }
+
+    // Initialize previews on page load
     updatePreviews();
-});
 
-function updatePreviews() {
-    previews.forEach((preview, i) => {
-        if (selectedColors[i]) {
-            preview.style.background = selectedColors[i];
-            preview.classList.remove('empty');
+    // File Size Limit Validation
+    const fileInput = document.querySelector('input[type="file"][name="files"]');
+    const maxFileSize = 5 * 1024 * 1024; // 5 MB size limit
+
+    if (fileInput) {
+        fileInput.addEventListener('change', function (event) {
+            const files = event.target.files;
+            let fileTooLarge = false;
+
+            for (let i = 0; i < files.length; i++) {
+                if (files[i].size > maxFileSize) {
+                    fileTooLarge = true;
+                    break;
+                }
+            }
+
+            if (fileTooLarge) {
+                alert('File size exceeds the maximum allowed size of 5MB. Please upload a smaller file.');
+                fileInput.value = ""; // Clear the input field
+            }
+        });
+    }
+
+    // Price Estimate Logic
+    const sizeRadios = form.querySelectorAll('input[name="doll_size"]');
+    const clothing = form.querySelector('input[name="addon_clothing"]');
+    const hair = form.querySelector('input[name="addon_hair"]');
+    const props = form.querySelector('input[name="addon_props"]');
+    const stand = form.querySelector('select[name="display_stand"]');
+    const priceOutput = document.querySelector('#estimatedPrice');
+    const timeOutput = document.querySelector('#estimatedTime');
+    const miniNote = document.querySelector('#miniDollNote');
+
+    const inputsToWatch = [
+        ...sizeRadios,
+        clothing,
+        hair,
+        props,
+        stand,
+    ];
+
+    function calculateEstimate() {
+        const selectedSize = form.querySelector('input[name="doll_size"]:checked');
+        const size = selectedSize ? selectedSize.value : 'full';
+        let total = 0;
+        let weeks = 2;
+
+        // Reset styles
+        miniNote.style.display = 'none';
+
+        if (size === 'mini') {
+            total = 30;
+
+            // Disable incompatible options
+            [clothing, hair, props].forEach(el => {
+                el.checked = false;
+                el.disabled = true;
+            });
+
+            miniNote.style.display = 'block';
         } else {
-            preview.style.background = 'transparent';
-            preview.classList.add('empty');
+            total = 60;
+
+            // Enable add-ons
+            [clothing, hair, props].forEach(el => el.disabled = false);
+
+            if (clothing.checked) total += 30;
+            if (hair.checked) total += 30;
+            if (props.checked) total += 40;
+        }
+
+        // Stand costs
+        switch (stand.value) {
+            case 'basic':
+                total += 10;
+                break;
+            case 'custom':
+                total += 20;
+                break;
+            case 'deluxe':
+                total += 50;
+                break;
+        }
+
+        // Timeline
+        if (size !== 'mini') {
+            const hasAddons = clothing.checked || hair.checked || props.checked || stand.value !== '';
+            weeks = hasAddons ? 4 : 2;
+        }
+
+        // Output values
+        priceOutput.textContent = `£${total} GBP`;
+        timeOutput.textContent = `~${weeks} weeks`;
+    }
+
+    // Add event listeners
+    inputsToWatch.forEach(input => {
+        if (input) {
+            input.addEventListener('change', calculateEstimate);
         }
     });
-}
 
-// Initialize previews on page load
-updatePreviews();
+    // Initial run
+    calculateEstimate();
 
+    // Overview display 
+    if (steps[currentStep]?.querySelector('#summary')) {
+        console.log("Summary div found. Populating...");
+        populateSummary();
+    }
+
+    function populateSummary() {
+        // Log
+        const summaryContainer = document.getElementById('summary');
+        if (!summaryContainer) {
+            console.error("❌ Could not find #summary container!");
+            return;
+        }
+
+        console.log("✅ Populating summary...");
+        summaryContainer.innerHTML = "<p>Testing content goes here.</p>";
+
+        //
+        const summary = document.querySelector('#summary');
+        if (!summary) return;
+
+        // Helper to safely get values
+        const getVal = name => {
+            const field = form.querySelector(`[name="${name}"]`);
+            if (!field) return '';
+            if (field.type === 'checkbox') return field.checked ? 'Yes' : 'No';
+            if (field.type === 'radio') {
+                const checked = form.querySelector(`[name="${name}"]:checked`);
+                return checked ? checked.value : '';
+            }
+            return field.value;
+        };
+
+        // Build summary HTML
+        summary.innerHTML = `
+            <h3>Contact Details</h3>
+            <ul>
+                <li><strong>Name:</strong> ${getVal('name')}</li>
+                <li><strong>Email:</strong> ${getVal('email')}</li>
+                <li><strong>Instagram:</strong> ${getVal('social')}</li>
+                <li><strong>WhatsApp:</strong> ${getVal('whatsapp')}</li>
+                <li><strong>Currency:</strong> ${getVal('currency')}</li>
+                <li><strong>Shipping Region:</strong> ${getVal('shipping_region')}</li>
+            </ul>
+
+            <h3>Character Design</h3>
+            <ul>
+                <li><strong>Character Name:</strong> ${getVal('character')}</li>
+                <li><strong>Fandom:</strong> ${getVal('fandom')}</li>
+                <li><strong>Description:</strong> ${getVal('description')}</li>
+                <li><strong>Link:</strong> ${getVal('link')}</li>
+                <li><strong>Inscription:</strong> ${getVal('quote')}</li>
+            </ul>
+
+            <h3>Color Selection</h3>
+            <div class="color-preview-summary">
+                ${[...document.querySelectorAll('.color-preview')].map(span => {
+            const bg = span.style.backgroundColor;
+            return bg && bg !== 'transparent' ? `<span style="display:inline-block;width:20px;height:20px;background:${bg};border-radius:4px;margin-right:6px;"></span>` : '';
+        }).join('')}
+            </div>
+
+            <h3>Add-ons</h3>
+            <ul>
+                <li><strong>Doll Size:</strong> ${getVal('doll_size')}</li>
+                <li><strong>Detachable Clothes:</strong> ${getVal('addon_clothing')}</li>
+                <li><strong>Fancy Hair:</strong> ${getVal('addon_hair')}</li>
+                <li><strong>Props:</strong> ${getVal('addon_props')}</li>
+                <li><strong>Stand:</strong> ${getVal('display_stand')}</li>
+                <li><strong>Gift:</strong> ${getVal('is_gift')}</li>
+            </ul>
+
+            <h3>Estimate</h3>
+            <ul>
+                <li><strong>Estimated Price:</strong> ${document.querySelector('#estimatedPrice').textContent}</li>
+                <li><strong>Estimated Timeline:</strong> ${document.querySelector('#estimatedTime').textContent}</li>
+            </ul>
+        `;
+    }
+});
