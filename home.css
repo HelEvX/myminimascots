@@ -430,16 +430,12 @@
 
 .thankyou-banner {
     background: var(--bg-light);
-    position: relative;
-    margin: 0 auto;
-    overflow: visible;
 }
 
 .process-content {
     position: relative;
     background: var(--secondary-accent);
     padding: 2.5rem 0 3.5rem 0;
-    margin: 20px;
     text-align: center;
     box-shadow: var(--shadow-lg);
     border-radius: var(--banner-radius);
