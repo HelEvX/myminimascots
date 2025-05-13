@@ -1,29 +1,108 @@
 @font-face {
     font-family: 'amosregular';
-    src: url('landster-webfont.woff2') format('woff2'),
-        url('landster-webfont.woff') format('woff');
-    font-weight: normal;
+    src: url('Landster.woff') format('woff');
     font-style: normal;
-    font-display: swap;
-
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
 }
 
 @font-face {
     font-family: 'cs_marciaregular';
-    src: url('csmarcia-regular-webfont.woff2') format('woff2'),
-        url('csmarcia-regular-webfont.woff') format('woff');
-    font-weight: normal;
+    src: url('CSMarcia-Regular.woff2') format('woff2'),
+        url('CSMarcia-Regular.woff') format('woff');
     font-style: normal;
-    font-display: swap;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
 
+/* MonotailScript */
+@font-face {
+    font-family: 'MonotailScriptThin';
+    src: url('MonotailScript-Thin.woff2') format('woff2'),
+        url('MonotailScript-Thin.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
 }
 
 @font-face {
-    font-family: 'monotail_scriptregular';
-    src: url('monotailscript-regular-webfont.woff2') format('woff2'),
-        url('monotailscript-regular-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'MonotailScriptExtLt';
+    src: url('MonotailScript-ExtraLight.woff2') format('woff2'),
+        url('MonotailScript-ExtraLight.otf') format('opentype');
     font-style: normal;
-    font-display: swap;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
 
+@font-face {
+    font-family: 'MonotailScriptLight';
+    src: url('MonotailScript-Light.woff2') format('woff2'),
+        url('MonotailScript-Light.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'MonotailScript';
+    src: url('MonotailScript-Regular.woff2') format('woff2'),
+        url('MonotailScript-Regular.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'MonotailScriptMed';
+    src: url('MonotailScript-Medium.woff2') format('woff2'),
+        /* Modern Browsers */
+        url('MonotailScript-Medium.otf') format('opentype');
+    /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/@font-face {
+    font-family: 'MonotailScriptSemBd';
+    src: url('MonotailScript-SemiBold.woff2') format('woff2'),
+        /* Modern Browsers */
+        url('MonotailScript-SemiBold.otf') format('opentype');
+    /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'MonotailScript';
+    src: url('MonotailScript-Bold.woff2') format('woff2'),
+        /* Modern Browsers */
+        url('MonotailScript-Bold.otf') format('opentype');
+    /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'MonotailScriptExtBd';
+    src: url('MonotailScript-ExtraBold.woff2') format('woff2'),
+        /* Modern Browsers */
+        url('MonotailScript-ExtraBold.otf') format('opentype');
+    /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'MonotailScriptBlack';
+    src: url('MonotailScript-Black.woff2') format('woff2'),
+        /* Modern Browsers */
+        url('MonotailScript-Black.otf') format('opentype');
+    /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
 }

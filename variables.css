@@ -33,10 +33,10 @@
 
     /* %%% TYPOGRAPHY %%% */
 
-    --font-heading: 'CS Marcia', serif;
-    --font-title: 'Amos', sans-serif;
+    --font-heading: 'cs_marciaregular', serif;
+    --font-title: 'amosregular', sans-serif;
     --font-body: 'Lato', sans-serif;
-    --font-button: 'Amos', sans-serif;
+    --font-button: 'amosregular', sans-serif;
 
     /* Titles */
     --font-size-large: 6.5rem;
