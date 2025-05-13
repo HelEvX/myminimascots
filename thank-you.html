@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom Mascot Request Form - My Mini Mascots</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Mini Mascots - Handmade Mascots from Somerset</title>
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="home.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Fredoka:700|Bree+Serif|Lato:400,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="thankyou-flex">
     <!-- header -->
     <header class="site-header">
         <div class="header-container">
@@ -104,13 +103,13 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="active"><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="how-to.html" class="nav-link">How-To</a></li>
                     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
                     <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                     <li><a href="faq.html" class="nav-link">FAQ</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
-                    <li class="active"><a href="order.html" class="nav-link nav-cta">Order Now</a></li>
+                    <li><a href="order.html" class="nav-link nav-cta">Order Now</a></li>
                 </ul>
             </nav>
             <button class="nav-toggle" aria-label="Toggle navigation">
@@ -119,177 +118,33 @@
         </div>
     </header>
 
-    <main>
-        <div class="form-wrapper">
 
-            <!-- Step Progress Bar -->
-            <aside class="progress-bar">
-                <div class="progress-step active">
-                    <img src="images/asterisk2.svg" alt="Step 1" />
-                    <h4>Information</h4>
+    <!-- Thank You Banner -->
+    <section id="thankyou" class="process-banner thankyou-banner">
+        <div class="container process-content">
+            <div class="polaroid-process-container">
+                <div class="process-wrap process-left">
+                    <img src="images/polaroid-2.jpg" alt="Mascot Polaroid" class="polaroid-img">
+                    <img src="images/tape_2.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
                 </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 2" />
-                    <h4>Design</h4>
+                <div class="process-wrap process-right">
+                    <img src="images/polaroid-7.jpg" alt="Mascot Polaroid" class="polaroid-img">
+                    <img src="images/tape_7.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
                 </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 3" />
-                    <h4>Addons</h4>
-                </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 4" />
-                    <h4>Summary</h4>
-                </div>
-                <div class="progress-step">
-                    <img src="images/asterisk2.svg" alt="Step 5" />
-                    <h4>Review</h4>
-                </div>
-            </aside>
-            <div class="form-card">
-                <form id="mascotRequestForm" name="mascotRequestForm" method="POST" data-netlify="true"
-                    netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thank-you.html">
-                    <input type="hidden" name="form-name" value="mascotRequestForm">
-                    <!-- Loading Message -->
-                    <div id="loadingMessage" style="display:none; color: #333; margin-top: 1em;">
-                        Sending your request, please wait...
-                    </div>
-
-                    <!-- Step 1: Welcome & Contact -->
-                    <section class="form-step active">
-                        <h2>Welcome</h2>
-                        <p>We're delighted you are considering ordering a mascot from My Mini Mascots. We look forward
-                            to
-                            design your custom mascot with you. We've created this form to help you with your request.
-                            <br><br>
-                            <span>Important!</span> Please make sure you're familiar with <a href="/process">our
-                                workshop process</a> before continuing.
-                        </p>
-                        <div class="field-grid">
-                            <label class="name-field">Name
-                                <input type="text" name="name" required />
-                            </label>
-                            <label class="email-field">Email
-                                <input type="email" name="email" required />
-                            </label>
-                            <label class="instagram-field">Instagram Handle
-                                <input type="text" name="social" />
-                            </label>
-                            <label>WhatsApp
-                                <input type="text" name="whatsapp" placeholder="+44 7123 456789" />
-                            </label>
-                            <label class="currency-field">Currency
-                                <div class="select-wrapper">
-                                    <select name="currency" required>
-                                        <option value="">Select currency</option>
-                                        <option value="GBP">GBP (£)</option>
-                                        <option value="EUR">EUR (€)</option>
-                                        <option value="USD">USD ($)</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-arrow"></i>
-                                </div>
-                            </label>
-                            <label class="shipping-region-field">Shipping Region
-                                <div class="select-wrapper">
-                                    <select name="shipping_region" required>
-                                        <option value="">Select region</option>
-                                        <option value="uk_ireland">UK & Ireland</option>
-                                        <option value="europe">Mainland Europe</option>
-                                        <option value="outside_europe">Outside Europe</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-arrow"></i>
-                                </div>
-                            </label>
-
-                        </div>
-                        <p><span>Note:</span> You will not be charged at this point. All requests are manually
-                            reviewed.</p>
-                        <button type="button" class="next button-secondary">Next</button>
-                    </section>
-
-                    <!-- Step 2: Design Details -->
-                    <section class="form-step">
-                        <h2>Doll Design</h2>
-                        <div class="field-grid">
-                            <label>Your Character's Name <input type="text" name="character" required /></label>
-                            <label>Fandom/Franchise <input type="text" name="fandom" /></label>
-                            <label>Tell me a bit more about your idea <textarea name="description"></textarea></label>
-                            <label>Upload Files <input type="file" name="files" multiple /></label>
-                            <label>External Link <input type="url" name="link" /></label>
-                            <label>Inscription for the Stand <input type="text" name="quote" maxlength="100" /></label>
-                        </div>
-                        <div class="color-picker">
-                            <label>
-                                <h4>Select up to 5 colors you associate with your character.</h4>
-                                <p>We will try to match these
-                                    colours to the yarn for your character's outfit.</p>
-                            </label>
-                            <div class="color-picker-squares">
-                                <input type="color" id="singleColorInput" />
-
-                                <div class="color-previews">
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                </div>
-
-                                <button type="button" id="resetColors"
-                                    class="reset-button button-primary">Reset</button>
-                            </div>
-                        </div>
-                        <div class="button-group">
-                            <button type="button" class="prev button-secondary">Back</button>
-                            <button type="button" class="next button-secondary">Next</button>
-                        </div>
-                    </section>
-
-                    <!-- Step 3: Addons -->
-                    <section class="form-step">
-                        <h2>Add-ons</h2>
-                        <div class="addons-table">
-                            <label><input type="checkbox" name="addon_props" /> Props</label>
-                            <label><input type="checkbox" name="addon_clothing" /> Detachable Clothing</label>
-                        </div>
-                        <label>Is this a gift?
-                            <select name="is_gift">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                        </label>
-                        <button type="button" id="addDoll" class="button-secondary">Add Another Doll</button>
-                        <div class="button-group">
-                            <button type="button" class="prev button-secondary">Back</button>
-                            <button type="button" class="next button-secondary">Next</button>
-                        </div>
-                    </section>
-
-                    <!-- Step 4: Summary & Agreement -->
-                    <section class="form-step">
-                        <h2>Estimate & Agreement</h2>
-                        <p>Estimated price and wait time will appear here.</p>
-                        <div class="field-grid">
-                            <label><input type="checkbox" name="agree_emails" required /> I agree to be contacted about
-                                my
-                                request</label>
-                            <label><input type="checkbox" name="agree_terms" required /> I have read the <a
-                                    href="/disclaimer" target="_blank">disclaimer</a></label>
-                        </div>
-                        <button type="button" class="prev button-secondary">Back</button>
-                        <button type="button" class="next button-secondary">Review</button>
-                    </section>
-
-                    <!-- Step 5: Final Review -->
-                    <section class="form-step">
-                        <h2>Review Your Request</h2>
-                        <div id="summary"></div>
-                        <button type="button" class="prev button-secondary">Back</button>
-                        <button type="submit" class="button-primary">Send My Request</button>
-                    </section>
-                </form>
+            </div>
+            <h3>Thank You for Your Request!</h3>
+            <p>Your order request has been received. Nadine will review your details and get in touch soon to
+                discuss your custom mascot and next steps.</p>
+            <div class="button-group">
+                <button class="button-primary" type="button" onclick="window.location.href='/'">
+                    Back to Homepage
+                </button>
+                <button class="button-primary-ghost" type="button" onclick="window.location.href='gallery.html'">
+                    See Mascot Gallery
+                </button>
             </div>
         </div>
-    </main>
+    </section>
 
 
     <!-- Footer -->
@@ -405,7 +260,6 @@
     </footer>
 
     <script src="main.js"></script>
-    <script src="form.js"></script>
     <!-- Fontawesome Icons -->
     <script src="https://kit.fontawesome.com/7118d8a9c9.js" crossorigin="anonymous"></script>
 </body>

@@ -18,6 +18,20 @@ body {
     line-height: 1.6;
 }
 
+.thankyou-flex {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.thankyou-banner {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
 .container {
     max-width: var(--content-width);
     margin: 0 auto;
@@ -192,8 +206,7 @@ button {
 }
 
 
-/* Hide on small screens */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .scroll-nav-btn {
         width: 44px;
         height: 44px;

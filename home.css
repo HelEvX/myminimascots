@@ -428,14 +428,26 @@
     overflow: visible;
 }
 
+.thankyou-banner {
+    background: var(--bg-light);
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+}
+
 .process-content {
     position: relative;
     background: var(--secondary-accent);
     padding: 2.5rem 0 3.5rem 0;
+    margin: 20px;
     text-align: center;
     box-shadow: var(--shadow-lg);
     border-radius: var(--banner-radius);
     z-index: 1;
+}
+
+.process-content p {
+    padding: 0 16rem;
 }
 
 .polaroid-process-container {
@@ -459,7 +471,6 @@
     right: 60px;
     top: 160px;
 }
-
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
@@ -1070,6 +1081,10 @@ body.touch-device .gallery-arrow {
 
     /*  */
 
+    .process-content p {
+        padding: 0 12rem;
+    }
+
     .process-wrap.process-left,
     .process-wrap.process-right {
         display: none;
@@ -1171,6 +1186,12 @@ body.touch-device .gallery-arrow {
 
     /*  */
 
+    .process-content p {
+        padding: 0 6rem;
+    }
+
+    /*  */
+
     .testimonials-masonry {
         column-count: 1;
     }
@@ -1208,6 +1229,12 @@ body.touch-device .gallery-arrow {
 
     .manifesto-text {
         height: 320px;
+    }
+
+    /*  */
+
+    .process-content p {
+        padding: 0 2rem;
     }
 
     /*  */
