@@ -158,7 +158,7 @@
                     <section class="form-step active">
                         <h2>Welcome</h2>
                         <div class="form-paragraphs">
-                            <p>We're so pleased you're considering a mascot from My Mini Mascots. We can't wait to work
+                            <p>We're so pleased with your interest in My Mini Mascots. We can't wait to work
                                 with you to design your perfect mascot. This form will guide you through your request.
                             </p>
                             <p><span>Note:</span> Please take a moment to read about <a href="how-to.html"
@@ -200,14 +200,13 @@
                                 </div>
                             </label>
                         </div>
-                        <p><span>Note:</span> We don't take payment details at this stage. You'll be asked for a deposit
-                            before we begin creating your mascot, and we'll contact you personally by email. Every
-                            request is reviewed by hand. </p>
+                        <p>We don't take your payment details at this stage. You'll be asked for a deposit
+                            before we begin creating your mascot, and we'll contact you personally by email soon. </p>
                         <button type="button" class="next button-secondary">Next</button>
                     </section>
 
                     <!-- Step 2: Design Details -->
-                    <section class="form-step">
+                    <section class="form-step step-two">
                         <h2>Doll Design</h2>
                         <div class="field-grid">
                             <label>Your Character's Name <input type="text" name="character" required /></label>
@@ -221,27 +220,27 @@
                                 <input type="date" name="deadline" />
                             </div>
                             <p class="form-note">
-                                <span>Please note:</span> requesting a deadline does not guarantee it can be
+                                <span>Note:</span> requesting a deadline does not guarantee it can be
                                 met. Our handmade process varies depending on your mascot's design and level of
                                 detail. We'll discuss your ideas together and agree a realistic timeline.
                             </p>
                             <label class="description">Tell us a bit about your idea.
-                                <textarea name="description"></textarea>
+                                <textarea name="description"
+                                    placeholder="If your character has different looks, let us know which version you'd like. If you're unsure, we're happy to suggest some options."></textarea>
                                 <p class="field-note">
-                                    <span>Some tips:</span> If your character has different looks, let us know which
-                                    version you'd like. If you're unsure, we're happy to suggest some options. You can
-                                    change your mind about any details when we discuss the final design, but please note
-                                    that upgrades may mean a longer wait.
+                                    <span>Some tips:</span> You can change your mind about any details when we discuss
+                                    the final design, but please note that upgrades may mean a longer wait.
                                 </p>
                             </label>
-                            <label class="upload">Upload Files <input type="file" name="files" multiple
+                            <label class="upload">Upload a photo or screenshot of your character. Make sure their bodies
+                                are in view! <input type="file" name="files" multiple
                                     accept=".jpg,.jpeg,.png,.pdf,.webp" />
                             </label>
-                            <label class="link">Link to reference material (optional)
+                            <label class="link">Add a link to useful reference material.
                                 <input type="url" name="link"
-                                    placeholder="e.g. Pinterest board, image folder, Google Drive…" />
+                                    placeholder="e.g. YouTube, fansites, Pinterest board, Google Drive…" />
                                 <p>
-                                    <span>Need inspiration?</span> Visit <a href="/how-to.html" target="_blank"
+                                    <span>Need inspiration? <br></span> Visit <a href="/how-to.html" target="_blank"
                                         rel="noopener">our
                                         process page</a> for tips on creating a reference board using <a
                                         href="https://uk.pinterest.com/myminimascots/my-mascot-inspiration-customer-board-example/"
@@ -295,22 +294,29 @@
                     </section>
 
                     <!-- Step 3: Addons -->
-                    <section class="form-step">
+                    <section class="form-step step-three">
                         <h2>Add-ons</h2>
                         <div class="addons-table">
+                            <div>
+                                <p><span>Note:</span> Custom and deluxe stands can have hand-painted inscriptions,
+                                    patterns or illustrations. All mascots get a tag with room for an inscription as
+                                    well.</p>
+                                <div class="select-wrapper">
+                                    <select name="display_stand">
+                                        <option value="">No stand</option>
+                                        <option value="basic">Basic varnished stand</option>
+                                        <option value="custom">Custom painted stand</option>
+                                        <option value="deluxe">Deluxe stand with metal plaque</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-arrow"></i>
+                                </div>
+                            </div>
                             <label><input type="radio" name="doll_size" value="full" checked> Full-sized (30cm)</label>
                             <label><input type="radio" name="doll_size" value="mini"> Keychain (10cm)</label>
                             <label><input type="checkbox" name="addon_clothing" /> Detachable Clothes</label>
-                            <label><input type="checkbox" name="addon_hair"> Fancy hair</label>
-                            <label><input type="checkbox" name="addon_props" /> Props</label>
-                            <select name="display_stand">
-                                <option value="">No stand</option>
-                                <option value="basic">Basic wooden stand</option>
-                                <option value="custom">Custom painted stan</option>
-                                <option value="deluxe">Deluxe stand w/ engraving</option>
-                            </select>
-                            <p>Custom and deluxe stands can have hand-painted inscriptions. Basic stands include
-                                your inscription as a tag.</p>
+                            <label><input type="checkbox" name="addon_hair"> Fancy hair *</label>
+                            <label><input type="checkbox" name="addon_props" /> Props *</label>
+                            <p>* Not made from yarn.</p>
                         </div>
                         <div>
                             <label class="toggle-container">
@@ -318,7 +324,6 @@
                                 <input type="checkbox" name="is_gift" id="toggle-gift" />
                                 <span class="slider"></span>
                             </label>
-
                             <div id="gift-note" style="display: none; margin-top: 10px;">
                                 <p class="form-note">
                                     Your mascot will be posted to you as the person placing the order. If it's a gift,
@@ -365,8 +370,11 @@
                         <div id="summary">
                             <!-- content gets injected here -->
                         </div>
-                        <button type="button" class="prev button-secondary">Back</button>
-                        <button type="submit" class="button-primary">Send My Mascot Request</button>
+                        <div class="button-group">
+                            <button type="button" class="prev button-secondary">Back</button>
+                            <button type="button" class="clear button-primary-ghost">Clear Form</button>
+                            <button type="submit" class="button-primary">Send My Mascot Request</button>
+                        </div>
                     </section>
                 </form>
             </div>

@@ -97,6 +97,7 @@ p.branding-note {
     text-align: center;
 }
 
+
 /* Form Step Card */
 .form-step {
     background: var(--bg-medium);
@@ -119,6 +120,7 @@ p.branding-note {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem 2rem;
+    margin: 1rem 0;
 }
 
 /* Custom column spans for specific fields */
@@ -135,7 +137,12 @@ p.branding-note {
 /* Labels and Inputs */
 
 label {
-    font-size: var(--font-size-micro);
+    font-size: var(--font-size-small-ui);
+}
+
+.step-two label,
+.step-three label {
+    font-size: var(--font-size-body);
 }
 
 input,
@@ -152,6 +159,11 @@ select {
     transition: border-color 0.2s;
 }
 
+textarea {
+    min-height: 400px;
+    line-height: 1.6;
+}
+
 input:focus,
 textarea:focus,
 select:focus {
@@ -164,6 +176,7 @@ select:focus {
 .select-wrapper {
     position: relative;
     display: inline-block;
+    /* margin-top: 1rem; */
     width: 100%;
 }
 
@@ -173,7 +186,21 @@ select:focus {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    font-size: var(--font-size-body);
+    font-family: var(--font-body);
+    background: #fff;
+    border: 2px solid var(--primary-accent-light);
+    border-radius: 0.6rem;
     cursor: pointer;
+    color: var(--gray-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.select-wrapper select:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 2px var(--secondary-accent);
+    outline: none;
 }
 
 .select-wrapper .select-arrow {
@@ -183,7 +210,7 @@ select:focus {
     font-size: var(--font-size-body);
     pointer-events: none;
     transform: translateY(-80%);
-    color: var(--gray-dark);
+    color: var(--primary-accent-dark);
     user-select: none;
 }
 
@@ -204,9 +231,12 @@ select.error {
 /* Note style */
 
 .form-step p {
-    font-size: var(--font-size-small-ui);
     padding: 1em 0;
     margin: 0;
+}
+
+.form-note {
+    font-size: var(--font-size-small-ui);
 }
 
 #deadline-container {
@@ -330,7 +360,7 @@ a {
 .toggle-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 2rem;
     cursor: pointer;
 }
 
@@ -340,7 +370,7 @@ a {
 
 .toggle-container .slider {
     position: relative;
-    width: 42px;
+    width: 50px;
     height: 22px;
     background-color: #ccc;
     border-radius: 12px;
@@ -360,10 +390,11 @@ a {
 }
 
 .toggle-container input:checked+.slider {
-    background-color: #4caf50;
+    background-color: var(--primary-accent);
 }
 
 .toggle-container input:checked+.slider::before {
+    background: var(--bg-light);
     transform: translateX(20px);
 }
 
@@ -372,6 +403,7 @@ a {
 /* Addons Table (Step 3) */
 .addons-table {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -383,16 +415,55 @@ a {
     border: 2px dashed var(--primary-accent-light);
     border-radius: 1rem;
     padding: 1rem 1.5rem;
-    font-weight: normal;
     font-family: var(--font-body);
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: var(--font-size-body);
+    min-width: 180px;
+    box-shadow: var(--shadow-sm);
 }
 
+/* Radio & Checkbox styling */
+.addons-table input[type="radio"],
 .addons-table input[type="checkbox"] {
+    accent-color: var(--primary-accent);
+    width: 1.3em;
+    height: 1.3em;
     margin-right: 0.8rem;
+    margin-left: 0;
+    margin-bottom: 0;
+    border-radius: 0.4em;
+    transition: accent-color 0.2s;
+    flex-shrink: 0;
+    box-shadow: none;
 }
 
+.addons-table input[type="radio"] {
+    border-radius: 50%;
+}
+
+/* Focus state for accessibility */
+.addons-table input[type="radio"]:focus,
+.addons-table input[type="checkbox"]:focus {
+    outline: 2px solid var(--secondary-accent);
+    outline-offset: 2px;
+}
+
+/* Checked state for visual feedback */
+.addons-table input[type="radio"]:checked+span,
+.addons-table input[type="checkbox"]:checked+span {
+    color: var(--primary-accent-dark);
+}
+
+/* Remove default outline on label click */
+.addons-table label:active {
+    outline: none;
+    border-color: var(--primary-accent);
+}
+
+
+
+/* %%%%%%%%%%%%%%%%%%%% */
 
 
 /* Summary Section */
@@ -496,6 +567,11 @@ a {
         gap: 0.8rem;
     }
 
+    .addons-table label {
+        width: 100%;
+        min-width: 0;
+    }
+
     .color-picker {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -504,10 +580,20 @@ a {
     .field-grid {
         display: block;
     }
+
 }
 
 @media (max-width: 480px) {
     .form-card {
         padding: 0;
+    }
+
+    .addons-table {
+        gap: 0.7rem;
+    }
+
+    .addons-table label {
+        padding: 0.7rem 1rem;
+        font-size: var(--font-size-small-ui);
     }
 }
