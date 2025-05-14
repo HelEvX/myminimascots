@@ -157,18 +157,18 @@
                     <!-- Step 1: Welcome & Contact -->
                     <section class="form-step active">
                         <h2>Welcome</h2>
-                        <p>We're delighted you are considering ordering a mascot from My Mini Mascots. We look forward
-                            to
-                            design your custom mascot with you. We've created this form to help you with your request.
-                            <br><br>
-                            <span>Important!</span> Please make sure you're familiar with <a href="/process">our
-                                workshop process</a> before continuing.
-                        </p>
+                        <div class="form-paragraphs">
+                            <p>We're so pleased you're considering a mascot from My Mini Mascots. We can't wait to work
+                                with you to design your perfect mascot. This form will guide you through your request.
+                            </p>
+                            <p><span>Note:</span> Please take a moment to read about <a href="how-to.html"
+                                    target="_blank">our workshop process</a> before continuing.</p>
+                        </div>
                         <div class="field-grid">
-                            <label class="name-field">Name
+                            <label class="name-field">Name *
                                 <input type="text" name="name" required />
                             </label>
-                            <label class="email-field">Email
+                            <label class="email-field">Email *
                                 <input type="email" name="email" required />
                             </label>
                             <label class="instagram-field">Instagram Handle
@@ -177,32 +177,32 @@
                             <label>WhatsApp
                                 <input type="text" name="whatsapp" placeholder="+44 7123 456789" />
                             </label>
-                            <label class="currency-field">Currency
-                                <div class="select-wrapper">
-                                    <select name="currency" required>
-                                        <option value="">Select currency</option>
-                                        <option value="GBP">GBP (£)</option>
-                                        <option value="EUR">EUR (€)</option>
-                                        <option value="USD">USD ($)</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-arrow"></i>
-                                </div>
-                            </label>
                             <label class="shipping-region-field">Shipping Region
                                 <div class="select-wrapper">
-                                    <select name="shipping_region" required>
-                                        <option value="">Select region</option>
-                                        <option value="uk_ireland">UK & Ireland</option>
+                                    <select name="shipping_region">
+                                        <option selected="selected" value="uk_ireland">UK & Ireland</option>
                                         <option value="europe">Mainland Europe</option>
                                         <option value="outside_europe">Outside Europe</option>
                                     </select>
                                     <i class="fas fa-chevron-down select-arrow"></i>
                                 </div>
                             </label>
-
+                            <label class="currency-field">Currency
+                                <div class="select-wrapper">
+                                    <select name="currency">
+                                        <option selected="selected" value="GBP">GBP (£)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                        <option value="USD">USD ($)</option>
+                                        <option value="AUD">AUD ($)</option>
+                                        <option value="n/a">Other</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-arrow"></i>
+                                </div>
+                            </label>
                         </div>
-                        <p><span>Note:</span> You will not be charged at this point. All requests are manually
-                            reviewed.</p>
+                        <p><span>Note:</span> We don't take payment details at this stage. You'll be asked for a deposit
+                            before we begin creating your mascot, and we'll contact you personally by email. Every
+                            request is reviewed by hand. </p>
                         <button type="button" class="next button-secondary">Next</button>
                     </section>
 
@@ -212,22 +212,71 @@
                         <div class="field-grid">
                             <label>Your Character's Name <input type="text" name="character" required /></label>
                             <label>Fandom/Franchise <input type="text" name="fandom" /></label>
-                            <label>Tell me a bit more about your idea <textarea name="description"></textarea></label>
-                            <label>Upload Files <input type="file" name="files" multiple
+                            <label class="toggle-container">
+                                <p>Do you need your mascot by a particular date?</p>
+                                <input type="checkbox" id="toggle-deadline" />
+                                <span class="slider"></span>
+                            </label>
+                            <div id="deadline-container" style="display: none; margin-top: 10px;">
+                                <input type="date" name="deadline" />
+                            </div>
+                            <p class="form-note">
+                                <span>Please note:</span> requesting a deadline does not guarantee it can be
+                                met. Our handmade process varies depending on your mascot's design and level of
+                                detail. We'll discuss your ideas together and agree a realistic timeline.
+                            </p>
+                            <label class="description">Tell us a bit about your idea.
+                                <textarea name="description"></textarea>
+                                <p class="field-note">
+                                    <span>Some tips:</span> If your character has different looks, let us know which
+                                    version you'd like. If you're unsure, we're happy to suggest some options. You can
+                                    change your mind about any details when we discuss the final design, but please note
+                                    that upgrades may mean a longer wait.
+                                </p>
+                            </label>
+                            <label class="upload">Upload Files <input type="file" name="files" multiple
                                     accept=".jpg,.jpeg,.png,.pdf,.webp" />
                             </label>
-                            <label>External Link <input type="url" name="link" /></label>
-                            <label>Inscription for the Stand <input type="text" name="quote" maxlength="100" /></label>
-                        </div>
-                        <div class="color-picker">
-                            <label>
-                                <h4>Select up to 5 colors you associate with your character.</h4>
-                                <p>We will try to match these
-                                    colours to the yarn for your character's outfit.</p>
+                            <label class="link">Link to reference material (optional)
+                                <input type="url" name="link"
+                                    placeholder="e.g. Pinterest board, image folder, Google Drive…" />
+                                <p>
+                                    <span>Need inspiration?</span> Visit <a href="/how-to.html" target="_blank"
+                                        rel="noopener">our
+                                        process page</a> for tips on creating a reference board using <a
+                                        href="https://uk.pinterest.com/myminimascots/my-mascot-inspiration-customer-board-example/"
+                                        target="_blank" rel="noopener">Pinterest</a>.
+                                </p>
                             </label>
-                            <div class="color-picker-squares">
-                                <input type="color" id="singleColorInput" />
-
+                            <label class="inscription">Which character quote or inscription would you like to add (if
+                                any)?
+                                <input type="text" name="quote" maxlength="100" />
+                            </label>
+                        </div>
+                        <p>To inform our yarn selection, please choose up to 5 colours you associate with your
+                            character's face, body or outfit. We'll try to match your chosen colours as closely as
+                            possible.</p>
+                        <div class="color-picker">
+                            <div class="picker-row">
+                                <div>
+                                    <input type="color" id="singleColorInput" />
+                                    <div class="open">
+                                        <a href="#modal">Need help?</a>
+                                    </div>
+                                    <div id="modal">
+                                        <div class="modal__window">
+                                            <a class="modal__close" href="#">
+                                                <i class="fa-solid fa-close"></i>
+                                            </a>
+                                            <p>Click the square to reveal the colour picker, select your color
+                                                and click the arrow button to select. Repeat this process for
+                                                the remaining 4 colours.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" id="confirmColor" class="button-primary-icon" title="Add Colour">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
                                 <div class="color-previews">
                                     <span class="color-preview empty"></span>
                                     <span class="color-preview empty"></span>
@@ -235,9 +284,8 @@
                                     <span class="color-preview empty"></span>
                                     <span class="color-preview empty"></span>
                                 </div>
-
-                                <button type="button" id="resetColors"
-                                    class="reset-button button-primary">Reset</button>
+                                <button type="button" id="resetColors" class="reset-button button-primary-ghost">Start
+                                    Over</button>
                             </div>
                         </div>
                         <div class="button-group">
@@ -257,17 +305,28 @@
                             <label><input type="checkbox" name="addon_props" /> Props</label>
                             <select name="display_stand">
                                 <option value="">No stand</option>
-                                <option value="basic">Basic wooden stand - 10 GBP</option>
-                                <option value="custom">Custom painted stand - 20 GBP</option>
-                                <option value="deluxe">Deluxe stand w/ engraving - 50 GBP</option>
+                                <option value="basic">Basic wooden stand</option>
+                                <option value="custom">Custom painted stan</option>
+                                <option value="deluxe">Deluxe stand w/ engraving</option>
                             </select>
+                            <p>Custom and deluxe stands can have hand-painted inscriptions. Basic stands include
+                                your inscription as a tag.</p>
                         </div>
-                        <label>Is this a gift?
-                            <select name="is_gift">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                        </label>
+                        <div>
+                            <label class="toggle-container">
+                                <span>Is this a gift?</span>
+                                <input type="checkbox" name="is_gift" id="toggle-gift" />
+                                <span class="slider"></span>
+                            </label>
+
+                            <div id="gift-note" style="display: none; margin-top: 10px;">
+                                <p class="form-note">
+                                    Your mascot will be posted to you as the person placing the order. If it's a gift,
+                                    the letter inside the box will be addressed to your chosen recipient, and you'll
+                                    have the chance to write a personal message for them.
+                                </p>
+                            </div>
+                        </div>
                         <button type="button" id="addDoll" class="button-secondary">Add Another Doll</button>
                         <div class="button-group">
                             <button type="button" class="prev button-secondary">Back</button>
@@ -281,13 +340,12 @@
                         <p>Estimated price: <span id="estimatedPrice">0</span></p>
                         <p>Estimated timeline: <span id="estimatedTime">0</span></p>
                         <p id="miniDollNote" style="display:none; color: var(--error);">
-                            Miniature dolls are limited in detail due to their size. For custom features and better
-                            likeness, we recommend a full-sized doll.
+                            Miniature mascots have limited detail due to their size. For more custom features and a
+                            closer likeness, we recommend choosing a full-sized mascot.
                         </p>
                         <div class="field-grid">
                             <label><input type="checkbox" name="agree_emails" required /> I agree to be contacted about
-                                my
-                                request</label>
+                                my request</label>
                             <label><input type="checkbox" name="agree_terms" required /> I have read the <a
                                     href="/disclaimer" target="_blank">disclaimer</a></label>
                             <label>
@@ -308,7 +366,7 @@
                             <!-- content gets injected here -->
                         </div>
                         <button type="button" class="prev button-secondary">Back</button>
-                        <button type="submit" class="button-primary">Send My Request</button>
+                        <button type="submit" class="button-primary">Send My Mascot Request</button>
                     </section>
                 </form>
             </div>

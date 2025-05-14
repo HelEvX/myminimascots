@@ -158,13 +158,18 @@ button {
     transition: all 0.2s, box-shadow 0.2s;
 }
 
-.button-primary-icon:hover {
-    background: var(--bg-light);
-    box-shadow: var(--shadow-md);
-}
-
 .button-primary-icon i {
     color: var(--gray-dark);
+}
+
+.button-primary-icon:disabled {
+    background: var(--bg-medium);
+    cursor: not-allowed;
+}
+
+.button-primary-icon:hover:not(:disabled) {
+    background: var(--bg-light);
+    box-shadow: var(--shadow-md);
 }
 
 /*  */

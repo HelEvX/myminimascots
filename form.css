@@ -117,8 +117,19 @@ p.branding-note {
 /* Field Grid for better alignment */
 .field-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem 2rem;
+}
+
+/* Custom column spans for specific fields */
+
+.field-grid .field-note,
+.field-grid .form-note,
+.field-grid .description,
+.field-grid .upload,
+.field-grid .link,
+.field-grid .inscription {
+    grid-column: span 2;
 }
 
 /* Labels and Inputs */
@@ -171,12 +182,10 @@ select:focus {
     right: 1em;
     font-size: var(--font-size-body);
     pointer-events: none;
-    transform: translateY(-66.66%);
+    transform: translateY(-80%);
     color: var(--gray-dark);
     user-select: none;
 }
-
-
 
 /* Error styling */
 input.error,
@@ -186,16 +195,27 @@ select.error {
     background: var(--bg-light);
 }
 
-/* Speech Bubble / Note style */
+/* Button margin */
+.form-step .button-secondary {
+    margin-top: 2rem;
+}
+
+
+/* Note style */
+
 .form-step p {
     font-size: var(--font-size-small-ui);
     padding: 1em 0;
-    margin-bottom: 1.5rem;
+    margin: 0;
+}
+
+#deadline-container {
+    height: 40px;
 }
 
 span {
     background-color: var(--primary-accent);
-    padding: 5px 10px;
+    padding: 4px 10px 5.76px;
     color: var(--bg-light);
 }
 
@@ -203,6 +223,151 @@ a {
     color: var(--primary-accent-dark);
     text-decoration: underline;
 }
+
+.form-paragraphs {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-paragraphs p {
+    margin: 0;
+}
+
+/* Colour Picker */
+.picker-row {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.color-picker-squares {
+    width: 500px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#singleColorInput {
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+}
+
+.color-previews {
+    display: flex;
+    padding: 3px;
+    gap: 1.2rem;
+}
+
+.color-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.4em;
+    border: 1.5px solid var(--bg-medium);
+    background: white;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s, border-color 0.3s;
+}
+
+.color-preview.empty {
+    background: transparent;
+    border-style: dashed;
+}
+
+.reset-button {
+    height: 50px;
+    margin: 3px;
+}
+
+/* Modal */
+
+.open a {
+    font-size: var(--font-size-small-ui);
+}
+
+#modal {
+    position: absolute;
+    height: auto;
+    width: 400px;
+    background-color: var(--shadow-md);
+    color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__window {
+    background-color: var(--gray-dark);
+    border-radius: var(--card-radius);
+    padding: 0 1.2em;
+    margin-top: 1.2rem;
+}
+
+.modal__close {
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.modal__close i {
+    margin-right: .5rem;
+}
+
+#modal:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+/* TOGGLES - BASIC */
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.toggle-container input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-container .slider {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    background-color: #ccc;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.toggle-container .slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.toggle-container input:checked+.slider {
+    background-color: #4caf50;
+}
+
+.toggle-container input:checked+.slider::before {
+    transform: translateX(20px);
+}
+
+
 
 /* Addons Table (Step 3) */
 .addons-table {
@@ -226,59 +391,6 @@ a {
 
 .addons-table input[type="checkbox"] {
     margin-right: 0.8rem;
-}
-
-/* Colour Picker */
-.color-picker {
-    margin: 1.2rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.color-picker p {
-    margin: 0 auto 1rem;
-    padding: 0;
-}
-
-.color-picker-squares {
-    width: 500px;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-#singleColorInput {
-    width: 50px;
-    height: 50px;
-    padding: 3px;
-    margin: 0;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    outline: none;
-}
-
-.color-previews {
-    display: flex;
-    gap: 0.7rem;
-}
-
-.color-preview {
-    width: 32px;
-    height: 32px;
-    border-radius: 0.4em;
-    border: 1.5px solid var(--bg-medium);
-    background: white;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s, border-color 0.3s;
-}
-
-.color-preview.empty {
-    background: transparent;
-    border-style: dashed;
 }
 
 
@@ -377,16 +489,6 @@ a {
         height: auto;
         min-height: unset;
         padding: 2.5rem 1.2rem;
-    }
-
-    button,
-    button.next,
-    button.prev,
-    button[type="submit"] {
-        width: 100%;
-        font-size: 1rem;
-        padding: 0.8rem 1rem;
-        margin-top: 1rem;
     }
 
     .addons-table {

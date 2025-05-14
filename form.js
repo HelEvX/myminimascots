@@ -64,24 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const colorInput = document.getElementById('singleColorInput');
     const previews = document.querySelectorAll('.color-preview');
     const resetButton = document.getElementById('resetColors');
+    const confirmButton = document.getElementById('confirmColor');
 
     let selectedColors = [];
-
-    colorInput.addEventListener('input', () => {
-        if (selectedColors.length < 5) {
-            const color = colorInput.value;
-            // Avoid duplicates
-            if (!selectedColors.includes(color)) {
-                selectedColors.push(color);
-                updatePreviews();
-            }
-        }
-    });
-
-    resetButton.addEventListener('click', () => {
-        selectedColors = [];
-        updatePreviews();
-    });
 
     function updatePreviews() {
         previews.forEach((preview, i) => {
@@ -93,10 +78,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 preview.classList.add('empty');
             }
         });
+        // Disable confirm if 5 colors are chosen or duplicate
+        confirmButton.disabled = selectedColors.length >= 5 || selectedColors.includes(colorInput.value);
     }
 
-    // Initialize previews on page load
+    // Add color only when confirm button is clicked
+    confirmButton.addEventListener('click', () => {
+        if (
+            selectedColors.length < 5 &&
+            !selectedColors.includes(colorInput.value)
+        ) {
+            selectedColors.push(colorInput.value);
+            updatePreviews();
+        }
+    });
+
+    // Reset all colors
+    resetButton.addEventListener('click', () => {
+        selectedColors = [];
+        updatePreviews();
+    });
+
+    // Update confirm button state on color change
+    colorInput.addEventListener('input', updatePreviews);
+
+    // Initialise
     updatePreviews();
+
+    /////////////////////
 
     // File Size Limit Validation
     const fileInput = document.querySelector('input[type="file"][name="files"]');
@@ -120,6 +129,22 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    // Gift Toggle Logic
+
+    const deadlineToggle = document.getElementById('toggle-deadline');
+    const deadlineContainer = document.getElementById('deadline-container');
+
+    deadlineToggle.addEventListener('change', function () {
+        deadlineContainer.style.display = this.checked ? 'block' : 'none';
+    });
+
+    const giftToggle = document.getElementById('toggle-gift');
+    const giftNote = document.getElementById('gift-note');
+
+    giftToggle.addEventListener('change', function () {
+        giftNote.style.display = this.checked ? 'block' : 'none';
+    });
 
     // Price Estimate Logic
     const sizeRadios = form.querySelectorAll('input[name="doll_size"]');
@@ -210,7 +235,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function populateSummary() {
-        // Log
         const summaryContainer = document.getElementById('summary');
         if (!summaryContainer) {
             console.error("❌ Could not find #summary container!");
@@ -218,13 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         console.log("✅ Populating summary...");
-        summaryContainer.innerHTML = "<p>Testing content goes here.</p>";
 
-        //
-        const summary = document.querySelector('#summary');
-        if (!summary) return;
-
-        // Helper to safely get values
         const getVal = name => {
             const field = form.querySelector(`[name="${name}"]`);
             if (!field) return '';
@@ -236,50 +254,77 @@ document.addEventListener("DOMContentLoaded", function () {
             return field.value;
         };
 
-        // Build summary HTML
-        summary.innerHTML = `
-            <h3>Contact Details</h3>
-            <ul>
-                <li><strong>Name:</strong> ${getVal('name')}</li>
-                <li><strong>Email:</strong> ${getVal('email')}</li>
-                <li><strong>Instagram:</strong> ${getVal('social')}</li>
-                <li><strong>WhatsApp:</strong> ${getVal('whatsapp')}</li>
-                <li><strong>Currency:</strong> ${getVal('currency')}</li>
-                <li><strong>Shipping Region:</strong> ${getVal('shipping_region')}</li>
-            </ul>
+        const values = {
+            name: getVal('name'),
+            email: getVal('email'),
+            social: getVal('social'),
+            whatsapp: getVal('whatsapp'),
+            currency: getVal('currency'),
+            shipping_region: getVal('shipping_region'),
+            character: getVal('character'),
+            fandom: getVal('fandom'),
+            description: getVal('description'),
+            link: getVal('link'),
+            quote: getVal('quote'),
+            doll_size: getVal('doll_size'),
+            addon_clothing: getVal('addon_clothing'),
+            addon_hair: getVal('addon_hair'),
+            addon_props: getVal('addon_props'),
+            display_stand: getVal('display_stand'),
+            is_gift: getVal('is_gift')
+        };
 
-            <h3>Character Design</h3>
-            <ul>
-                <li><strong>Character Name:</strong> ${getVal('character')}</li>
-                <li><strong>Fandom:</strong> ${getVal('fandom')}</li>
-                <li><strong>Description:</strong> ${getVal('description')}</li>
-                <li><strong>Link:</strong> ${getVal('link')}</li>
-                <li><strong>Inscription:</strong> ${getVal('quote')}</li>
-            </ul>
+        const estimatedPrice = document.querySelector('#estimatedPrice')?.textContent || '';
+        const estimatedTime = document.querySelector('#estimatedTime')?.textContent || '';
 
-            <h3>Color Selection</h3>
-            <div class="color-preview-summary">
-                ${[...document.querySelectorAll('.color-preview')].map(span => {
+        const colorPreviewHTML = [...document.querySelectorAll('.color-preview')].map(span => {
             const bg = span.style.backgroundColor;
-            return bg && bg !== 'transparent' ? `<span style="display:inline-block;width:20px;height:20px;background:${bg};border-radius:4px;margin-right:6px;"></span>` : '';
-        }).join('')}
-            </div>
+            return bg && bg !== 'transparent'
+                ? `<span style="display:inline-block;width:20px;height:20px;background:${bg};border-radius:4px;margin-right:6px;"></span>`
+                : '';
+        }).join('');
 
-            <h3>Add-ons</h3>
-            <ul>
-                <li><strong>Doll Size:</strong> ${getVal('doll_size')}</li>
-                <li><strong>Detachable Clothes:</strong> ${getVal('addon_clothing')}</li>
-                <li><strong>Fancy Hair:</strong> ${getVal('addon_hair')}</li>
-                <li><strong>Props:</strong> ${getVal('addon_props')}</li>
-                <li><strong>Stand:</strong> ${getVal('display_stand')}</li>
-                <li><strong>Gift:</strong> ${getVal('is_gift')}</li>
-            </ul>
+        summaryContainer.innerHTML = `
+        <h3>Contact Details</h3>
+        <ul>
+            <li><strong>Name:</strong> ${values.name}</li>
+            <li><strong>Email:</strong> ${values.email}</li>
+            ${values.social ? `<li><strong>Instagram:</strong> ${values.social}</li>` : ''}
+            ${values.whatsapp ? `<li><strong>WhatsApp:</strong> ${values.whatsapp}</li>` : ''}
+            <li><strong>Currency:</strong> ${values.currency}</li>
+            <li><strong>Shipping Region:</strong> ${values.shipping_region}</li>
+        </ul>
 
-            <h3>Estimate</h3>
-            <ul>
-                <li><strong>Estimated Price:</strong> ${document.querySelector('#estimatedPrice').textContent}</li>
-                <li><strong>Estimated Timeline:</strong> ${document.querySelector('#estimatedTime').textContent}</li>
-            </ul>
-        `;
+        <h3>Character Design</h3>
+        <ul>
+            <li><strong>Character Name:</strong> ${values.character}</li>
+            ${values.fandom ? `<li><strong>Fandom:</strong> ${values.fandom}</li>` : ''}
+            <li><strong>Description:</strong> ${values.description}</li>
+            ${values.link ? `<li><strong>Link:</strong> ${values.link}</li>` : ''}
+            ${values.quote ? `<li><strong>Inscription:</strong> ${values.quote}</li>` : ''}
+        </ul>
+
+        <h3>Color Selection</h3>
+        <div class="color-preview-summary">
+            ${colorPreviewHTML}
+        </div>
+
+        <h3>Add-ons</h3>
+        <ul>
+            <li><strong>Doll Size:</strong> ${values.doll_size}</li>
+            <li><strong>Detachable Clothes:</strong> ${values.addon_clothing}</li>
+            <li><strong>Fancy Hair:</strong> ${values.addon_hair}</li>
+            <li><strong>Props:</strong> ${values.addon_props}</li>
+            <li><strong>Stand:</strong> ${values.display_stand}</li>
+            <li><strong>Gift:</strong> ${values.is_gift}</li>
+        </ul>
+
+        <h3>Estimate</h3>
+        <ul>
+            <li><strong>Estimated Price:</strong> ${estimatedPrice}</li>
+            <li><strong>Estimated Timeline:</strong> ${estimatedTime}</li>
+        </ul>
+    `;
     }
+
 });
