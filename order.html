@@ -202,12 +202,15 @@
                         </div>
                         <p>We don't take your payment details at this stage. You'll be asked for a deposit
                             before we begin creating your mascot, and we'll contact you personally by email soon. </p>
-                        <button type="button" class="next button-secondary">Next</button>
+                        <div class="button-group">
+                            <button type="button" class="button-solo next button-secondary">Let's design your
+                                mascot!</button>
+                        </div>
                     </section>
 
                     <!-- Step 2: Design Details -->
                     <section class="form-step step-two">
-                        <h2>Doll Design</h2>
+                        <h2>Mascot Design</h2>
                         <div class="field-grid">
                             <label>Your Character's Name <input type="text" name="character" required /></label>
                             <label>Fandom/Franchise <input type="text" name="fandom" /></label>
@@ -227,7 +230,7 @@
                             <label class="description">Tell us a bit about your idea.
                                 <textarea name="description"
                                     placeholder="If your character has different looks, let us know which version you'd like. If you're unsure, we're happy to suggest some options."></textarea>
-                                <p class="field-note">
+                                <p class="form-note">
                                     <span>Some tips:</span> You can change your mind about any details when we discuss
                                     the final design, but please note that upgrades may mean a longer wait.
                                 </p>
@@ -239,13 +242,13 @@
                             <label class="link">Add a link to useful reference material.
                                 <input type="url" name="link"
                                     placeholder="e.g. YouTube, fansites, Pinterest board, Google Drive…" />
-                                <p>
-                                    <span>Need inspiration? <br></span> Visit <a href="/how-to.html" target="_blank"
-                                        rel="noopener">our
+                                <p class="form-paragraphs">
+                                    <span>Need inspiration?</span>
+                                </p>
+                                <p>Visit <a href="/how-to.html" target="_blank" rel="noopener">our
                                         process page</a> for tips on creating a reference board using <a
                                         href="https://uk.pinterest.com/myminimascots/my-mascot-inspiration-customer-board-example/"
-                                        target="_blank" rel="noopener">Pinterest</a>.
-                                </p>
+                                        target="_blank" rel="noopener">Pinterest</a>.</p>
                             </label>
                             <label class="inscription">Which character quote or inscription would you like to add (if
                                 any)?
@@ -267,9 +270,9 @@
                                             <a class="modal__close" href="#">
                                                 <i class="fa-solid fa-close"></i>
                                             </a>
-                                            <p>Click the square to reveal the colour picker, select your color
-                                                and click the arrow button to select. Repeat this process for
-                                                the remaining 4 colours.</p>
+                                            <p>Click the square on the left to reveal the colour picker, select your
+                                                color and click the arrow button to place it in the slot. Repeat this
+                                                process for the remaining 4 slots. You don't need to fill all 5!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -296,43 +299,75 @@
                     <!-- Step 3: Addons -->
                     <section class="form-step step-three">
                         <h2>Add-ons</h2>
-                        <div class="addons-table">
-                            <div>
-                                <p><span>Note:</span> Custom and deluxe stands can have hand-painted inscriptions,
-                                    patterns or illustrations. All mascots get a tag with room for an inscription as
-                                    well.</p>
-                                <div class="select-wrapper">
-                                    <select name="display_stand">
-                                        <option value="">No stand</option>
-                                        <option value="basic">Basic varnished stand</option>
-                                        <option value="custom">Custom painted stand</option>
-                                        <option value="deluxe">Deluxe stand with metal plaque</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-arrow"></i>
-                                </div>
+                        <p class="form-note"><span>Note:</span> Stands are a great way to display your mascot at home!
+                            Custom and deluxe stands can have hand-painted inscriptions, patterns or illustrations. All
+                            mascots get a tag with room for an inscription as well. </p>
+                        <p>Visit <a href="/gallery.html" target="_blank" rel="noopener">our mascot gallery</a> to see
+                            some examples.</p>
+                        <form id="step3-form" class="addons-table">
+                            <div class="select-wrapper">
+                                <select name="display_stand">
+                                    <option value="">No stand</option>
+                                    <option value="basic">Basic varnished stand</option>
+                                    <option value="custom">Custom painted stand</option>
+                                    <option value="deluxe">Deluxe stand with metal plaque</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
                             </div>
-                            <label><input type="radio" name="doll_size" value="full" checked> Full-sized (30cm)</label>
-                            <label><input type="radio" name="doll_size" value="mini"> Keychain (10cm)</label>
-                            <label><input type="checkbox" name="addon_clothing" /> Detachable Clothes</label>
-                            <label><input type="checkbox" name="addon_hair"> Fancy hair *</label>
-                            <label><input type="checkbox" name="addon_props" /> Props *</label>
-                            <p>* Not made from yarn.</p>
-                        </div>
+                            <fieldset class="addons-group mascot-size-group">
+                                <legend>Mascot Type</legend>
+                                <label for="mascot_size_full" class="custom-radio">
+                                    <input type="radio" id="mascot_size_full" name="mascot_size" value="full" checked>
+                                    <span class="radio"></span> Signature Mascot (30cm)
+                                </label>
+                                <label for="mascot_size_mini" class="custom-radio">
+                                    <input type="radio" id="mascot_size_mini" name="mascot_size" value="mini">
+                                    <span class="radio"></span> Keychain Mascot (10cm)
+                                </label>
+                                <label for="mascot_size_hand" class="custom-radio">
+                                    <input type="radio" id="mascot_size_hand" name="mascot_size" value="hand">
+                                    <span class="radio"></span> Handpuppet
+                                </label>
+                            </fieldset>
+                            <fieldset class="addons-group mascot-extras-group">
+                                <legend>Add-ons</legend>
+                                <label for="addon_clothing" class="custom-checkbox">
+                                    <input type="checkbox" id="addon_clothing" name="addon_clothing">
+                                    <span class="checkmark"></span> Detachable Clothes
+                                </label>
+                                <label for="addon_hair" class="custom-checkbox">
+                                    <input type="checkbox" id="addon_hair" name="addon_hair">
+                                    <span class="checkmark"></span> Fancy hair *
+                                </label>
+                                <label for="addon_props" class="custom-checkbox">
+                                    <input type="checkbox" id="addon_props" name="addon_props">
+                                    <span class="checkmark"></span> Props *
+                                </label>
+                                <p>(* Not made from yarn.)</p>
+                            </fieldset>
+                            <p id="minimascotNote">
+                                Keychain mascots have limited detail due to their size. For more custom features
+                                and a closer likeness, we recommend choosing our signature full-sized mascot.
+                            </p>
+                        </form>
                         <div>
                             <label class="toggle-container">
-                                <span>Is this a gift?</span>
+                                <p>Is this a gift?</p>
                                 <input type="checkbox" name="is_gift" id="toggle-gift" />
                                 <span class="slider"></span>
                             </label>
                             <div id="gift-note" style="display: none; margin-top: 10px;">
                                 <p class="form-note">
-                                    Your mascot will be posted to you as the person placing the order. If it's a gift,
+                                    Your mascot will still be posted to you as the person placing the order. If it's a
+                                    gift,
                                     the letter inside the box will be addressed to your chosen recipient, and you'll
                                     have the chance to write a personal message for them.
                                 </p>
                             </div>
                         </div>
-                        <button type="button" id="addDoll" class="button-secondary">Add Another Doll</button>
+                        <div class="button-group">
+                            <button type="button" id="addmascot" class="button-primary">Add Another Mascot</button>
+                        </div>
                         <div class="button-group">
                             <button type="button" class="prev button-secondary">Back</button>
                             <button type="button" class="next button-secondary">Next</button>
@@ -342,12 +377,8 @@
                     <!-- Step 4: Summary & Agreement -->
                     <section class="form-step">
                         <h2>Estimate & Agreement</h2>
-                        <p>Estimated price: <span id="estimatedPrice">0</span></p>
-                        <p>Estimated timeline: <span id="estimatedTime">0</span></p>
-                        <p id="miniDollNote" style="display:none; color: var(--error);">
-                            Miniature mascots have limited detail due to their size. For more custom features and a
-                            closer likeness, we recommend choosing a full-sized mascot.
-                        </p>
+                        <p class="form-note">Estimated price: <span id="estimatedPrice">0</span></p>
+                        <p class="form-note">Estimated timeline: <span id="estimatedTime">0</span></p>
                         <div class="field-grid">
                             <label><input type="checkbox" name="agree_emails" required /> I agree to be contacted about
                                 my request</label>

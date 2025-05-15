@@ -29,8 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (e.target.classList.contains('prev')) {
             currentStep--;
             showStep(currentStep);
-        } else if (e.target.id === 'addDoll') {
-            alert('This feature will allow adding more dolls in a future update.');
         }
     });
 
@@ -147,14 +145,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Price Estimate Logic
-    const sizeRadios = form.querySelectorAll('input[name="doll_size"]');
+    const sizeRadios = form.querySelectorAll('input[name="mascot_size"]');
     const clothing = form.querySelector('input[name="addon_clothing"]');
     const hair = form.querySelector('input[name="addon_hair"]');
     const props = form.querySelector('input[name="addon_props"]');
     const stand = form.querySelector('select[name="display_stand"]');
     const priceOutput = document.querySelector('#estimatedPrice');
     const timeOutput = document.querySelector('#estimatedTime');
-    const miniNote = document.querySelector('#miniDollNote');
+    const miniNote = document.querySelector('#miniMascotNote');
 
     const inputsToWatch = [
         ...sizeRadios,
@@ -165,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     function calculateEstimate() {
-        const selectedSize = form.querySelector('input[name="doll_size"]:checked');
+        const selectedSize = form.querySelector('input[name="mascot_size"]:checked');
         const size = selectedSize ? selectedSize.value : 'full';
         let total = 0;
         let weeks = 2;
@@ -225,6 +223,92 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Modal Logic
+
+    // 1. Mascot add-ons disabling logic
+    const mascotRadios = document.querySelectorAll('input[name="mascot_size"]');
+    const extrasGroup = document.querySelector('.mascot-extras-group');
+    const extrasInputs = extrasGroup.querySelectorAll('input[type="checkbox"]');
+    const minimascotNote = document.getElementById('minimascotNote');
+
+    function updateExtrasState() {
+        const selected = document.querySelector('input[name="mascot_size"]:checked').value;
+        if (selected === 'mini') {
+            extrasGroup.classList.add('disabled');
+            extrasGroup.setAttribute('aria-disabled', 'true');
+            extrasInputs.forEach(input => input.disabled = true);
+            minimascotNote.style.display = 'block';
+        } else {
+            extrasGroup.classList.remove('disabled');
+            extrasGroup.removeAttribute('aria-disabled');
+            extrasInputs.forEach(input => input.disabled = false);
+            minimascotNote.style.display = 'none';
+        }
+    }
+    mascotRadios.forEach(radio => radio.addEventListener('change', updateExtrasState));
+    updateExtrasState(); // run on page load
+
+    // 2. Modal popup logic
+    const addMascotBtn = document.getElementById('addmascot');
+    let modal = null;
+
+    addMascotBtn.addEventListener('click', function () {
+        showMascotModal();
+    });
+
+    function showMascotModal() {
+        // Create modal if it doesn't exist
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+            <div class="modal-popup">
+                <span class="modal-close" title="Close">&times;</span>
+                <h3>Coming soon!</h3>
+                <img src="images/mascot.svg" alt="Mascot" class="modal-image">
+                <p>Our workshop will soon be able to take on more orders at once!</p> 
+                <p>As a thank you for requesting your first mascot, you're eligible for an <span>earlybird discount</span> on your next one.</p>
+                <p>Sign up below to be the first to know when new mascot slots open up!</p>
+                <form class="modal-cta-form" name="mascot-notify" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="mascot-notify">
+                <input type="hidden" name="source" value="Add Mascot Modal">
+                <p style="display:none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </p>
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+                <button type="submit" class="button-primary">Notify Me</button>
+                </form>
+                <div class="modal-success" style="display:none;">
+                <p>Thank you! You'll get an update soon.</p>
+                </div>
+            </div>
+            `;
+            document.body.appendChild(modal);
+
+            // Close logic
+            modal.querySelector('.modal-close').onclick = closeMascotModal;
+            modal.onclick = function (e) {
+                if (e.target === modal) closeMascotModal();
+            };
+
+            // Form submission logic
+            const form = modal.querySelector('.modal-cta-form');
+            form.onsubmit = function (e) {
+                e.preventDefault();
+                form.style.display = 'none';
+                modal.querySelector('.modal-success').style.display = 'block';
+                setTimeout(closeMascotModal, 2000); // Show success for 2s, then close
+            };
+        }
+        modal.style.display = 'flex';
+    }
+
+    function closeMascotModal() {
+        if (modal) modal.style.display = 'none';
+    }
+
+
     // Initial run
     calculateEstimate();
 
@@ -266,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
             description: getVal('description'),
             link: getVal('link'),
             quote: getVal('quote'),
-            doll_size: getVal('doll_size'),
+            mascot_size: getVal('mascot_size'),
             addon_clothing: getVal('addon_clothing'),
             addon_hair: getVal('addon_hair'),
             addon_props: getVal('addon_props'),
@@ -311,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <h3>Add-ons</h3>
         <ul>
-            <li><strong>Doll Size:</strong> ${values.doll_size}</li>
+            <li><strong>Mascot Size:</strong> ${values.mascot_size}</li>
             <li><strong>Detachable Clothes:</strong> ${values.addon_clothing}</li>
             <li><strong>Fancy Hair:</strong> ${values.addon_hair}</li>
             <li><strong>Props:</strong> ${values.addon_props}</li>

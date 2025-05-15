@@ -119,14 +119,15 @@ button {
 
 .button-primary-ghost {
     background: transparent;
-    border: 2px solid var(--primary-accent-deep);
-    color: var(--primary-accent-deep);
+    border: 2px solid var(--primary-accent-dark);
+    color: var(--primary-accent-dark);
     padding: 0.75rem 2rem .5rem;
+    box-shadow: none;
 }
 
 .button-primary-ghost:hover,
 .button-primary-ghost:focus {
-    background: var(--primary-accent-deep);
+    background: var(--primary-accent-dark);
     color: var(--bg-light);
 }
 
@@ -162,6 +163,8 @@ button {
     color: var(--gray-dark);
 }
 
+.button-primary:disabled,
+.button-secondary:disabled,
 .button-primary-icon:disabled {
     background: var(--bg-medium);
     cursor: not-allowed;
