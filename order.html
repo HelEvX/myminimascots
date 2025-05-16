@@ -446,6 +446,27 @@
                 </form>
             </div>
         </div>
+
+        <!-- Mascot Notify Dummy Form -->
+        <form name="mascot-notify" method="POST" netlify hidden>
+            <input type="hidden" name="form-name" value="mascot-notify" />
+            <input type="hidden" name="source" value="Add Mascot Modal" />
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input name="bot-field" />
+        </form>
+
+        <!-- Exit Poll Dummy Form -->
+        <form name="exit-poll" method="POST" netlify hidden>
+            <input type="hidden" name="form-name" value="exit-poll" />
+            <input name="bot-field" />
+            <input type="radio" name="exit_reason" value="Too expensive" />
+            <input type="radio" name="exit_reason" value="Timeline too long" />
+            <input type="radio" name="exit_reason" value="Just browsing" />
+            <input type="radio" name="exit_reason" value="Other" />
+            <textarea name="exit_comments"></textarea>
+        </form>
+
     </main>
 
 
