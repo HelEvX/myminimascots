@@ -325,7 +325,7 @@ input[type="checkbox"].error {
     color: var(--primary-accent);
 }
 
-a {
+.form-step a {
     color: var(--primary-accent-dark);
     text-decoration: underline;
 }
@@ -944,14 +944,8 @@ input[type="checkbox"] {
         box-shadow: none !important;
     }
 
-    .nav-logo-stroke {
-        stroke: #222;
-    }
-
-    .nav-logo-fill,
-    .nav-logo-fillstroke {
+    path.svg-yarn {
         fill: #222;
-        stroke: #222;
     }
 
     a {
@@ -959,8 +953,6 @@ input[type="checkbox"] {
         color: #222 !important;
     }
 }
-
-
 
 /* RESPONSIVE DESIGN */
 

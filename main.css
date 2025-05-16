@@ -18,6 +18,63 @@ body {
     line-height: 1.6;
 }
 
+/* svg styles */
+
+.svg-accent {
+    fill: var(--primary-accent);
+}
+
+.svg-dark {
+    fill: var(--gray-dark);
+}
+
+.svg-yarn {
+    fill: var(--bg-light);
+}
+
+.svg-darkstroke {
+    fill: none;
+    stroke: var(--gray-dark);
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+}
+
+.svg-white {
+    fill: #fff;
+}
+
+.svg-yellow {
+    fill: var(--secondary-accent);
+}
+
+.svg-teal {
+    fill: var(--primary-accent-dark);
+}
+
+.svg-pastel {
+    fill: var(--primary-accent-light);
+}
+
+.svg-mask {
+    mask: url(#mask);
+}
+
+.svg-clip {
+    filter: url(#luminosity-noclip);
+}
+
+@keyframes float-1 {
+    0% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    100% {
+        transform: translateY(-18px) rotate(10deg);
+    }
+}
+
+/*  */
+
 .thankyou-flex {
     min-height: 100vh;
     display: flex;
