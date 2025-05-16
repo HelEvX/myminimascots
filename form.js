@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentStep++;
                 showStep(currentStep);
 
+                // Scroll to top of the newly shown step
+                document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
                 // Check if the NEW step (after showStep) contains the summary
                 if (steps[currentStep]?.querySelector('#summary')) {
                     populateSummary();
@@ -29,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (e.target.classList.contains('prev')) {
             currentStep--;
             showStep(currentStep);
+
+            // Scroll to top of the newly shown step
+            document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 
@@ -42,19 +48,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function validateStep(stepIndex) {
-        // Only validate inputs/selects/textareas inside the current step
-        const inputs = steps[stepIndex].querySelectorAll('input, textarea, select');
+        const step = steps[stepIndex];
+        const inputs = step.querySelectorAll('input, textarea, select');
         let valid = true;
+
+        // Hide the mascot name error by default
+        const characterInput = step.querySelector('input[name="character"]');
+        const characterError = document.getElementById('characterNameError');
+        if (characterError) characterError.style.display = 'none';
+
         inputs.forEach((input) => {
             if (!input.checkValidity()) {
                 input.classList.add('error');
                 valid = false;
+
+                // Show mascot name error if that's the invalid field
+                if (input === characterInput && characterError) {
+                    characterError.style.display = 'block';
+                }
             } else {
                 input.classList.remove('error');
             }
         });
+
+        // If not valid, scroll to top of step
+        if (!valid) {
+            step.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         return valid;
     }
+
 
     showStep(currentStep);
 
@@ -95,6 +119,30 @@ document.addEventListener("DOMContentLoaded", function () {
     resetButton.addEventListener('click', () => {
         selectedColors = [];
         updatePreviews();
+    });
+
+    // Help Modal Logic
+
+
+    const openHelpBtn = document.querySelector('.open-help-modal');
+    const helpModal = document.querySelector('.help-modal');
+    const closeHelpBtn = helpModal.querySelector('.help-modal-close');
+
+    openHelpBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        helpModal.classList.add('is-open');
+    });
+
+    closeHelpBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        helpModal.classList.remove('is-open');
+    });
+
+    // Optional: close modal when clicking outside the modal window
+    helpModal.addEventListener('click', function (e) {
+        if (e.target === helpModal) {
+            helpModal.classList.remove('is-open');
+        }
     });
 
     // Update confirm button state on color change
@@ -162,6 +210,21 @@ document.addEventListener("DOMContentLoaded", function () {
         stand,
     ];
 
+    // Currency conversion logic
+    const currencySelect = form.querySelector('select[name="currency"]');
+
+    const exchangeRates = {
+        GBP: { rate: 1, symbol: '£', suffix: 'GBP' },
+        EUR: { rate: 1.17, symbol: '€', suffix: 'EUR' },
+        USD: { rate: 1.25, symbol: '$', suffix: 'USD' },
+        AUD: { rate: 1.9, symbol: '$', suffix: 'AUD' },
+        'n/a': { rate: 1, symbol: '', suffix: '' }
+    };
+
+    function formatCurrency(value, symbol, suffix) {
+        return `${symbol}${value.toFixed(2)} ${suffix}`.trim();
+    }
+
     function calculateEstimate() {
         const selectedSize = form.querySelector('input[name="mascot_size"]:checked');
         const size = selectedSize ? selectedSize.value : 'full';
@@ -169,7 +232,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let weeks = 2;
 
         // Reset styles
-        miniNote.style.display = 'none';
+        if (miniNote) {
+            miniNote.style.display = 'none';
+        }
 
         if (size === 'mini') {
             total = 30;
@@ -211,9 +276,14 @@ document.addEventListener("DOMContentLoaded", function () {
             weeks = hasAddons ? 4 : 2;
         }
 
-        // Output values
-        priceOutput.textContent = `£${total} GBP`;
+        // --- Currency logic ---
+        const currency = currencySelect?.value || 'GBP';
+        const { rate, symbol, suffix } = exchangeRates[currency] || exchangeRates['GBP'];
+        const convertedTotal = total * rate;
+
+        priceOutput.textContent = formatCurrency(convertedTotal, symbol, suffix);
         timeOutput.textContent = `~${weeks} weeks`;
+
     }
 
     // Add event listeners
@@ -222,6 +292,15 @@ document.addEventListener("DOMContentLoaded", function () {
             input.addEventListener('change', calculateEstimate);
         }
     });
+
+    // Listen for currency changes
+    if (currencySelect) {
+        currencySelect.addEventListener('change', calculateEstimate);
+    }
+
+    // Initial run
+    calculateEstimate();
+
 
     // Modal Logic
 
@@ -309,15 +388,90 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Initial run
-    calculateEstimate();
+    // Required Checkboxes
+    const requiredCheckboxes = [
+        document.querySelector('input[name="agree_emails"]'),
+        document.querySelector('input[name="agree_terms"]'),
+        document.querySelector('input[name="gdpr_consent"]')
+    ];
+    const reviewBtn = document.getElementById('reviewBtn');
 
-    // Overview display 
-    if (steps[currentStep]?.querySelector('#summary')) {
-        console.log("Summary div found. Populating...");
-        populateSummary();
+    function updateReviewBtnState() {
+        const allChecked = requiredCheckboxes.every(cb => cb && cb.checked);
+        reviewBtn.disabled = !allChecked;
     }
 
+    // Listen for changes on checkboxes
+    requiredCheckboxes.forEach(cb => {
+        if (cb) cb.addEventListener('change', updateReviewBtnState);
+    });
+
+    // Initial state (in case of browser autofill)
+    updateReviewBtnState();
+
+
+    // Modal logic for "Cancel & Leave Feedback" (dynamic insertion)
+    const exitBtn = document.getElementById('exitBtn');
+
+    function insertExitModal() {
+        if (document.getElementById('exitModal')) return; // Prevent duplicates
+
+        const modalHTML = `
+        <div id="exitModal" class="exit-modal" role="dialog" aria-modal="true">
+            <div class="exit-modal-content">
+                <h3>Leaving so soon?</h3>
+                <p>We'd love to know why you're not continuing:</p>
+                <form id="exitPollForm">
+                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Too expensive"><span class="radio"></span> Too expensive</label>
+                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Timeline too long"><span class="radio"></span> Timeline too long</label>
+                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Just browsing"><span class="radio"></span> Just browsing</label>
+                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Other"><span class="radio"></span> Something else</label>
+                    <textarea name="exit_comments" placeholder="Anything else?"></textarea>
+                    <div class="button-group">
+                        <button type="submit" class="button-primary">Submit Feedback & Exit</button>
+                        <button type="button" id="closeExitModal" class="button-secondary">Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    if (exitBtn) {
+        exitBtn.addEventListener('click', function () {
+            insertExitModal();
+
+            const exitModal = document.getElementById('exitModal');
+            const closeExitModal = document.getElementById('closeExitModal');
+            const exitPollForm = document.getElementById('exitPollForm');
+
+            if (exitModal && closeExitModal && exitPollForm) {
+                exitModal.classList.add('active');
+
+                closeExitModal.addEventListener('click', function () {
+                    exitModal.classList.remove('active');
+                });
+
+                exitPollForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    exitModal.classList.remove('active');
+                    window.location.href = '/';
+                });
+            }
+        });
+    }
+
+    //// PAGE 5 Overview Display
+
+    function formatDate(isoString) {
+        if (!isoString) return '';
+        const date = new Date(isoString);
+        return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    // Main function
     function populateSummary() {
         const summaryContainer = document.getElementById('summary');
         if (!summaryContainer) {
@@ -338,24 +492,50 @@ document.addEventListener("DOMContentLoaded", function () {
             return field.value;
         };
 
+        // Get selects for user-friendly labels
+        const shippingRegionSelect = form.querySelector('select[name="shipping_region"]');
+        const mascotSizeSelect = form.querySelector('select[name="mascot_size"]');
+        const displayStandSelect = form.querySelector('select[name="display_stand"]');
+
+        const shippingRegionLabel = shippingRegionSelect
+            ? shippingRegionSelect.options[shippingRegionSelect.selectedIndex].textContent
+            : getVal('shipping_region');
+
+        const mascotSizeLabel = mascotSizeSelect
+            ? mascotSizeSelect.options[mascotSizeSelect.selectedIndex].textContent
+            : getVal('mascot_size');
+
+        const displayStandLabel = displayStandSelect
+            ? displayStandSelect.options[displayStandSelect.selectedIndex].textContent
+            : getVal('display_stand');
+
+        // Get further comments
+        const furtherComments = getVal('further_comments');
+
         const values = {
             name: getVal('name'),
             email: getVal('email'),
             social: getVal('social'),
             whatsapp: getVal('whatsapp'),
             currency: getVal('currency'),
-            shipping_region: getVal('shipping_region'),
+            shipping_region: shippingRegionLabel,
             character: getVal('character'),
             fandom: getVal('fandom'),
             description: getVal('description'),
+            upload: (() => {
+                const fileInput = form.querySelector('input[type="file"][name="files"]');
+                return fileInput && fileInput.files && fileInput.files.length > 0 ? 'Yes' : 'No';
+            })(),
             link: getVal('link'),
             quote: getVal('quote'),
-            mascot_size: getVal('mascot_size'),
+            mascot_size: mascotSizeLabel,
             addon_clothing: getVal('addon_clothing'),
             addon_hair: getVal('addon_hair'),
             addon_props: getVal('addon_props'),
-            display_stand: getVal('display_stand'),
-            is_gift: getVal('is_gift')
+            display_stand: displayStandLabel,
+            deadline: getVal('deadline'),
+            is_gift: getVal('is_gift'),
+            further_comments: furtherComments
         };
 
         const estimatedPrice = document.querySelector('#estimatedPrice')?.textContent || '';
@@ -364,51 +544,85 @@ document.addEventListener("DOMContentLoaded", function () {
         const colorPreviewHTML = [...document.querySelectorAll('.color-preview')].map(span => {
             const bg = span.style.backgroundColor;
             return bg && bg !== 'transparent'
-                ? `<span style="display:inline-block;width:20px;height:20px;background:${bg};border-radius:4px;margin-right:6px;"></span>`
+                ? `<span class="summary-color-preview" data-color="${bg}"></span>`
                 : '';
         }).join('');
 
+
         summaryContainer.innerHTML = `
         <h3>Contact Details</h3>
-        <ul>
-            <li><strong>Name:</strong> ${values.name}</li>
-            <li><strong>Email:</strong> ${values.email}</li>
-            ${values.social ? `<li><strong>Instagram:</strong> ${values.social}</li>` : ''}
-            ${values.whatsapp ? `<li><strong>WhatsApp:</strong> ${values.whatsapp}</li>` : ''}
-            <li><strong>Currency:</strong> ${values.currency}</li>
-            <li><strong>Shipping Region:</strong> ${values.shipping_region}</li>
-        </ul>
+            <ul>
+                <li>Name: ${values.name}</li>
+                <li>Email: ${values.email}</li>
+                ${values.social ? `<li>Instagram: ${values.social}</li>` : ''}
+                ${values.whatsapp ? `<li>WhatsApp: ${values.whatsapp}</li>` : ''}
+                <li>Currency: ${values.currency}</li>
+                <li>Shipping Region: ${values.shipping_region}</li>
+            </ul>
 
-        <h3>Character Design</h3>
-        <ul>
-            <li><strong>Character Name:</strong> ${values.character}</li>
-            ${values.fandom ? `<li><strong>Fandom:</strong> ${values.fandom}</li>` : ''}
-            <li><strong>Description:</strong> ${values.description}</li>
-            ${values.link ? `<li><strong>Link:</strong> ${values.link}</li>` : ''}
-            ${values.quote ? `<li><strong>Inscription:</strong> ${values.quote}</li>` : ''}
-        </ul>
+            <h3>Character Design</h3>
+            <ul>
+                <li>Character Name: ${values.character}</li>
+                ${values.fandom ? `<li>Fandom: ${values.fandom}</li>` : ''}
+                <li>Description: ${values.description}</li>
+                <li>Upload Provided: ${values.upload}</li>
+                ${values.link ? `<li>Reference Link: <a href="${values.link}" target="_blank" rel="noopener">${values.link}</a></li>` : ''}
+                ${values.quote ? `<li>Inscription: ${values.quote}</li>` : ''}
+            </ul>
 
-        <h3>Color Selection</h3>
-        <div class="color-preview-summary">
-            ${colorPreviewHTML}
+            <h3>Color Selection</h3>
+            <div class="summary-color-previews">
+                ${colorPreviewHTML}
+            </div>
+
+            <h3>Order Details</h3>
+            <ul>
+                <li>Mascot Size: ${values.mascot_size}</li>
+                <li>Detachable Clothes: ${values.addon_clothing}</li>
+                <li>Fancy Hair: ${values.addon_hair}</li>
+                <li>Props: ${values.addon_props}</li>
+                <li>Stand: ${values.display_stand}</li>
+                ${values.deadline ? `<li>Requested Deadline: ${formatDate(values.deadline)}</li>` : ''}
+                <li>Gift: ${values.is_gift}</li>
+            </ul>
+
+            <h3>Estimate</h3>
+            <ul>
+                <li>Estimated Price: ${estimatedPrice}</li>
+                <li>Estimated Timeline: ${estimatedTime}</li>
+            </ul>
+
+        ${values.further_comments ? `
+        <h3>Additional Comments</h3>
+        <div class="further-comments-block">
+            <p>${values.further_comments.replace(/\n/g, '<br>')}</p>
         </div>
-
-        <h3>Add-ons</h3>
-        <ul>
-            <li><strong>Mascot Size:</strong> ${values.mascot_size}</li>
-            <li><strong>Detachable Clothes:</strong> ${values.addon_clothing}</li>
-            <li><strong>Fancy Hair:</strong> ${values.addon_hair}</li>
-            <li><strong>Props:</strong> ${values.addon_props}</li>
-            <li><strong>Stand:</strong> ${values.display_stand}</li>
-            <li><strong>Gift:</strong> ${values.is_gift}</li>
-        </ul>
-
-        <h3>Estimate</h3>
-        <ul>
-            <li><strong>Estimated Price:</strong> ${estimatedPrice}</li>
-            <li><strong>Estimated Timeline:</strong> ${estimatedTime}</li>
-        </ul>
+        ` : ''}
     `;
+
+        // Set background colours for summary color preview dots
+        summaryContainer.querySelectorAll('.summary-color-preview').forEach(el => {
+            el.style.backgroundColor = el.getAttribute('data-color');
+        });
     }
+
+    document.querySelector('.review-print-btn').addEventListener('click', () => {
+        window.print();
+    });
+
+    document.querySelector('.clear').addEventListener('click', () => {
+        const form = document.querySelector('form');
+        if (form) form.reset();
+
+        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+        const firstStep = document.querySelector('.form-step');
+        if (firstStep) firstStep.classList.add('active');
+
+        document.querySelectorAll('.progress-step').forEach(step => step.classList.remove('active'));
+        const firstProgressStep = document.querySelector('.progress-step');
+        if (firstProgressStep) firstProgressStep.classList.add('active');
+
+    });
+
 
 });

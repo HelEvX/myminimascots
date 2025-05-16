@@ -15,6 +15,7 @@
     --gray-medium: #666463;
     --gray-dark: #333333;
     --error: #DF5739;
+    --text-muted: #666463;
 
     /* shadows */
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.10);
@@ -35,7 +36,7 @@
 
     --font-heading: 'cs_marciaregular', serif;
     --font-title: 'amosregular', sans-serif;
-    --font-body: 'Lato', sans-serif;
+    --font-body: 'Lato', Arial, Helvetica, Verdana, sans-serif;
     --font-button: 'amosregular', sans-serif;
 
     /* Titles */

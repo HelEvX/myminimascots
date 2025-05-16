@@ -10,7 +10,7 @@ body {
 body {
     font-family: var(--font-body);
     font-size: var(--font-size-body);
-    font-weight: 600;
+    font-weight: 550;
     background-color: var(--bg-light);
     color: var(--gray-dark);
     margin: 0;
@@ -68,6 +68,26 @@ h4 {
     margin: .5rem 0 .2rem;
 }
 
+/* Logo */
+
+.nav-logo-stroke {
+    fill: none;
+    stroke: var(--bg-light);
+    stroke-miterlimit: 10;
+    stroke-width: 8px;
+}
+
+.nav-logo-fill {
+    fill: var(--bg-light);
+}
+
+.nav-logo-fillstroke {
+    fill: var(--bg-light);
+    stroke: var(--bg-light);
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
 /* buttons */
 
 .button-group {
@@ -90,7 +110,7 @@ button {
     font-family: var(--font-button);
     font-size: var(--font-size-caption);
     letter-spacing: 2px;
-    font-weight: 700;
+    font-weight: 600;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease-out;
     cursor: pointer;
@@ -152,9 +172,6 @@ button {
     width: 56px;
     border-radius: 50%;
     box-shadow: var(--shadow-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     transition: all 0.2s, box-shadow 0.2s;
 }

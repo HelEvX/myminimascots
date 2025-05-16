@@ -48,6 +48,7 @@ a {
 .nav-link {
     position: relative;
     font-family: var(--font-button);
+    font-weight: 600;
     letter-spacing: 2px;
     color: var(--bg-light);
     padding: 0.5rem 0;
