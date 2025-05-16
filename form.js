@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('mascotRequestForm');
+    const loadingPopup = document.getElementById('loadingPopup');
 
     // Only select direct children .form-step of the form (ignores wrappers)
     const steps = Array.from(form.querySelectorAll(':scope > .form-step'));
@@ -36,15 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // Scroll to top of the newly shown step
             document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    });
-
-    form.addEventListener('submit', (e) => {
-        // Show loading message
-        const loadingMessage = document.getElementById('loadingMessage');
-        if (loadingMessage) {
-            loadingMessage.style.display = 'block';
-        }
-        // The form will submit normally, no preventDefault()
     });
 
     function validateStep(stepIndex) {
@@ -259,13 +251,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Stand costs
         switch (stand.value) {
-            case 'basic':
+            case 'Basic':
                 total += 10;
                 break;
-            case 'custom':
+            case 'Custom':
                 total += 20;
                 break;
-            case 'deluxe':
+            case 'Deluxe':
                 total += 50;
                 break;
         }
@@ -386,6 +378,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
+
+                // SHOW the loading popup as soon as the user submits
+                loadingPopup.style.display = 'flex';
+
                 fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

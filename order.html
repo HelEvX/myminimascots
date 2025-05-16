@@ -133,10 +133,6 @@
                 <form id="mascotRequestForm" name="mascotRequestForm" method="POST" data-netlify="true"
                     netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thank-you.html">
                     <input type="hidden" name="form-name" value="mascotRequestForm">
-                    <!-- Loading Message -->
-                    <div id="loadingMessage">
-                        Sending your request, please wait...
-                    </div>
 
                     <!-- Step 1: Welcome & Contact -->
                     <section class="form-step active">
@@ -164,9 +160,11 @@
                             <label class="shipping-region-field">Shipping Region
                                 <div class="select-wrapper">
                                     <select name="shipping_region">
-                                        <option selected="selected" value="uk_ireland">UK & Ireland</option>
-                                        <option value="europe">Mainland Europe</option>
-                                        <option value="outside_europe">Outside Europe</option>
+                                        <option value="" disabled selected>Select your region</option>
+                                        <option value="United Kingdom">United Kingdom</option>
+                                        <option value="European Union">European Union (EU)</option>
+                                        <option value="Rest of Europe">Rest of Europe (Non-EU)</option>
+                                        <option value="Rest of World">Rest of World (International)</option>
                                     </select>
                                     <i class="fas fa-chevron-down select-arrow"></i>
                                 </div>
@@ -174,11 +172,12 @@
                             <label class="currency-field">Currency
                                 <div class="select-wrapper">
                                     <select name="currency">
-                                        <option selected="selected" value="GBP">GBP (£)</option>
+                                        <option value="" disabled selected>Select your currency</option>
+                                        <option value="GBP">GBP (£)</option>
                                         <option value="EUR">EUR (€)</option>
                                         <option value="USD">USD ($)</option>
                                         <option value="AUD">AUD ($)</option>
-                                        <option value="n/a">Other</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                     <i class="fas fa-chevron-down select-arrow"></i>
                                 </div>
@@ -286,15 +285,14 @@
                                 <div class="select-wrapper">
                                     <select name="display_stand">
                                         <option value="">No stand</option>
-                                        <option value="basic">Basic varnished stand</option>
-                                        <option value="custom">Custom painted stand</option>
-                                        <option value="deluxe">Deluxe stand with metal plaque</option>
+                                        <option value="Basic">Basic varnished stand</option>
+                                        <option value="Custom">Custom painted stand</option>
+                                        <option value="Deluxe">Deluxe stand with metal plaque</option>
                                     </select>
                                     <i class="fas fa-chevron-down select-arrow"></i>
                                 </div>
-                                <p class="gallery-link">Visit <a href="/gallery.html" target="_blank" rel="noopener">our
-                                        mascot gallery</a>
-                                    to see some examples.</p>
+                                <p class="gallery-link"><a href="/gallery.html" target="_blank" rel="noopener">See
+                                        examples in the gallery</a></p>
                             </div>
                             <fieldset class="addons-group mascot-size-group">
                                 <legend>Mascot Type</legend>
@@ -336,7 +334,7 @@
                         </div>
                         <div class="field-grid">
                             <label class="toggle-container">
-                                <p>Do you need your mascot by a particular date?</p>
+                                <p>Need your mascot by a particular date?</p>
                                 <input type="checkbox" id="toggle-deadline" />
                                 <span class="slider"></span>
                             </label>
@@ -469,6 +467,13 @@
 
     </main>
 
+    <!-- Loading Popup Overlay -->
+    <div id="loadingPopup" class="loading-popup" style="display: none;">
+        <div class="loading-popup-content">
+            <img src="images/asterisk1.svg" alt="Loading" class="loading-spinner" />
+            <div class="loading-message">Sending your request, please wait...</div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">

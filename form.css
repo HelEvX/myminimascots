@@ -10,13 +10,6 @@ main {
     margin: 0 auto;
 }
 
-/* loading */
-#loadingMessage {
-    display: none;
-    color: var(--gray-dark);
-    margin-top: 1em;
-}
-
 /* Wrappers */
 .form-wrapper {
     display: flex;
@@ -150,13 +143,17 @@ fieldset p {
 
 /* Labels and Inputs */
 
+.estimate-list p {
+    font-size: var(--font-size-body);
+}
+
 label {
     font-size: var(--font-size-small-ui);
 }
 
+/* bigger labels */
 .step-two label,
 .step-three label,
-.estimate-list p,
 .comments-block label {
     font-size: var(--font-size-body);
 }
@@ -841,6 +838,57 @@ input[type="checkbox"] {
 
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+/* loading */
+
+
+.loading-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-popup-content {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    box-shadow: var (--shadow-md);
+    position: relative;
+}
+
+.loading-spinner {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+    width: 50px;
+    /* adjust size */
+    height: 50px;
+}
+
+.loading-message {
+    margin-top: 1.2rem;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
