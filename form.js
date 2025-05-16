@@ -91,10 +91,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 preview.style.background = 'transparent';
                 preview.classList.add('empty');
             }
+            // NEW: Update the hidden input for this slot
+            const hiddenInput = document.getElementById(`colour${i + 1}`);
+            if (hiddenInput) {
+                hiddenInput.value = selectedColors[i] || '';
+            }
         });
         // Disable confirm if 5 colors are chosen or duplicate
         confirmButton.disabled = selectedColors.length >= 5 || selectedColors.includes(colorInput.value);
     }
+
 
     // Add color only when confirm button is clicked
     confirmButton.addEventListener('click', () => {
@@ -585,8 +591,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const estimatedPrice = document.querySelector('#estimatedPrice')?.textContent || '';
         const estimatedTime = document.querySelector('#estimatedTime')?.textContent || '';
 
-        const colorPreviewHTML = [...document.querySelectorAll('.color-preview')].map(span => {
+        const colorPreviews = [...document.querySelectorAll('.color-preview')];
+        const colorPreviewHTML = [...document.querySelectorAll('.color-preview')].map((span, i) => {
             const bg = span.style.backgroundColor;
+
+            // Update the corresponding hidden input
+            const input = document.getElementById(`colour${i + 1}`);
+            if (input) {
+                input.value = (bg && bg !== 'transparent') ? bg : '';
+            }
+            // Build the summary HTML
             return bg && bg !== 'transparent'
                 ? `<span class="summary-color-preview" data-color="${bg}"></span>`
                 : '';
