@@ -341,28 +341,36 @@ document.addEventListener("DOMContentLoaded", function () {
             modal = document.createElement('div');
             modal.className = 'modal-overlay';
             modal.innerHTML = `
-            <div class="modal-popup">
+        <div class="modal-popup">
+            <div class="modal-content">
                 <span class="modal-close" title="Close">&times;</span>
                 <h3>Coming soon!</h3>
                 <img src="images/mascot.svg" alt="Mascot" class="modal-image">
                 <p>Our workshop will soon be able to take on more orders at once!</p> 
                 <p>As a thank you for requesting your first mascot, you're eligible for an <span>earlybird discount</span> on your next one.</p>
                 <p>Sign up below to be the first to know when new mascot slots open up!</p>
-                <form class="modal-cta-form" name="mascot-notify" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="mascot-notify">
-                <input type="hidden" name="source" value="Add Mascot Modal">
-                <p style="display:none;">
-                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
-                </p>
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="email" name="email" placeholder="Your email" required>
-                <button type="submit" class="button-primary">Notify Me</button>
-                </form>
-                <div class="modal-success" style="display:none;">
-                <p>Thank you! You'll get an update soon.</p>
-                </div>
+                    <form class="modal-cta-form"
+                        name="mascot-notify"
+                        method="POST"
+                        data-netlify="true"
+                        netlify-honeypot="bot-field"
+                        autocomplete="on">
+                        <input type="hidden" name="form-name" value="mascot-notify">
+                        <input type="hidden" name="source" value="Add Mascot Modal">
+                        <p style="display:none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </p>
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <button type="submit" class="button-primary">Notify Me</button>
+                    </form>
             </div>
-            `;
+            <div class="modal-success" style="display:none;">
+                <h4>Thank you!</h4>
+                <p>You'll get an update soon.</p>
+            </div>
+        </div>
+        `;
             document.body.appendChild(modal);
 
             // Close logic
@@ -371,14 +379,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (e.target === modal) closeMascotModal();
             };
 
-            // Form submission logic
+            // Netlify AJAX submission for the earlybird modal form
             const form = modal.querySelector('.modal-cta-form');
-            form.onsubmit = function (e) {
+            const success = modal.querySelector('.modal-success');
+            const content = modal.querySelector('.modal-content');
+
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                form.style.display = 'none';
-                modal.querySelector('.modal-success').style.display = 'block';
-                setTimeout(closeMascotModal, 2000); // Show success for 2s, then close
-            };
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                })
+                    .then(() => {
+                        content.style.display = 'none';
+                        success.style.display = 'block';
+                        setTimeout(closeMascotModal, 2000); // Show success for 2s, then close
+                    })
+                    .catch(() => alert('There was a problem submitting the form.'));
+            });
+
         }
         modal.style.display = 'flex';
     }
@@ -386,6 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function closeMascotModal() {
         if (modal) modal.style.display = 'none';
     }
+
 
 
     // Required Checkboxes
@@ -419,19 +440,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalHTML = `
         <div id="exitModal" class="exit-modal" role="dialog" aria-modal="true">
             <div class="exit-modal-content">
-                <h3>Leaving so soon?</h3>
-                <p>We'd love to know why you're not continuing:</p>
-                <form id="exitPollForm">
-                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Too expensive"><span class="radio"></span> Too expensive</label>
-                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Timeline too long"><span class="radio"></span> Timeline too long</label>
-                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Just browsing"><span class="radio"></span> Just browsing</label>
-                    <label class="custom-radio"><input type="radio" name="exit_reason" value="Other"><span class="radio"></span> Something else</label>
-                    <textarea name="exit_comments" placeholder="Anything else?"></textarea>
-                    <div class="button-group">
-                        <button type="submit" class="button-primary">Submit Feedback & Exit</button>
-                        <button type="button" id="closeExitModal" class="button-secondary">Back</button>
-                    </div>
-                </form>
+                <div class="exit-modal-main">
+                    <h3>Leaving so soon?</h3>
+                    <p>We'd love to know why you're not continuing:</p>
+                    <form id="exitPollForm" name="exit-poll" method="POST" data-netlify="true" netlify-honeypot="bot-field" autocomplete="on">
+                        <input type="hidden" name="form-name" value="exit-poll">
+                        <p style="display:none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </p>
+                        <label class="custom-radio"><input type="radio" name="exit_reason" value="Too expensive"><span class="radio"></span> Too expensive</label>
+                        <label class="custom-radio"><input type="radio" name="exit_reason" value="Timeline too long"><span class="radio"></span> Timeline too long</label>
+                        <label class="custom-radio"><input type="radio" name="exit_reason" value="Just browsing"><span class="radio"></span> Just browsing</label>
+                        <label class="custom-radio"><input type="radio" name="exit_reason" value="Other"><span class="radio"></span> Something else</label>
+                        <textarea name="exit_comments" placeholder="Anything else?"></textarea>
+                        <div class="button-group">
+                            <button type="submit" class="button-primary">Submit Feedback & Exit</button>
+                            <button type="button" id="closeExitModal" class="button-secondary">Back</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="exit-modal-success" style="display:none;">
+                    <p>Thank you for your feedback!</p>
+                </div>
             </div>
         </div>
     `;
@@ -446,22 +476,40 @@ document.addEventListener("DOMContentLoaded", function () {
             const exitModal = document.getElementById('exitModal');
             const closeExitModal = document.getElementById('closeExitModal');
             const exitPollForm = document.getElementById('exitPollForm');
+            const exitSuccess = exitModal.querySelector('.exit-modal-success');
+            const exitMain = exitModal.querySelector('.exit-modal-main'); // NEW: select the main wrapper
 
-            if (exitModal && closeExitModal && exitPollForm) {
+            if (exitModal && closeExitModal && exitPollForm && exitSuccess && exitMain) {
                 exitModal.classList.add('active');
 
                 closeExitModal.addEventListener('click', function () {
                     exitModal.classList.remove('active');
+                    setTimeout(() => {
+                        exitModal.parentNode.removeChild(exitModal);
+                    }, 300);
                 });
 
                 exitPollForm.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    exitModal.classList.remove('active');
-                    window.location.href = '/';
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(new FormData(exitPollForm)).toString()
+                    })
+                        .then(() => {
+                            exitMain.style.display = 'none';
+                            exitSuccess.style.display = 'block';
+                            setTimeout(() => {
+                                window.location.href = '/';
+                            }, 1000); // 1 second thank you
+                        })
+                        .catch(() => alert('There was a problem submitting your feedback.'));
                 });
             }
         });
     }
+
+
 
     //// PAGE 5 Overview Display
 

@@ -687,8 +687,17 @@ input[type="checkbox"] {
 }
 
 
-
 /* %%%%%%%%%%%%%%%%%%%% */
+
+.modal-success h4 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-small);
+}
+
+.modal-success p {
+    font-size: var(--font-size-caption);
+    font-weight: 700;
+}
 
 /* Agreement section */
 
