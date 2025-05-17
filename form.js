@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // File Size Limit Validation
     const fileInput = document.querySelector('input[type="file"][name="files"]');
-    const maxFileSize = 5 * 1024 * 1024; // 5 MB size limit
+    const maxFileSize = 1 * 1024 * 1024; // 1 MB size limit
 
     if (fileInput) {
         fileInput.addEventListener('change', function (event) {
@@ -176,11 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (fileTooLarge) {
-                alert('File size exceeds the maximum allowed size of 5MB. Please upload a smaller file.');
+                alert('File size exceeds the maximum allowed size of 1MB. Please upload a smaller file. If your screenshot is too large, try compressing it using a free tool like TinyPNG (https://tinypng.com) or WeCompress (https://wecompress.com).');
                 fileInput.value = ""; // Clear the input field
             }
         });
     }
+
 
     // Gift Toggle Logic
 
@@ -704,18 +705,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // });
 
     const loadingPopup = document.getElementById('loadingPopup');
-    const MIN_LOADER_TIME = 1500; // milliseconds (1.5 seconds)
+    const MIN_LOADER_TIME = 800;
 
     form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Stop the default submission
+        e.preventDefault();
 
         loadingPopup.style.display = 'flex';
         const startTime = Date.now();
 
-        // Submit the form via AJAX (fetch) or programmatically after the delay
         setTimeout(() => {
-            // After minimum loader time, submit the form
-            form.submit(); // This will now perform the real submission and redirect
+            form.submit();
         }, MIN_LOADER_TIME);
     });
 
