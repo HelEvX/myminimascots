@@ -377,6 +377,28 @@
     background: var(--bg-light);
 }
 
+.social-invite {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.social-links a {
+    color: var(--primary-accent-dark);
+    font-size: 2rem;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--primary-accent);
+}
+
 .process-content {
     position: relative;
     background: var(--secondary-accent);
@@ -403,7 +425,7 @@
 
 .process-wrap.process-left {
     position: absolute;
-    left: 60px;
+    left: 40px;
     top: 40px;
 }
 
@@ -411,6 +433,20 @@
     position: absolute;
     right: 60px;
     top: 160px;
+}
+
+.process-wrap.process-middle {
+    transform: rotate(-20deg);
+    position: absolute;
+    right: 60px;
+    top: 240px;
+}
+
+.process-wrap.process-bottom {
+    transform: rotate(20deg);
+    position: absolute;
+    left: 60px;
+    top: 360px;
 }
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -1024,7 +1060,9 @@ body.touch-device .gallery-arrow {
     }
 
     .process-wrap.process-left,
-    .process-wrap.process-right {
+    .process-wrap.process-right,
+    .process-wrap.process-middle,
+    .process-wrap.process-bottom {
         display: none;
     }
 
