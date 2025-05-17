@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('mascotRequestForm');
-    const loadingPopup = document.getElementById('loadingPopup');
+
 
     // Only select direct children .form-step of the form (ignores wrappers)
     const steps = Array.from(form.querySelectorAll(':scope > .form-step'));
@@ -407,9 +407,6 @@ document.addEventListener("DOMContentLoaded", function () {
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // SHOW the loading popup as soon as the user submits
-                loadingPopup.style.display = 'flex';
-
                 fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -690,18 +687,35 @@ document.addEventListener("DOMContentLoaded", function () {
         window.print();
     });
 
-    document.querySelector('.clear').addEventListener('click', () => {
-        const form = document.querySelector('form');
-        if (form) form.reset();
+    // CLEAR FORM (not used)
+    // document.querySelector('.clear').addEventListener('click', () => {
+    //     const form = document.querySelector('form');
+    //     if (form) form.reset();
 
-        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-        const firstStep = document.querySelector('.form-step');
-        if (firstStep) firstStep.classList.add('active');
+    //     document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+    //     const firstStep = document.querySelector('.form-step');
+    //     if (firstStep) firstStep.classList.add('active');
 
-        document.querySelectorAll('.progress-step').forEach(step => step.classList.remove('active'));
-        const firstProgressStep = document.querySelector('.progress-step');
-        if (firstProgressStep) firstProgressStep.classList.add('active');
+    //     document.querySelectorAll('.progress-step').forEach(step => step.classList.remove('active'));
+    //     const firstProgressStep = document.querySelector('.progress-step');
+    //     if (firstProgressStep) firstProgressStep.classList.add('active');
 
+    // });
+
+    const loadingPopup = document.getElementById('loadingPopup');
+    const MIN_LOADER_TIME = 1500; // milliseconds (1.5 seconds)
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Stop the default submission
+
+        loadingPopup.style.display = 'flex';
+        const startTime = Date.now();
+
+        // Submit the form via AJAX (fetch) or programmatically after the delay
+        setTimeout(() => {
+            // After minimum loader time, submit the form
+            form.submit(); // This will now perform the real submission and redirect
+        }, MIN_LOADER_TIME);
     });
 
 
