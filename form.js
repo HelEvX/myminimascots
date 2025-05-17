@@ -612,17 +612,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const colorPreviews = [...document.querySelectorAll('.color-preview')];
         const colorPreviewHTML = [...document.querySelectorAll('.color-preview')].map((span, i) => {
-            const bg = span.style.backgroundColor;
+            const hex = selectedColors[i] || '';
 
-            // Update the corresponding hidden input
             const input = document.getElementById(`colour${i + 1}`);
             if (input) {
-                input.value = (bg && bg !== 'transparent') ? bg : '';
+                input.value = hex;
             }
+
             // Build the summary HTML
-            return bg && bg !== 'transparent'
-                ? `<span class="summary-color-preview" data-color="${bg}"></span>`
+            return hex
+                ? `<span class="summary-color-preview" data-color="${hex}" style="background:${hex};"></span>`
                 : '';
+
         }).join('');
 
 
