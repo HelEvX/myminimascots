@@ -101,7 +101,7 @@
                 </div>
                 <div class="progress-step">
                     <img src="images/asterisk2.svg" alt="Step 3" />
-                    <h4>Addons</h4>
+                    <h4>Add-ons</h4>
                 </div>
                 <div class="progress-step">
                     <img src="images/asterisk2.svg" alt="Step 4" />
@@ -179,18 +179,25 @@
                         <h2>Mascot Design</h2>
                         <div class="field-grid">
                             <label>Your Character's Name <input type="text" name="character"
-                                    placeholder="E.g. Sarah's Mascot, PinkPony, Gerald" required />
+                                    placeholder="E.g. Sarah's Mascot, PinkPony, Gerald" class="nomargin" required />
                                 <p class="field-error" id="characterNameError">
-                                    Please name your mascot!
+                                    Name your mascot (you can change this later)
                                 </p>
                             </label>
                             <label>Fandom/Franchise <input type="text" name="fandom" /></label>
+                        </div>
+                        <div class="no-field-grid">
                             <label class="description">Tell us a bit about your idea.
                                 <textarea name="description"
                                     placeholder="If your character has different looks, let us know which version you'd like. If you're unsure, we're happy to suggest some options."></textarea>
                                 <p class="form-note">
-                                    <span>Some tips:</span> You can change your mind about any details when we discuss
-                                    the final design, but please note that upgrades may mean a longer wait.
+                                    <span>Good to know:</span> You can change your mind about any details when we
+                                    discuss the final design.
+                                    Visit our <a href="/how-to.html" target="_blank" rel="noopener">process page</a> for
+                                    tips, for example on how to create a mascot reference board
+                                    using <a
+                                        href="https://uk.pinterest.com/myminimascots/my-mascot-inspiration-customer-board-example/"
+                                        target="_blank" rel="noopener">Pinterest</a>.
                                 </p>
                             </label>
                             <label class="upload">Upload a photo or screenshot of your character. Make sure their bodies
@@ -200,30 +207,24 @@
                             <label class="link">Add a link to useful reference material.
                                 <input type="url" name="link"
                                     placeholder="e.g. YouTube, fansites, Pinterest board, Google Drive…" />
-                                <p class="form-paragraphs">
-                                    <span>Need inspiration?</span>
-                                </p>
-                                <p>Visit <a href="/how-to.html" target="_blank" rel="noopener">our
-                                        process page</a> for tips on creating a reference board using <a
-                                        href="https://uk.pinterest.com/myminimascots/my-mascot-inspiration-customer-board-example/"
-                                        target="_blank" rel="noopener">Pinterest</a>.</p>
                             </label>
                             <label class="inscription">Which character quote or inscription would you like to add (if
                                 any)?
                                 <input type="text" name="quote" maxlength="100" />
                             </label>
                         </div>
-                        <p>To inform our yarn selection, please choose up to 5 colours you associate with your
-                            character's face, body or outfit. We'll try to match your chosen colours as closely as
-                            possible.</p>
+                        <p>If your reference images show your character in a range of different coloured outfits,
+                            selecting your top favourite colours here will help us choose the most suitable yarns and
+                            paints for your mascot.
+                        </p>
                         <div class="color-picker">
                             <div class="picker-row">
                                 <div class="color-input">
                                     <div class="color-button-group">
-                                        <input type="color" id="singleColorInput" />
-                                        <button type="button" id="confirmColor" class="button-primary-icon"
+                                        <input type="color" value="#ff0000" id="singleColorInput" />
+                                        <button type="button" id="confirmColor" class="button-primary-ghost"
                                             title="Add Colour">
-                                            <i class="fas fa-arrow-right"></i>
+                                            Add Colour
                                         </button>
                                     </div>
                                     <div class="open">
@@ -234,27 +235,49 @@
                                             <a class="help-modal-close" href="#" aria-label="Close help modal">
                                                 <i class="fa-solid fa-close"></i>
                                             </a>
-                                            <p>Click the square on the left to reveal the colour picker, select your
-                                                color and click the arrow button to place it in the slot. Repeat this
+                                            <p>Click this square to reveal the colour picker, select your
+                                                colour and hit 'Add Colour' to place it in the first slot. Repeat this
                                                 process for the remaining 4 slots. You don't need to fill all 5!</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="color-previews">
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
-                                    <span class="color-preview empty"></span>
+                                    <div class="preview-group">
+                                        <span class="color-preview empty"></span>
+                                        <a href="#" class="clear-color-link" data-index="0" aria-label="Remove colour">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="preview-group">
+                                        <span class="color-preview empty"></span>
+                                        <a href="#" class="clear-color-link" data-index="1" aria-label="Remove colour">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="preview-group">
+                                        <span class="color-preview empty"></span>
+                                        <a href="#" class="clear-color-link" data-index="2" aria-label="Remove colour">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="preview-group">
+                                        <span class="color-preview empty"></span>
+                                        <a href="#" class="clear-color-link" data-index="3" aria-label="Remove colour">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="preview-group">
+                                        <span class="color-preview empty"></span>
+                                        <a href="#" class="clear-color-link" data-index="4" aria-label="Remove colour">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <input type="hidden" name="colour1" id="colour1" value="">
                                 <input type="hidden" name="colour2" id="colour2" value="">
                                 <input type="hidden" name="colour3" id="colour3" value="">
                                 <input type="hidden" name="colour4" id="colour4" value="">
                                 <input type="hidden" name="colour5" id="colour5" value="">
-
-                                <button type="button" id="resetColors" class="reset-button button-primary-ghost">Start
-                                    Over</button>
                             </div>
                         </div>
                         <div class="button-group">
@@ -281,7 +304,7 @@
                                     <i class="fas fa-chevron-down select-arrow"></i>
                                 </div>
                                 <p class="gallery-link"><a href="/gallery.html" target="_blank" rel="noopener">See
-                                        examples in the gallery</a></p>
+                                        examples</a></p>
                             </div>
                             <fieldset class="addons-group mascot-size-group">
                                 <legend>Mascot Type</legend>
@@ -301,20 +324,28 @@
                                 </label>
                             </fieldset>
                             <fieldset class="addons-group mascot-extras-group">
-                                <legend>Add-ons</legend>
+                                <legend>Add-ons
+                                    <span class="addons-tooltip left-edge">
+                                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                        <span class="tooltip-text">
+                                            If you'd like an extra jacket, hat, curly hair, fur made from different
+                                            materials, custom hairpins, curlers, or any props, please check the boxes
+                                            here. Note: add-ons usually involve a slight price increase.
+                                        </span>
+                                    </span>
+                                </legend>
                                 <label for="addon_clothing" class="custom-checkbox">
                                     <input type="checkbox" id="addon_clothing" name="addon_clothing">
                                     <span class="checkmark"></span> Detachable Clothes
                                 </label>
                                 <label for="addon_hair" class="custom-checkbox">
                                     <input type="checkbox" id="addon_hair" name="addon_hair">
-                                    <span class="checkmark"></span> Fancy hair *
+                                    <span class="checkmark"></span> Fancy hair or fur
                                 </label>
                                 <label for="addon_props" class="custom-checkbox">
                                     <input type="checkbox" id="addon_props" name="addon_props">
-                                    <span class="checkmark"></span> Props *
+                                    <span class="checkmark"></span> Props or jewellery
                                 </label>
-                                <p>(* Not made from yarn.)</p>
                             </fieldset>
                             <p id="minimascotNote">
                                 Miniature mascots have limited detail due to their size. For more custom features
@@ -322,32 +353,33 @@
                             </p>
                         </div>
                         <div class="field-grid">
-                            <label class="toggle-container">
-                                <p>Need your mascot by a particular date?</p>
-                                <input type="checkbox" id="toggle-deadline" />
-                                <span class="slider"></span>
-                            </label>
+                            <div class="toggle-container">
+                                <input type="checkbox" name="has_deadline" id="toggle-deadline" />
+                                <label for="toggle-deadline" class="slider"></label>
+                                <span class="toggle-label">Need your mascot by a particular date?</span>
+                            </div>
                             <div id="deadline-container">
                                 <input type="date" name="deadline" />
                             </div>
+                        </div>
+                        <div id="deadline-note">
                             <p class="form-note">
                                 <span>Note:</span> requesting a deadline does not guarantee it can be
                                 met. Our handmade process varies depending on your mascot's design and level of
                                 detail. We'll discuss your ideas together and agree a realistic timeline.
                             </p>
                         </div>
-                        <div>
-                            <label class="toggle-container">
-                                <p>Is this a gift?</p>
+                        <div id="gift-container">
+                            <div class="toggle-container">
                                 <input type="checkbox" name="is_gift" id="toggle-gift" />
-                                <span class="slider"></span>
-                            </label>
+                                <label for="toggle-gift" class="slider"></label>
+                                <span class="toggle-label">Is this a gift?</span>
+                            </div>
                             <div id="gift-note">
                                 <p class="form-note">
-                                    Your mascot will still be posted to you as the person placing the order. If it's a
-                                    gift,
-                                    the letter inside the box will be addressed to your chosen recipient, and you'll
-                                    have the chance to write a personal message for them.
+                                    <span>Note:</span> Your mascot will still be posted to you as the person placing the
+                                    order. If it's a gift, the letter inside the box will be addressed to your chosen
+                                    recipient, and you'll have the chance to write a personal message for them.
                                 </p>
                             </div>
                         </div>
@@ -369,7 +401,8 @@
                         </div>
                         <p class="form-note">
                             <span>Note:</span>
-                            You're welcome to go back a step and update your addon selections, or change your mind later
+                            You're welcome to go back a step and update your add-on selections, or change your mind
+                            later
                             when we're
                             discussing the final look of your mascot. Just so you know, the final price may be a little
                             different once all the details are confirmed.
@@ -404,12 +437,11 @@
                             <textarea id="further_comments" name="further_comments" rows="3"
                                 placeholder="Let us know about deadlines, preferences, or anything else…"></textarea>
                         </div>
-                        <button type="button" class="exit button-primary-ghost" id="exitBtn">Cancel & Leave
-                            Feedback</button>
                         <div class="button-group">
-                            <button type="button" class="prev button-secondary">Revise Addons</button>
-                            <button type="button" class="next button-secondary" id="reviewBtn" disabled>Review
-                                Order</button>
+                            <button type="button" class="prev button-secondary">Back</button>
+                            <button type="button" class="exit button-primary-ghost" id="exitBtn">Cancel</button>
+                            <button type="button" class="next button-primary" id="reviewBtn" disabled>Review Your
+                                Request</button>
                         </div>
                     </section>
 
@@ -422,7 +454,7 @@
                         </div>
                         <div class="button-group">
                             <button type="button" class="prev button-secondary">Back</button>
-                            <button type="button" class="clear button-primary-ghost">Clear Form</button>
+                            <!-- <button type="button" class="clear button-primary-ghost">Clear Form</button> -->
                             <button type="button" class="review-print-btn button-secondary">Print or Save as
                                 PDF</button>
                         </div>
@@ -454,15 +486,15 @@
             <textarea name="exit_comments"></textarea>
         </form>
 
-    </main>
-
-    <!-- Loading Popup Overlay -->
-    <div id="loadingPopup" class="loading-popup" style="display: none;">
-        <div class="loading-popup-content">
-            <img src="images/asterisk1.svg" alt="Loading" class="loading-spinner" />
-            <div class="loading-message">Sending your request, please wait...</div>
+        <!-- Loading Popup Overlay -->
+        <div id="loadingPopup" class="loading-popup">
+            <div class="loading-popup-content">
+                <img src="images/asterisk1.svg" alt="Loading" class="loading-spinner" />
+                <div class="loading-message">Sending your request, please wait...</div>
+            </div>
         </div>
-    </div>
+
+    </main>
 
     <!-- Footer -->
     <footer class="site-footer">

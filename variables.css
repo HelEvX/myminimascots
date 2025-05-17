@@ -24,7 +24,8 @@
 
     /* measurements */
     --border-radius: .2rem;
-    --card-radius: 8px;
+    --inputfield-radius: .6rem;
+    --card-radius: 0.4rem;
     --banner-radius: 1.2rem;
     --spacing: 1.5rem;
     --content-width: 1200px;

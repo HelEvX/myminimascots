@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Colorpicker
     const colorInput = document.getElementById('singleColorInput');
     const previews = document.querySelectorAll('.color-preview');
-    const resetButton = document.getElementById('resetColors');
     const confirmButton = document.getElementById('confirmColor');
+    const clearLinks = document.querySelectorAll('.clear-color-link');
 
     let selectedColors = [];
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 preview.style.background = 'transparent';
                 preview.classList.add('empty');
             }
-            // NEW: Update the hidden input for this slot
+            // Update the hidden input for this slot
             const hiddenInput = document.getElementById(`colour${i + 1}`);
             if (hiddenInput) {
                 hiddenInput.value = selectedColors[i] || '';
@@ -113,11 +113,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Reset all colors
-    resetButton.addEventListener('click', () => {
-        selectedColors = [];
-        updatePreviews();
+    // Add clear functionality for each preview
+    clearLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const index = parseInt(this.getAttribute('data-index'), 10);
+            // Remove the color at this index
+            selectedColors.splice(index, 1);
+            updatePreviews();
+        });
     });
+
+    updatePreviews();
+
 
     // Help Modal Logic
 
@@ -178,9 +186,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const deadlineToggle = document.getElementById('toggle-deadline');
     const deadlineContainer = document.getElementById('deadline-container');
+    const deadlineNote = document.getElementById('deadline-note');
 
     deadlineToggle.addEventListener('change', function () {
-        deadlineContainer.style.display = this.checked ? 'block' : 'none';
+        const show = this.checked ? 'block' : 'none';
+        deadlineContainer.style.display = show;
+        deadlineNote.style.display = show;
     });
 
     const giftToggle = document.getElementById('toggle-gift');
@@ -225,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function calculateEstimate() {
         const selectedSize = form.querySelector('input[name="mascot_size"]:checked');
-        const size = selectedSize ? selectedSize.value : 'full';
+        const size = selectedSize ? selectedSize.value : "Signature Mascot (30cm)";
         let total = 0;
         let weeks = 2;
 
@@ -234,8 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
             miniNote.style.display = 'none';
         }
 
-        if (size === 'mini') {
-            total = 30;
+        // Mascot size logic
+        if (size === 'Miniature Mascot (10cm)') {
+            total = 20;
 
             // Disable incompatible options
             [clothing, hair, props].forEach(el => {
@@ -244,34 +256,44 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             miniNote.style.display = 'block';
-        } else {
-            total = 60;
+            weeks = 2;
+        } else if (size === 'Handpuppet') {
+            total = 45;
 
             // Enable add-ons
             [clothing, hair, props].forEach(el => el.disabled = false);
 
-            if (clothing.checked) total += 30;
-            if (hair.checked) total += 30;
-            if (props.checked) total += 40;
+            if (clothing.checked) total += 15;
+            if (hair.checked) total += 10;
+            if (props.checked) total += 20;
+
+            weeks = 3;
+        } else {
+            total = 35;
+
+            // Enable add-ons
+            [clothing, hair, props].forEach(el => el.disabled = false);
+
+            if (clothing.checked) total += 20;
+            if (hair.checked) total += 10;
+            if (props.checked) total += 20;
+
+            // Timeline logic for full-size
+            const hasAddons = clothing.checked || hair.checked || props.checked || stand.value !== '';
+            weeks = hasAddons ? 4 : 2;
         }
 
         // Stand costs
         switch (stand.value) {
             case 'Basic':
-                total += 10;
+                total += 5;
                 break;
             case 'Custom':
-                total += 20;
+                total += 15;
                 break;
             case 'Deluxe':
-                total += 50;
+                total += 25;
                 break;
-        }
-
-        // Timeline
-        if (size !== 'mini') {
-            const hasAddons = clothing.checked || hair.checked || props.checked || stand.value !== '';
-            weeks = hasAddons ? 4 : 2;
         }
 
         // --- Currency logic ---
@@ -310,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateExtrasState() {
         const selected = document.querySelector('input[name="mascot_size"]:checked').value;
-        if (selected === 'mini') {
+        if (selected === 'Miniature Mascot (10cm)') {
             extrasGroup.classList.add('disabled');
             extrasGroup.setAttribute('aria-disabled', 'true');
             extrasInputs.forEach(input => input.disabled = true);
@@ -456,8 +478,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label class="custom-radio"><input type="radio" name="exit_reason" value="Other"><span class="radio"></span> Something else</label>
                         <textarea name="exit_comments" placeholder="Anything else?"></textarea>
                         <div class="button-group">
-                            <button type="submit" class="button-primary">Submit Feedback & Exit</button>
                             <button type="button" id="closeExitModal" class="button-secondary">Back</button>
+                            <button type="submit" class="button-primary">Submit Feedback & Exit</button>
                         </div>
                     </form>
                 </div>
