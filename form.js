@@ -377,9 +377,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span class="modal-close" title="Close">&times;</span>
                 <h3>Hi collector!</h3>
                 <div class="modal-mascotcollection">
-                    <img src="images/mascot-face2.svg" alt="Mascot face drawing" class="modal-image" id="face2">
-                    <img src="images/mascot-face1.svg" alt="Mascot face drawing" class="modal-image" id="face1">
-                    <img src="images/mascot-face3.svg" alt="Mascot face drawing" class="modal-image" id="face3">
+                    <img src="images/assets/mascot-face2.svg" alt="Mascot face drawing" class="modal-image" id="face2">
+                    <img src="images/assets/mascot-face1.svg" alt="Mascot face drawing" class="modal-image" id="face1">
+                    <img src="imagesassets//mascot-face3.svg" alt="Mascot face drawing" class="modal-image" id="face3">
                 </div>
                 <p>While our little workshop will focus on your current mascot, we'd <em>love</em> to create more for you in the future.</p> 
                 <p><strong>Pop your details below and you'll:</strong></p>
