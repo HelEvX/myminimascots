@@ -19,6 +19,16 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener('click', (e) => {
         if (e.target.classList.contains('next')) {
             if (validateStep(currentStep)) {
+                // Session storage name + email
+                if (currentStep === 0) {
+                    const nameInput = form.querySelector('input[name="name"]');
+                    const emailInput = form.querySelector('input[name="email"]');
+                    if (nameInput && emailInput) {
+                        window.sessionStorage.setItem('userName', nameInput.value.trim());
+                        window.sessionStorage.setItem('userEmail', emailInput.value.trim());
+                    }
+                }
+
                 currentStep++;
                 showStep(currentStep);
 
@@ -365,11 +375,19 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="modal-popup">
             <div class="modal-content">
                 <span class="modal-close" title="Close">&times;</span>
-                <h3>Coming soon!</h3>
-                <img src="images/mascot.svg" alt="Mascot" class="modal-image">
-                <p>Our workshop will soon be able to take on more orders at once!</p> 
-                <p>As a thank you for requesting your first mascot, you're eligible for an <span>earlybird discount</span> on your next one.</p>
-                <p>Sign up below to be the first to know when new mascot slots open up!</p>
+                <h3>Hi collector!</h3>
+                <div class="modal-mascotcollection">
+                    <img src="images/mascot-face2.svg" alt="Mascot face drawing" class="modal-image" id="face2">
+                    <img src="images/mascot-face1.svg" alt="Mascot face drawing" class="modal-image" id="face1">
+                    <img src="images/mascot-face3.svg" alt="Mascot face drawing" class="modal-image" id="face3">
+                </div>
+                <p>While our little workshop will focus on your current mascot, we'd <em>love</em> to create more for you in the future.</p> 
+                <p><strong>Pop your details below and you'll:</strong></p>
+                <ul class="benefits-list">
+                    <li>📬 Be the first to know when new mascot slots open up</li>
+                    <li>🎁 Receive a special little gift with your next order</li>
+                    <li>✨ Secure your ticket for our 'mascot friend' lottery</li>
+                </ul>
                     <form class="modal-cta-form"
                         name="mascot-notify"
                         method="POST"
@@ -381,9 +399,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p style="display:none;">
                             <label>Don't fill this out if you're human: <input name="bot-field"></label>
                         </p>
-                        <input type="text" name="name" placeholder="Your name" required>
-                        <input type="email" name="email" placeholder="Your email" required>
-                        <button type="submit" class="button-primary">Notify Me</button>
+                        <div class="inputfields-row">
+                            <input type="text" id="notifyFirstName" name="first_name" placeholder="Your first name" required>
+                            <input type="email" id="notifyEmail" name="email" placeholder="Your email" required>
+                        </div>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="newsletterConsent" name="consent" required>
+                            <span class="checkmark"></span> Yes, I want to receive updates and offers by email
+                        </label>
+                        <button type="submit" class="button-primary">Put me on the Many-Mini-Mascots list!</button>
                     </form>
             </div>
             <div class="modal-success" style="display:none;">
@@ -393,6 +417,17 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         `;
             document.body.appendChild(modal);
+
+            // Prefill name (commented out) and email fields from sessionStorage
+            // const storedName = window.sessionStorage.getItem('userName') || '';
+            const storedEmail = window.sessionStorage.getItem('userEmail') || '';
+
+            // const notifyNameInput = modal.querySelector('#notifyName');
+            const notifyEmailInput = modal.querySelector('#notifyEmail');
+
+            // if (notifyNameInput) notifyNameInput.value = storedName;
+            if (notifyEmailInput) notifyEmailInput.value = storedEmail;
+
 
             // Close logic
             modal.querySelector('.modal-close').onclick = closeMascotModal;
@@ -474,15 +509,35 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label class="custom-radio"><input type="radio" name="exit_reason" value="Timeline too long"><span class="radio"></span> Timeline too long</label>
                         <label class="custom-radio"><input type="radio" name="exit_reason" value="Just browsing"><span class="radio"></span> Just browsing</label>
                         <label class="custom-radio"><input type="radio" name="exit_reason" value="Other"><span class="radio"></span> Something else</label>
-                        <textarea name="exit_comments" placeholder="Anything else?"></textarea>
+                        <textarea name="exit_comments" placeholder="Anything you wish to add?"></textarea>
                         <div class="button-group">
-                            <button type="button" id="closeExitModal" class="button-secondary">Back</button>
-                            <button type="submit" class="button-primary">Submit Feedback & Exit</button>
+                            <button type="button" id="closeExitModal" class="button-secondary">Back to Form</button>
+                            <button type="submit" class="button-primary">Submit Feedback</button>
                         </div>
                     </form>
                 </div>
                 <div class="exit-modal-success" style="display:none;">
-                    <p>Thank you for your feedback!</p>
+                    <h4 id="thankYouMessage">Thank you for your feedback!</h4>
+                    <div class="newsletter-upsell">
+                        <p id="newsletterMessage">Want to stay updated on special offers or quicker turnaround times?</p>
+                        <form id="newsletterForm" name="exit-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field2">
+                            <input type="hidden" name="form-name" value="exit-newsletter">
+                            <input type="hidden" name="exit_reason" id="hiddenExitReason">
+                            <p style="display:none;">
+                                <label>Don't fill this out: <input name="bot-field2"></label>
+                            </p>
+                            <input type="text" id="newsletterFirstName" name="first_name" placeholder="Your first name" required>
+                            <input type="email" id="newsletterEmail" name="email" placeholder="Your email" required>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="newsletterConsent" name="consent" required>
+                                <span class="checkmark"></span> Yes, I want to receive updates and offers by email
+                            </label>
+                            <div class="button-group">
+                                <button type="button" id="skipNewsletter" class="button-primary-ghost">No thanks</button>
+                                <button type="submit" class="button-primary">Yes please!</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -490,6 +545,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
+
 
     if (exitBtn) {
         exitBtn.addEventListener('click', function () {
@@ -499,7 +555,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const closeExitModal = document.getElementById('closeExitModal');
             const exitPollForm = document.getElementById('exitPollForm');
             const exitSuccess = exitModal.querySelector('.exit-modal-success');
-            const exitMain = exitModal.querySelector('.exit-modal-main'); // NEW: select the main wrapper
+            const exitMain = exitModal.querySelector('.exit-modal-main');
 
             if (exitModal && closeExitModal && exitPollForm && exitSuccess && exitMain) {
                 exitModal.classList.add('active');
@@ -513,6 +569,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 exitPollForm.addEventListener('submit', function (e) {
                     e.preventDefault();
+
+
+                    // Capture selected exit reason
+                    const selectedExitReason = exitPollForm.querySelector('input[name="exit_reason"]:checked')?.value || 'None';
+
                     fetch('/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -521,9 +582,90 @@ document.addEventListener("DOMContentLoaded", function () {
                         .then(() => {
                             exitMain.style.display = 'none';
                             exitSuccess.style.display = 'block';
-                            setTimeout(() => {
+
+                            const thankYouMessage = document.getElementById('thankYouMessage');
+                            const newsletterMessage = document.getElementById('newsletterMessage');
+                            const newsletterEmail = document.getElementById('newsletterEmail');
+                            const hiddenExitReason = document.getElementById('hiddenExitReason');
+
+                            let userNameFromPage1 = window.sessionStorage.getItem('userName') || '';
+                            let userEmailFromPage1 = window.sessionStorage.getItem('userEmail') || '';
+
+                            // Personalise thank you message
+                            if (thankYouMessage) {
+                                thankYouMessage.textContent = `Thank you for your feedback${userNameFromPage1 ? ', ' + userNameFromPage1 : ''}!`;
+                            }
+
+                            // Get the selected exit reason (ensure this is inside .then so it's after submit)
+                            const selectedExitReason = exitPollForm.querySelector('input[name="exit_reason"]:checked')?.value || 'Other';
+
+                            // Tailored newsletter message based on exit reason
+                            let tailoredMessage = "";
+                            switch (selectedExitReason) {
+                                case "Too expensive":
+                                    tailoredMessage =
+                                        "<p>We completely understand! These little mascots are a real investment of time and love! </p>" +
+                                        "<p>If you'd like, we sometimes offer special promos and last-minute mascot slots (with all the same charm, just a bit more affordable). Just confirm your details below and we'll let you know when something special comes up!</p>";
+                                    break;
+                                case "Timeline too long":
+                                    tailoredMessage =
+                                        "<p>We hear you! Sometimes the wait can feel a bit long, can't it? </p>" +
+                                        "<p>Every so often we have surprise openings or opportunities (and you'll be the first to know if you're on our list!). Just check your details below and we'll keep you in the loop for any last-minute mascot magic!</p>";
+                                    break;
+                                case "Just browsing":
+                                    tailoredMessage =
+                                        "<p>No rush at all! You're always welcome to come back whenever you're ready. </p>" +
+                                        "<p>If you'd like to see new mascot stories, special offers, or just a little creative inspiration, simply confirm your details below and we'll stay in touch!</p>";
+                                    break;
+                                case "Other":
+                                default:
+                                    tailoredMessage =
+                                        "<p>Thank you so much for sharing your thoughts! </p>" +
+                                        "<p>If you'd like to stay connected, we sometimes send out little updates, mascot stories, and the odd special offer. Just confirm or update your details below if you fancy hearing from us now and then!</p>";
+                                    break;
+                            }
+
+                            // Set the tailored message in the modal
+                            if (newsletterMessage) {
+                                newsletterMessage.textContent = tailoredMessage;
+                            }
+
+                            // Pre-fill email and set hidden exit reason
+                            if (newsletterEmail) {
+                                newsletterEmail.value = userEmailFromPage1;
+                            }
+                            if (hiddenExitReason) {
+                                hiddenExitReason.value = selectedExitReason;
+                            }
+
+                            // Use innerHTML to allow the <br> tags to create paragraphs
+                            if (newsletterMessage) {
+                                newsletterMessage.innerHTML = tailoredMessage;
+                            }
+
+                            const newsletterForm = document.getElementById('newsletterForm');
+                            const skipNewsletter = document.getElementById('skipNewsletter');
+
+                            // Newsletter form logic
+                            newsletterForm.addEventListener('submit', function (e) {
+                                e.preventDefault();
+                                // Only submit if consent is checked
+                                if (!document.getElementById('newsletterConsent').checked) {
+                                    alert('Please confirm you want to receive updates by email.');
+                                    return;
+                                }
+                                fetch('/', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                    body: new URLSearchParams(new FormData(newsletterForm)).toString()
+                                }).finally(() => {
+                                    window.location.href = '/';
+                                });
+                            });
+
+                            skipNewsletter.addEventListener('click', () => {
                                 window.location.href = '/';
-                            }, 1000); // 1 second thank you
+                            });
                         })
                         .catch(() => alert('There was a problem submitting your feedback.'));
                 });

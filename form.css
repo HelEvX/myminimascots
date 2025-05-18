@@ -303,6 +303,10 @@ input[type="checkbox"].error {
     display: none;
 }
 
+#gift-container {
+    margin-top: 1rem;
+}
+
 #deadline-container input,
 .step-three .field-grid {
     margin-bottom: 0;
@@ -469,7 +473,6 @@ input[type="checkbox"].error {
 /* */
 
 .modal-overlay {
-    display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -487,7 +490,7 @@ input[type="checkbox"].error {
     padding: 2rem;
     position: relative;
     width: 90%;
-    max-width: 425px;
+    max-width: 600px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     text-align: center;
 }
@@ -504,15 +507,39 @@ input[type="checkbox"].error {
     cursor: pointer;
 }
 
+.modal-mascotcollection {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
 .modal-image {
     max-width: 100px;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+.modal-cta-form {
+    text-align: left;
 }
 
 .modal-cta-form button {
     width: 100%;
 }
 
+.benefits-list {
+    list-style: none;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.inputfields-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-cta-form button {
+    margin-top: 2rem;
+}
 
 /* TOGGLES */
 
@@ -810,6 +837,18 @@ input[type="checkbox"] {
     z-index: 1000;
 }
 
+.exit-modal h4 {
+    letter-spacing: 2px;
+}
+
+.exit-modal .custom-radio {
+    font-size: var(--font-size-body);
+}
+
+.exit-modal .custom-checkbox {
+    font-size: var(--font-size-small-ui);
+}
+
 .exit-modal-content {
     background: #fff;
     padding: 2rem;
@@ -832,11 +871,6 @@ input[type="checkbox"] {
     min-height: 120px;
     margin-top: 0.5rem;
 }
-
-.exit-modal label {
-    font-size: var(--font-body);
-}
-
 
 /* Summary Section */
 #summary {
@@ -1169,8 +1203,16 @@ input[type="checkbox"] {
         margin-right: 0.8rem;
     }
 
+    .inputfields-row {
+        display: block;
+    }
+
     #modal {
         width: 80%;
+    }
+
+    #face3 {
+        display: none;
     }
 
     .tooltip-text {
@@ -1270,5 +1312,10 @@ input[type="checkbox"] {
 
     .estimate-list {
         flex-direction: column;
+    }
+
+    #face2,
+    #face3 {
+        display: none;
     }
 }
