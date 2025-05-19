@@ -375,6 +375,7 @@
 
 .thankyou-banner {
     background: var(--bg-light);
+    margin: 4rem 0;
 }
 
 .social-invite {

@@ -781,7 +781,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li>Shipping Region: ${values.shipping_region}</li>
             </ul>
 
-            <h3>Character Design</h3>
+        <h3>Character Design</h3>
             <ul>
                 <li>Character Name: ${values.character}</li>
                 ${values.fandom ? `<li>Fandom: ${values.fandom}</li>` : ''}
@@ -791,23 +791,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 ${values.quote ? `<li>Inscription: ${values.quote}</li>` : ''}
             </ul>
 
-            <h3>Color Selection</h3>
+        <h3>Color Selection</h3>
             <div class="summary-color-previews">
                 ${colorPreviewHTML}
             </div>
 
-            <h3>Order Details</h3>
-            <ul>
-                <li>Mascot Size: ${values.mascot_size}</li>
-                <li>Detachable Clothes: ${values.addon_clothing}</li>
-                <li>Fancy Hair: ${values.addon_hair}</li>
-                <li>Props: ${values.addon_props}</li>
-                <li>Stand: ${values.display_stand}</li>
-                ${values.deadline ? `<li>Requested Deadline: ${formatDate(values.deadline)}</li>` : ''}
-                <li>Gift: ${values.is_gift}</li>
-            </ul>
+        <h3>Order Details</h3>
+        <ul>
+            <li>Mascot Size: ${values.mascot_size}</li>
+            <li>Detachable Clothes: ${values.addon_clothing}</li>
+            <li>Fancy Hair: ${values.addon_hair}</li>
+            <li>Props: ${values.addon_props}</li>
+            <li>Stand: ${values.display_stand}</li>
+            ${values.deadline ? `
+            <li>Requested Deadline: ${formatDate(values.deadline)}</li>` : ''}
+            <li>Gift: ${values.is_gift}</li>
+        </ul>
 
-            <h3>Estimate</h3>
+        <h3>Estimate</h3>
             <ul>
                 <li>Estimated Price: ${estimatedPrice}</li>
                 <li>Estimated Timeline: ${estimatedTime}</li>
@@ -818,8 +819,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="further-comments-block">
             <p>${values.further_comments.replace(/\n/g, '<br>')}</p>
         </div>
-        ` : ''}
-    `;
+            ` : ''}
+
+        `;
 
         // Set background colours for summary color preview dots
         summaryContainer.querySelectorAll('.summary-color-preview').forEach(el => {

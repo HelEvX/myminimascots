@@ -57,6 +57,15 @@
 
 @media (max-width: 1440px) {
     :root {
+        --border-radius: .18rem;
+        --inputfield-radius: .5rem;
+        --card-radius: 0.35rem;
+        --banner-radius: 1rem;
+        --spacing: 1.2rem;
+        --content-width: 1000px;
+        --nav-width: 1000px;
+        --page-padding: 0.8rem;
+
         --font-size-large: 5.8rem;
         --font-size-medium: 4.4rem;
         --font-size-small: 2.8rem;
@@ -67,6 +76,15 @@
 
 @media (max-width: 992px) {
     :root {
+        --border-radius: .15rem;
+        --inputfield-radius: .4rem;
+        --card-radius: 0.28rem;
+        --banner-radius: 0.8rem;
+        --spacing: 1rem;
+        --content-width: 100vw;
+        --nav-width: 90vw;
+        --page-padding: 0.6rem;
+
         --font-size-large: 4.5rem;
         --font-size-medium: 3.8rem;
         --font-size-small: 2.3rem;
@@ -79,6 +97,14 @@
 
 @media (max-width: 768px) {
     :root {
+        --border-radius: .12rem;
+        --inputfield-radius: .3rem;
+        --card-radius: 0.2rem;
+        --banner-radius: 0.6rem;
+        --spacing: 0.7rem;
+        --nav-width: 98vw;
+        --page-padding: 0.4rem;
+
         --font-size-large: 3.2rem;
         --font-size-medium: 3.2rem;
         --font-size-small: 1.74rem;
@@ -91,6 +117,14 @@
 
 @media (max-width: 480px) {
     :root {
+        --border-radius: .09rem;
+        --inputfield-radius: .18rem;
+        --card-radius: 0.12rem;
+        --banner-radius: 0.34rem;
+        --spacing: 0.4rem;
+        --nav-width: 100vw;
+        --page-padding: 0.2rem;
+
         --font-size-large: 2.1rem;
         --font-size-medium: 2.8rem;
         --font-size-small: 1.55rem;
