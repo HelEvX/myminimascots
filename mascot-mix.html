@@ -92,23 +92,71 @@
     </header>
 
     <main>
+        <div class="page-banner">
+            <h2>Mascot Mix 'n' Match</h2>
+        </div>
 
         <div class="container">
-            <div class="preview-container">
-                <div id="mascot-base" class="mascot-preview"></div>
-                <div id="mascot-hair" class="mascot-layer"></div>
-                <div id="mascot-clothes" class="mascot-layer"></div>
-                <div id="mascot-accessories" class="mascot-layer"></div>
-                <div id="mascot-pet" class="mascot-layer"></div>
-                <button id="randomize-btn" class="button-secondary">Surprise Me!</button>
+            <!-- Main display area with large base image and selection tiles -->
+            <div class="display-area">
+
+                <!-- Large base mascot display -->
+                <div class="base-display">
+                    <h3>Your Mascot</h3>
+                    <div id="base-image-container" class="base-image">
+                        <button id="randomize-btn" class="button-secondary floating-btn">Surprise Me!</button>
+                        <!-- Base image will be displayed here -->
+                        <img id="selected-base-image" src="" alt="Select a base mascot">
+                    </div>
+                </div>
+
+                <!-- Selected items display (as tiles) -->
+                <div class="selections-display">
+                    <h4>Your Selections</h4>
+                    <div class="selection-tiles">
+                        <!-- Hair selection tile -->
+                        <div class="selection-tile">
+                            <h4>Hair</h4>
+                            <div id="selected-hair" class="selected-item">
+                                <img id="selected-hair-image" src="" alt="No hair selected">
+                            </div>
+                        </div>
+
+                        <!-- Outfit selection tile -->
+                        <div class="selection-tile">
+                            <h4>Outfit</h4>
+                            <div id="selected-outfits" class="selected-item">
+                                <img id="selected-outfits-image" src="" alt="No outfit selected">
+                            </div>
+                        </div>
+
+                        <!-- Accessories selection tile -->
+                        <div class="selection-tile">
+                            <h4>Accessory</h4>
+                            <div id="selected-accessories" class="selected-item">
+                                <img id="selected-accessories-image" src="" alt="No accessory selected">
+                            </div>
+                        </div>
+
+                        <!-- Extras selection tile -->
+                        <div class="selection-tile">
+                            <h4>Special Prop</h4>
+                            <div id="selected-extras" class="selected-item">
+                                <img id="selected-extras-image" src="" alt="No prop selected">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Options selection area -->
             <div class="options-container">
                 <div class="category-tabs">
+                    <button class="tab-btn" data-category="bases">Base Mascot</button>
                     <button class="tab-btn active" data-category="hair">Hairstyles</button>
-                    <button class="tab-btn" data-category="clothes">Outfits</button>
+                    <button class="tab-btn" data-category="outfits">Outfits</button>
                     <button class="tab-btn" data-category="accessories">Accessories</button>
-                    <button class="tab-btn" data-category="pets">Little Friends</button>
+                    <button class="tab-btn" data-category="extras">Special Props</button>
                 </div>
 
                 <div class="items-grid" id="items-container">
@@ -121,12 +169,79 @@
             </div>
         </div>
 
+        <!-- Order Form Modal -->
         <div id="order-modal" class="modal">
-            <!-- Order form will go here -->
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+
+                <h2>Your Custom Mini Mascot</h2>
+                <p>You're just moments away from securing your unique creation!</p>
+
+                <div class="order-summary">
+                    <!-- Display the base image in the summary -->
+                    <div class="summary-base-image">
+                        <img id="summary-base-image" src="" alt="Your mascot">
+                    </div>
+
+                    <!-- Display the selected items -->
+                    <div class="summary-selections">
+                        <div class="summary-selection-tiles">
+                            <div class="summary-tile" id="summary-hair-tile">
+                                <img id="summary-hair-image" src="" alt="">
+                            </div>
+                            <div class="summary-tile" id="summary-outfits-tile">
+                                <img id="summary-outfits-image" src="" alt="">
+                            </div>
+                            <div class="summary-tile" id="summary-accessories-tile">
+                                <img id="summary-accessories-image" src="" alt="">
+                            </div>
+                            <div class="summary-tile" id="summary-extras-tile">
+                                <img id="summary-extras-image" src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="order-details">
+                        <!-- This will be filled with JavaScript -->
+                    </div>
+                </div>
+
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="customer-name">Your Name</label>
+                        <input type="text" id="customer-name" name="customer-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-email">Email Address</label>
+                        <input type="email" id="customer-email" name="customer-email" required>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">I agree to be contacted about my mascot order</label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancel-btn" class="secondary-btn">Not quite right</button>
+                        <button type="submit" id="submit-btn" class="primary-btn">Yes, I want this mascot!</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
-
+        <!-- Thank You Modal (will be shown after form submission) -->
+        <div id="thank-you-modal" class="modal">
+            <div class="modal-content thank-you">
+                <h2>Thank You!</h2>
+                <p>Your custom mini mascot design has been saved!</p>
+                <p id="confirmation-email">We'll contact you at <span id="customer-email-display"></span> with payment
+                    details and to confirm your order.</p>
+                <button id="close-thank-you" class="primary-btn">Continue Shopping</button>
+            </div>
+        </div>
     </main>
+
 
     <!-- Footer -->
     <footer class="site-footer">
