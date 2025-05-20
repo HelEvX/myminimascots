@@ -95,14 +95,26 @@ function loadCategoryItems(category) {
         itemEl.appendChild(label);
 
         // Add click event
-        itemEl.addEventListener('click', () => selectItem(category, item.id, item.path));
+        itemEl.addEventListener('click', () => selectItem(category, item.id, item.path, item.name));
 
         container.appendChild(itemEl);
     });
+
+    // Highlight the currently selected item in this category if any
+    if (mascotState[category] && mascotState[category].id) {
+        highlightSelectedItem(category, mascotState[category].id);
+    }
 }
 
 // Select an item
 function selectItem(category, itemId, itemPath, itemName) {
+    // Find the name if not provided
+    if (!itemName) {
+        const items = mascotAssets[category];
+        const item = items.find(i => i.id === itemId);
+        itemName = item ? item.name : '';
+    }
+
     // Update the state
     mascotState[category] = {
         id: itemId,
@@ -115,7 +127,7 @@ function selectItem(category, itemId, itemPath, itemName) {
     highlightSelectedItem(category, itemId);
 }
 
-// Update the preview
+// Update the display
 function updateDisplay() {
     // Update base image
     if (mascotState.bases && mascotState.bases.path) {
@@ -205,6 +217,15 @@ function getRandomItem(category) {
     return items[randomIndex];
 }
 
+// Helper function to find item name by ID
+function findItemNameById(category, id) {
+    if (!id) return null;
+
+    const items = mascotAssets[category];
+    const item = items.find(item => item.id === id);
+    return item ? item.name : null;
+}
+
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
 
 // Function to open the order modal
@@ -286,11 +307,11 @@ function updateOrderDetails() {
     const detailsContainer = document.getElementById('order-details');
 
     // Find the names of selected items
-    const baseName = findItemNameById('bases', mascotState.bases?.id) || 'None';
-    const hairName = findItemNameById('hair', mascotState.hair?.id) || 'None';
-    const outfitsName = findItemNameById('outfits', mascotState.outfits?.id) || 'None';
-    const accessoriesName = findItemNameById('accessories', mascotState.accessories?.id) || 'None';
-    const extrasName = findItemNameById('extras', mascotState.extras?.id) || 'None';
+    const baseName = mascotState.bases?.name || 'None';
+    const hairName = mascotState.hair?.name || 'None';
+    const outfitsName = mascotState.outfits?.name || 'None';
+    const accessoriesName = mascotState.accessories?.name || 'None';
+    const extrasName = mascotState.extras?.name || 'None';
 
     // Create the HTML for the details
     detailsContainer.innerHTML = `
@@ -329,23 +350,23 @@ function handleFormSubmission(e) {
         mascot: {
             base: {
                 id: mascotState.bases?.id,
-                name: findItemNameById('bases', mascotState.bases?.id)
+                name: mascotState.bases?.name
             },
             hair: {
                 id: mascotState.hair?.id,
-                name: findItemNameById('hair', mascotState.hair?.id)
+                name: mascotState.hair?.name
             },
             outfits: {
                 id: mascotState.outfits?.id,
-                name: findItemNameById('outfits', mascotState.outfits?.id)
+                name: mascotState.outfits?.name
             },
             accessories: {
                 id: mascotState.accessories?.id,
-                name: findItemNameById('accessories', mascotState.accessories?.id)
+                name: mascotState.accessories?.name
             },
             extras: {
                 id: mascotState.extras?.id,
-                name: findItemNameById('extras', mascotState.extras?.id)
+                name: mascotState.extras?.name
             }
         }
     };
@@ -401,8 +422,70 @@ function resetMascotBuilder() {
     document.getElementById('order-form').reset();
 }
 
+// Function to add hover overlay with image name
+function addHoverOverlays() {
+    // Add hover overlay to base image
+    const baseImage = document.querySelector('.base-image');
+    baseImage.addEventListener('mouseenter', function () {
+        if (mascotState.bases && mascotState.bases.name) {
+            showOverlay(this, mascotState.bases.name);
+        }
+    });
+    baseImage.addEventListener('mouseleave', function () {
+        hideOverlay(this);
+    });
+
+    // Add hover overlay to selection tiles
+    const selectionTiles = document.querySelectorAll('.selection-tile');
+    selectionTiles.forEach(tile => {
+        tile.addEventListener('mouseenter', function () {
+            const category = this.getAttribute('data-category');
+            if (mascotState[category] && mascotState[category].name) {
+                showOverlay(this, mascotState[category].name);
+            }
+        });
+        tile.addEventListener('mouseleave', function () {
+            hideOverlay(this);
+        });
+    });
+}
+
+// Function to show overlay with name
+function showOverlay(element, name) {
+    // Check if overlay already exists
+    let overlay = element.querySelector('.hover-overlay');
+
+    // If not, create it
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'hover-overlay';
+        element.appendChild(overlay);
+    }
+
+    // Set the name and show the overlay
+    overlay.textContent = name;
+    overlay.style.display = 'flex';
+}
+
+// Function to hide overlay
+function hideOverlay(element) {
+    const overlay = element.querySelector('.hover-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+}
+
 // Initialize the page
 function initializePage() {
+    // Set the base tab as active by default
+    const baseTab = document.querySelector('.tab-btn[data-category="bases"]');
+    if (baseTab) {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        baseTab.classList.add('active');
+    }
+
     // Load the base mascots first
     loadCategoryItems('bases');
 
@@ -429,6 +512,18 @@ function initializePage() {
     if (orderForm) {
         orderForm.addEventListener('submit', handleFormSubmission);
     }
+
+    // Add data-category attributes to selection tiles for hover functionality
+    document.querySelector('.selection-tile:nth-child(1)').setAttribute('data-category', 'hair');
+    document.querySelector('.selection-tile:nth-child(2)').setAttribute('data-category', 'outfits');
+    document.querySelector('.selection-tile:nth-child(3)').setAttribute('data-category', 'accessories');
+    document.querySelector('.selection-tile:nth-child(4)').setAttribute('data-category', 'extras');
+
+    // Add hover overlays
+    addHoverOverlays();
+
+    // Randomly select items on page load
+    randomizeMascot();
 }
 
 // Call initialize when the page loads
