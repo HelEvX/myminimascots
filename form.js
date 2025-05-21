@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="modal-mascotcollection">
                     <img src="images/assets/mascot-face2.svg" alt="Mascot face drawing" class="modal-image" id="face2">
                     <img src="images/assets/mascot-face1.svg" alt="Mascot face drawing" class="modal-image" id="face1">
-                    <img src="imagesassets//mascot-face3.svg" alt="Mascot face drawing" class="modal-image" id="face3">
+                    <img src="images/assets/mascot-face3.svg" alt="Mascot face drawing" class="modal-image" id="face3">
                 </div>
                 <p>While our little workshop will focus on your current mascot, we'd <em>love</em> to create more for you in the future.</p> 
                 <p><strong>Pop your details below and you'll:</strong></p>
@@ -533,8 +533,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <span class="checkmark"></span> Yes, I want to receive updates and offers by email
                             </label>
                             <div class="button-group">
-                                <button type="button" id="skipNewsletter" class="button-primary-ghost">No thanks</button>
-                                <button type="submit" class="button-primary">Yes please!</button>
+                                <button type="button" id="skipNewsletter" class="button-primary-ghost">No Thanks</button>
+                                <button type="submit" class="button-primary">Yes Please!</button>
                             </div>
                         </form>
                     </div>

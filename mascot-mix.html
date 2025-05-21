@@ -104,7 +104,6 @@
                 <div class="base-display">
                     <h3>Mascot Base</h3>
                     <div id="base-image-container" class="base-image">
-                        <button id="randomize-btn" class="button-secondary floating-btn">Surprise Me!</button>
                         <img id="selected-base-image" src="" alt="Select a base mascot">
                     </div>
                 </div>
@@ -149,6 +148,7 @@
             </div>
 
             <div class="action-container">
+                <button id="randomize-btn" class="button-secondary floating-btn">Surprise Me!</button>
                 <button id="save-design-btn" class="button-primary">Make This My Mascot!</button>
             </div>
 
@@ -173,33 +173,33 @@
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
 
-                <h2>Your Custom Mini Mascot</h2>
+                <h3>Your Custom Mini Mascot</h3>
                 <p>You're just moments away from securing your unique creation!</p>
 
                 <div class="order-summary">
-                    <!-- Display the base image in the summary -->
-                    <div class="summary-base-image">
-                        <img id="summary-base-image" src="" alt="Your mascot">
-                    </div>
+                    <div class="order-summary-previews">
 
-                    <!-- Display the selected items -->
-                    <div class="summary-selections">
-                        <div class="summary-selection-tiles">
-                            <div class="summary-tile" id="summary-hair-tile">
-                                <img id="summary-hair-image" src="" alt="">
-                            </div>
-                            <div class="summary-tile" id="summary-outfits-tile">
-                                <img id="summary-outfits-image" src="" alt="">
-                            </div>
-                            <div class="summary-tile" id="summary-accessories-tile">
-                                <img id="summary-accessories-image" src="" alt="">
-                            </div>
-                            <div class="summary-tile" id="summary-extras-tile">
-                                <img id="summary-extras-image" src="" alt="">
+                        <div class="summary-base-image">
+                            <img id="summary-base-image" src="" alt="Your mascot">
+                        </div>
+
+                        <div class="summary-selections">
+                            <div class="summary-selection-tiles">
+                                <div class="summary-tile" id="summary-hair-tile">
+                                    <img id="summary-hair-image" src="" alt="">
+                                </div>
+                                <div class="summary-tile" id="summary-outfits-tile">
+                                    <img id="summary-outfits-image" src="" alt="">
+                                </div>
+                                <div class="summary-tile" id="summary-accessories-tile">
+                                    <img id="summary-accessories-image" src="" alt="">
+                                </div>
+                                <div class="summary-tile" id="summary-extras-tile">
+                                    <img id="summary-extras-image" src="" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <div id="order-details">
                         <!-- This will be filled with JavaScript -->
                     </div>
@@ -222,8 +222,8 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="button" id="cancel-btn" class="secondary-btn">Not quite right</button>
-                        <button type="submit" id="submit-btn" class="primary-btn">Yes, I want this mascot!</button>
+                        <button type="button" id="cancel-btn" class="button-secondary">Not quite right</button>
+                        <button type="submit" id="submit-btn" class="button-primary">Yes, I want this mascot!</button>
                     </div>
                 </form>
             </div>

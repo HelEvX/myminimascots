@@ -2,7 +2,7 @@
 const mascotAssets = {
     bases: [
         { id: 'base-1', name: 'Light Skin T-shirt', path: 'images/bases/mascotmix-base1.jpg' },
-        { id: 'base-2', name: 'Dark Skin Traditional', path: 'images/bases/mascotmix-base2.jpg' },
+        { id: 'base-2', name: 'Dark Skin Bare Arms & Legs', path: 'images/bases/mascotmix-base2.jpg' },
         { id: 'base-3', name: 'Light Skin Fancydress', path: 'images/bases/mascotmix-base3.jpg' },
         { id: 'base-4', name: 'Animal Handpuppet', path: 'images/bases/mascotmix-base4.jpg' },
         { id: 'base-5', name: 'Coloured Creature', path: 'images/bases/mascotmix-base5.jpg' },
@@ -50,7 +50,8 @@ const mascotAssets = {
         { id: 'extra-1', name: 'Fruit n Veg', path: 'images/extras/mascotmix-extra1.jpg' },
         { id: 'extra-2', name: 'Little Book', path: 'images/extras/mascotmix-extra2.jpg' },
         { id: 'extra-3', name: 'Musical Instruments', path: 'images/extras/mascotmix-extra3.jpg' },
-        { id: 'extra-4', name: 'Stage Gear', path: 'images/extras/mascotmix-extra4.jpg' }
+        { id: 'extra-4', name: 'Stage Gear', path: 'images/extras/mascotmix-extra4.jpg' },
+        { id: 'extra-5', name: 'Drinks', path: 'images/extras/mascotmix-extra5.jpg' }
     ]
 };
 
@@ -315,12 +316,14 @@ function updateOrderDetails() {
 
     // Create the HTML for the details
     detailsContainer.innerHTML = `
-    <h3>Your Selections:</h3>
-    <p><strong>Base Mascot:</strong> ${baseName}</p>
-    <p><strong>Hairstyle:</strong> ${hairName}</p>
-    <p><strong>Outfit:</strong> ${outfitsName}</p>
-    <p><strong>Accessories:</strong> ${accessoriesName}</p>
-    <p><strong>Special props:</strong> ${extrasName}</p>
+    <h4>Your Selections:</h4>
+    <ul>
+        <li><strong>Base Mascot:</strong> ${baseName}</li>
+        <li><strong>Hairstyle:</strong> ${hairName}</li>
+        <li><strong>Outfit:</strong> ${outfitsName}</li>
+        <li><strong>Accessories:</strong> ${accessoriesName}</li>
+        <li><strong>Special props:</strong> ${extrasName}</li>
+    </ul>
   `;
 }
 
