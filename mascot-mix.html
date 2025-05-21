@@ -97,49 +97,59 @@
         </div>
 
         <div class="container">
-            <!-- Main display area with large base image and selection tiles -->
             <div class="display-area">
 
-                <!-- Large base mascot display -->
                 <div class="base-display">
                     <h3>Mascot Base</h3>
                     <div id="base-image-container" class="base-image">
+                        <button id="randomize-base-btn" class="randomize-btn" title="Random Base">
+                            <i class="fas fa-dice"></i>
+                        </button>
                         <img id="selected-base-image" src="" alt="Select a base mascot">
                     </div>
                 </div>
 
-                <!-- Selected items display (as tiles) -->
                 <div class="selections-display">
-                    <h3>Add-ons</h3>
+                    <h3>Mascot Features</h3>
                     <div class="selection-tiles">
-                        <!-- Hair selection tile -->
-                        <div class="selection-tile">
-                            <button>Hairstyle</button>
-                            <div id="selected-hair" class="selected-item">
+
+                        <div class="selection-tile" data-category="hair">
+                            <h4>Hair</h4>
+                            <button id="randomize-hair-btn" class="randomize-btn" title="Random Hair">
+                                <i class="fas fa-dice"></i>
+                            </button>
+                            <div class="selected-item">
+
                                 <img id="selected-hair-image" src="" alt="No hair selected">
                             </div>
                         </div>
 
-                        <!-- Outfit selection tile -->
-                        <div class="selection-tile">
-                            <button>Outfit</button>
-                            <div id="selected-outfits" class="selected-item">
+                        <div class="selection-tile" data-category="outfits">
+                            <h4>Outfit</h4>
+                            <button id="randomize-outfits-btn" class="randomize-btn" title="Random Outfit">
+                                <i class="fas fa-dice"></i>
+                            </button>
+                            <div class="selected-item">
                                 <img id="selected-outfits-image" src="" alt="No outfit selected">
                             </div>
                         </div>
 
-                        <!-- Accessories selection tile -->
-                        <div class="selection-tile">
-                            <button>Accessory</button>
-                            <div id="selected-accessories" class="selected-item">
+                        <div class="selection-tile" data-category="accessories">
+                            <h4>Accessory</h4>
+                            <button id="randomize-accessories-btn" class="randomize-btn" title="Random Accessory">
+                                <i class="fas fa-dice"></i>
+                            </button>
+                            <div class="selected-item">
                                 <img id="selected-accessories-image" src="" alt="No accessory selected">
                             </div>
                         </div>
 
-                        <!-- Extras selection tile -->
-                        <div class="selection-tile">
-                            <button>Special Prop</button>
-                            <div id="selected-extras" class="selected-item">
+                        <div class="selection-tile" data-category="extras">
+                            <h4>Special Prop</h4>
+                            <button id="randomize-extras-btn" class="randomize-btn" title="Random Prop">
+                                <i class="fas fa-dice"></i>
+                            </button>
+                            <div class="selected-item">
                                 <img id="selected-extras-image" src="" alt="No prop selected">
                             </div>
                         </div>
@@ -148,11 +158,10 @@
             </div>
 
             <div class="action-container">
-                <button id="randomize-btn" class="button-secondary floating-btn">Surprise Me!</button>
+                <!-- <button id="randomize-btn" class="floating-btn">Surprise Me!</button> -->
                 <button id="save-design-btn" class="button-primary">Make This My Mascot!</button>
             </div>
 
-            <!-- Options selection area -->
             <div class="options-container">
                 <div class="category-tabs">
                     <button class="tab-btn" data-category="bases">Mascot Base</button>
@@ -166,12 +175,14 @@
                     <!-- Items will be loaded here via JS -->
                 </div>
             </div>
+
         </div>
+
 
         <!-- Order Form Modal -->
         <div id="order-modal" class="modal">
             <div class="modal-content">
-                <span class="close-modal">&times;</span>
+                <span class="modal-close" title="Close">&times;</span>
 
                 <h3>Your Custom Mini Mascot</h3>
                 <p>You're just moments away from securing your unique creation!</p>
@@ -216,14 +227,17 @@
                         <input type="email" id="customer-email" name="customer-email" required>
                     </div>
 
-                    <div class="form-group checkbox">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <label for="consent">I agree to be contacted about my mascot order</label>
+                    <div class="checkbox-list">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="agree_emails" required /> <span class="checkmark"></span> I
+                            agree to be contacted about my request.</label>
+                        <label class="custom-checkbox">
                     </div>
 
                     <div class="form-actions">
                         <button type="button" id="cancel-btn" class="button-secondary">Not quite right</button>
-                        <button type="submit" id="submit-btn" class="button-primary">Yes, I want this mascot!</button>
+                        <button type="submit" id="submit-btn" class="button-primary">Yes, I want this
+                            mascot!</button>
                     </div>
                 </form>
             </div>

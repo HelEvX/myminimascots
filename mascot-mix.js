@@ -1,8 +1,7 @@
-// Image assignment
 const mascotAssets = {
     bases: [
         { id: 'base-1', name: 'Light Skin T-shirt', path: 'images/bases/mascotmix-base1.jpg' },
-        { id: 'base-2', name: 'Dark Skin Bare Arms & Legs', path: 'images/bases/mascotmix-base2.jpg' },
+        { id: 'base-2', name: 'Dark Skin Traditional', path: 'images/bases/mascotmix-base2.jpg' },
         { id: 'base-3', name: 'Light Skin Fancydress', path: 'images/bases/mascotmix-base3.jpg' },
         { id: 'base-4', name: 'Animal Handpuppet', path: 'images/bases/mascotmix-base4.jpg' },
         { id: 'base-5', name: 'Coloured Creature', path: 'images/bases/mascotmix-base5.jpg' },
@@ -47,16 +46,15 @@ const mascotAssets = {
         { id: 'acc-0', name: 'Scarf', path: 'images/accessories/mascotmix-accessories0.jpg' }
     ],
     extras: [
-        { id: 'extra-1', name: 'Fruit n Veg', path: 'images/extras/mascotmix-extra1.jpg' },
-        { id: 'extra-2', name: 'Little Book', path: 'images/extras/mascotmix-extra2.jpg' },
-        { id: 'extra-3', name: 'Musical Instruments', path: 'images/extras/mascotmix-extra3.jpg' },
-        { id: 'extra-4', name: 'Stage Gear', path: 'images/extras/mascotmix-extra4.jpg' },
-        { id: 'extra-5', name: 'Drinks', path: 'images/extras/mascotmix-extra5.jpg' }
+        { id: 'extra-1', name: 'Tiny Crochet (Vegetable)', path: 'images/extras/mascotmix-extra1.jpg' },
+        { id: 'extra-2', name: 'Paper Prop', path: 'images/extras/mascotmix-extra2.jpg' },
+        { id: 'extra-3', name: 'Tiny Crochet (Guitar)', path: 'images/extras/mascotmix-extra3.jpg' },
+        { id: 'extra-4', name: 'Tiny Crochet (Gear)', path: 'images/extras/mascotmix-extra4.jpg' },
+        { id: 'extra-5', name: '3D Printed Prop', path: 'images/extras/mascotmix-extra5.jpg' }
     ]
 };
 
 
-// Initialize the state object to track selections
 const mascotState = {
     bases: null,
     hair: null,
@@ -65,58 +63,51 @@ const mascotState = {
     extras: null
 };
 
-// Load items for a category
 function loadCategoryItems(category) {
     const container = document.getElementById('items-container');
     container.innerHTML = '';
 
-    // Get the assets for the selected category
     const items = mascotAssets[category];
 
-    // Create an element for each item
     items.forEach(item => {
         const itemEl = document.createElement('div');
         itemEl.className = 'item-option';
         itemEl.dataset.itemId = item.id;
         itemEl.dataset.category = category;
 
-        // Create image element
         const img = document.createElement('img');
         img.src = item.path;
         img.alt = item.name;
         img.className = 'item-thumbnail';
 
-        // Create name label
         const label = document.createElement('span');
         label.className = 'item-name';
         label.textContent = item.name;
 
-        // Add to container
         itemEl.appendChild(img);
         itemEl.appendChild(label);
 
-        // Add click event
-        itemEl.addEventListener('click', () => selectItem(category, item.id, item.path, item.name));
+        itemEl.addEventListener('click', (e) => {
+            e.preventDefault();
+            selectItem(category, item.id, item.path, item.name);
+        });
 
         container.appendChild(itemEl);
     });
 
-    // Highlight the currently selected item in this category if any
     if (mascotState[category] && mascotState[category].id) {
         highlightSelectedItem(category, mascotState[category].id);
     }
 }
 
-// Select an item
 function selectItem(category, itemId, itemPath, itemName) {
-    // Find the name if not provided
+
     if (!itemName) {
         const items = mascotAssets[category];
         const item = items.find(i => i.id === itemId);
         itemName = item ? item.name : '';
     }
 
-    // Update the state
     mascotState[category] = {
         id: itemId,
         path: itemPath,
@@ -128,31 +119,31 @@ function selectItem(category, itemId, itemPath, itemName) {
     highlightSelectedItem(category, itemId);
 }
 
-// Update the display
 function updateDisplay() {
-    // Update base image
+
     if (mascotState.bases && mascotState.bases.path) {
         const baseImage = document.getElementById('selected-base-image');
-        baseImage.src = mascotState.bases.path;
-        baseImage.alt = mascotState.bases.name || 'Base Mascot';
+        if (baseImage) {
+            baseImage.src = mascotState.bases.path;
+            baseImage.alt = mascotState.bases.name || 'Base Mascot';
+        }
     }
 
-    // Update hair image
     updateSelectionTile('hair', 'selected-hair-image');
 
-    // Update outfit image
     updateSelectionTile('outfits', 'selected-outfits-image');
 
-    // Update accessories image
     updateSelectionTile('accessories', 'selected-accessories-image');
 
-    // Update extras image
     updateSelectionTile('extras', 'selected-extras-image');
 }
 
-// Helper function to update a selection tile
 function updateSelectionTile(category, imageId) {
     const image = document.getElementById(imageId);
+    if (!image) {
+        console.error(`Image element with ID ${imageId} not found`);
+        return;
+    }
 
     if (mascotState[category] && mascotState[category].path) {
         image.src = mascotState[category].path;
@@ -165,51 +156,33 @@ function updateSelectionTile(category, imageId) {
     }
 }
 
-// Function to highlight the selected item in each category
 function highlightSelectedItem(category, itemId) {
-    // Remove highlight from all items in the category
+
     document.querySelectorAll(`.item-option[data-category="${category}"]`).forEach(el => {
         el.classList.remove('selected');
     });
 
-    // Add highlight to the selected item
     const selectedItem = document.querySelector(`.item-option[data-category="${category}"][data-item-id="${itemId}"]`);
     if (selectedItem) {
         selectedItem.classList.add('selected');
     }
 }
 
-// Function to randomize the mascot
-function randomizeMascot() {
-    // Get a random base
-    const randomBase = getRandomItem('bases');
-    if (randomBase) {
-        selectItem('bases', randomBase.id, randomBase.path, randomBase.name);
-    }
-
-    // Optionally randomize other categories
-    const randomHair = getRandomItem('hair');
-    if (randomHair) {
-        selectItem('hair', randomHair.id, randomHair.path, randomHair.name);
-    }
-
-    const randomOutfit = getRandomItem('outfits');
-    if (randomOutfit) {
-        selectItem('outfits', randomOutfit.id, randomOutfit.path, randomOutfit.name);
-    }
-
-    const randomAccessory = getRandomItem('accessories');
-    if (randomAccessory) {
-        selectItem('accessories', randomAccessory.id, randomAccessory.path, randomAccessory.name);
-    }
-
-    const randomExtra = getRandomItem('extras');
-    if (randomExtra) {
-        selectItem('extras', randomExtra.id, randomExtra.path, randomExtra.name);
+function randomizeCategory(category) {
+    const randomItem = getRandomItem(category);
+    if (randomItem) {
+        selectItem(category, randomItem.id, randomItem.path, randomItem.name);
     }
 }
 
-// Helper function to get a random item from a category
+function randomizeMascot() {
+    randomizeCategory('bases');
+    randomizeCategory('hair');
+    randomizeCategory('outfits');
+    randomizeCategory('accessories');
+    randomizeCategory('extras');
+}
+
 function getRandomItem(category) {
     const items = mascotAssets[category];
     if (!items || items.length === 0) return null;
@@ -218,7 +191,6 @@ function getRandomItem(category) {
     return items[randomIndex];
 }
 
-// Helper function to find item name by ID
 function findItemNameById(category, id) {
     if (!id) return null;
 
@@ -229,37 +201,40 @@ function findItemNameById(category, id) {
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
 
-// Function to open the order modal
 function openOrderModal() {
-    // Check if a base mascot is selected
+
     if (!mascotState.bases) {
         alert('Please select a base mascot first!');
         return;
     }
 
-    // Get the modal element
     const modal = document.getElementById('order-modal');
+    if (!modal) {
+        console.error('Order modal element not found');
+        return;
+    }
 
-    // Update the summary preview with the current selections
     updateSummaryPreview();
-
-    // Update the order details text
     updateOrderDetails();
 
-    // Show the modal
     modal.style.display = 'flex';
 
-    // Set up close button
-    document.querySelector('.close-modal').addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    const closeBtn = document.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
+    }
 
-    // Set up cancel button
-    document.getElementById('cancel-btn').addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    const cancelBtn = document.getElementById('cancel-btn');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
+    }
 
-    // Close when clicking outside the modal content
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
@@ -267,32 +242,30 @@ function openOrderModal() {
     });
 }
 
-// Function to update the summary preview in the modal
 function updateSummaryPreview() {
-    // Update base image in summary
+
     if (mascotState.bases && mascotState.bases.path) {
         const summaryBaseImage = document.getElementById('summary-base-image');
-        summaryBaseImage.src = mascotState.bases.path;
-        summaryBaseImage.alt = mascotState.bases.name || 'Base Mascot';
+        if (summaryBaseImage) {
+            summaryBaseImage.src = mascotState.bases.path;
+            summaryBaseImage.alt = mascotState.bases.name || 'Base Mascot';
+        }
     }
 
-    // Update hair image in summary
     updateSummaryTile('hair', 'summary-hair-image', 'summary-hair-tile');
-
-    // Update outfit image in summary
     updateSummaryTile('outfits', 'summary-outfits-image', 'summary-outfits-tile');
-
-    // Update accessories image in summary
     updateSummaryTile('accessories', 'summary-accessories-image', 'summary-accessories-tile');
-
-    // Update extras image in summary
     updateSummaryTile('extras', 'summary-extras-image', 'summary-extras-tile');
 }
 
-// Helper function to update a summary tile
 function updateSummaryTile(category, imageId, tileId) {
     const image = document.getElementById(imageId);
     const tile = document.getElementById(tileId);
+
+    if (!image || !tile) {
+        console.error(`Summary elements not found: ${imageId} or ${tileId}`);
+        return;
+    }
 
     if (mascotState[category] && mascotState[category].path) {
         image.src = mascotState[category].path;
@@ -303,47 +276,45 @@ function updateSummaryTile(category, imageId, tileId) {
     }
 }
 
-// Function to update the order details text
 function updateOrderDetails() {
     const detailsContainer = document.getElementById('order-details');
+    if (!detailsContainer) {
+        console.error('Order details container not found');
+        return;
+    }
 
-    // Find the names of selected items
     const baseName = mascotState.bases?.name || 'None';
     const hairName = mascotState.hair?.name || 'None';
     const outfitsName = mascotState.outfits?.name || 'None';
     const accessoriesName = mascotState.accessories?.name || 'None';
     const extrasName = mascotState.extras?.name || 'None';
 
-    // Create the HTML for the details
     detailsContainer.innerHTML = `
     <h4>Your Selections:</h4>
     <ul>
-        <li><strong>Base Mascot:</strong> ${baseName}</li>
-        <li><strong>Hairstyle:</strong> ${hairName}</li>
-        <li><strong>Outfit:</strong> ${outfitsName}</li>
-        <li><strong>Accessories:</strong> ${accessoriesName}</li>
-        <li><strong>Special props:</strong> ${extrasName}</li>
+    <li><strong>Base Mascot:</strong> ${baseName}</li>
+    <li><strong>Hairstyle:</strong> ${hairName}</li>
+    <li><strong>Outfit:</strong> ${outfitsName}</li>
+    <li><strong>Accessories:</strong> ${accessoriesName}</li>
+    <li><strong>Extra props:</strong> ${extrasName}</li>
     </ul>
   `;
 }
 
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
 
-// Function to handle form submission
 function handleFormSubmission(e) {
     e.preventDefault();
 
-    // Get form values
     const customerName = document.getElementById('customer-name').value;
     const customerEmail = document.getElementById('customer-email').value;
     const consent = document.getElementById('consent').checked;
 
-    // Validate form (basic validation)
     if (!customerName || !customerEmail || !consent) {
         alert('Please fill in all required fields');
         return;
     }
 
-    // Create order data object
     const orderData = {
         customer: {
             name: customerName,
@@ -374,113 +345,79 @@ function handleFormSubmission(e) {
         }
     };
 
-    // For MVP, log the data to console
     console.log('Order data:', orderData);
-
-    // In a real implementation, you would send this data to a server
-    // For now, we'll simulate a successful submission
     submitOrderData(orderData);
 }
 
-// Function to submit order data (simulated for MVP)
 function submitOrderData(orderData) {
-    // Simulate an API call with a timeout
+
     setTimeout(() => {
-        // Hide the order modal
-        document.getElementById('order-modal').style.display = 'none';
 
-        // Show the thank you modal
+        const orderModal = document.getElementById('order-modal');
+        if (orderModal) {
+            orderModal.style.display = 'none';
+        }
+
         const thankYouModal = document.getElementById('thank-you-modal');
-        document.getElementById('customer-email-display').textContent = orderData.customer.email;
-        thankYouModal.style.display = 'flex';
+        const emailDisplay = document.getElementById('customer-email-display');
 
-        // Set up close button for thank you modal
-        document.getElementById('close-thank-you').addEventListener('click', () => {
-            thankYouModal.style.display = 'none';
+        if (thankYouModal && emailDisplay) {
+            emailDisplay.textContent = orderData.customer.email;
+            thankYouModal.style.display = 'flex';
 
-            // Optionally reset the form and selections
-            resetMascotBuilder();
-        });
-    }, 1000); // Simulate a 1-second delay for "processing"
+            const closeThankYouBtn = document.getElementById('close-thank-you');
+            if (closeThankYouBtn) {
+                closeThankYouBtn.addEventListener('click', () => {
+                    e.preventDefault();
+                    thankYouModal.style.display = 'none';
+                    resetMascotBuilder();
+                });
+            }
+        }
+    }, 1000);
 }
 
-// Function to reset the mascot builder after submission
 function resetMascotBuilder() {
-    // Clear the state
+
     mascotState.hair = null;
     mascotState.outfits = null;
     mascotState.accessories = null;
     mascotState.extras = null;
 
-    // Keep the base mascot or select a new random one
     const randomBase = getRandomItem('bases');
     if (randomBase) {
         selectItem('bases', randomBase.id, randomBase.path, randomBase.name);
     }
 
-    // Update the preview
     updateDisplay();
 
-    // Reset the form
-    document.getElementById('order-form').reset();
-}
-
-// Function to add hover overlay with image name
-function addHoverOverlays() {
-    // Add hover overlay to base image
-    const baseImage = document.querySelector('.base-image');
-    baseImage.addEventListener('mouseenter', function () {
-        if (mascotState.bases && mascotState.bases.name) {
-            showOverlay(this, mascotState.bases.name);
-        }
-    });
-    baseImage.addEventListener('mouseleave', function () {
-        hideOverlay(this);
-    });
-
-    // Add hover overlay to selection tiles
-    const selectionTiles = document.querySelectorAll('.selection-tile');
-    selectionTiles.forEach(tile => {
-        tile.addEventListener('mouseenter', function () {
-            const category = this.getAttribute('data-category');
-            if (mascotState[category] && mascotState[category].name) {
-                showOverlay(this, mascotState[category].name);
-            }
-        });
-        tile.addEventListener('mouseleave', function () {
-            hideOverlay(this);
-        });
-    });
-}
-
-// Function to show overlay with name
-function showOverlay(element, name) {
-    // Check if overlay already exists
-    let overlay = element.querySelector('.hover-overlay');
-
-    // If not, create it
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'hover-overlay';
-        element.appendChild(overlay);
-    }
-
-    // Set the name and show the overlay
-    overlay.textContent = name;
-    overlay.style.display = 'flex';
-}
-
-// Function to hide overlay
-function hideOverlay(element) {
-    const overlay = element.querySelector('.hover-overlay');
-    if (overlay) {
-        overlay.style.display = 'none';
+    const orderForm = document.getElementById('order-form');
+    if (orderForm) {
+        orderForm.reset();
     }
 }
 
-// Initialize the page
+function setupRandomizeButtons() {
+    setupRandomizeButton('randomize-base-btn', 'bases');
+    setupRandomizeButton('randomize-hair-btn', 'hair');
+    setupRandomizeButton('randomize-outfits-btn', 'outfits');
+    setupRandomizeButton('randomize-accessories-btn', 'accessories');
+    setupRandomizeButton('randomize-extras-btn', 'extras');
+}
+
+function setupRandomizeButton(buttonId, category) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            randomizeCategory(category);
+        });
+    }
+}
+
+
 function initializePage() {
-    // Set the base tab as active by default
     const baseTab = document.querySelector('.tab-btn[data-category="bases"]');
     if (baseTab) {
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -489,45 +426,38 @@ function initializePage() {
         baseTab.classList.add('active');
     }
 
-    // Load the base mascots first
     loadCategoryItems('bases');
 
-    // Set up tab switching
     document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all tabs
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            // Add active class to clicked tab
             btn.classList.add('active');
-            // Load items for the selected category
             loadCategoryItems(btn.dataset.category);
         });
     });
 
-    // Set up randomize button
-    document.getElementById('randomize-btn').addEventListener('click', randomizeMascot);
+    setupRandomizeButtons();
 
-    // Set up save design button
-    document.getElementById('save-design-btn').addEventListener('click', openOrderModal);
+    const saveDesignBtn = document.getElementById('save-design-btn');
+    if (saveDesignBtn) {
+        saveDesignBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openOrderModal();
+        });
+    }
 
-    // Set up form submission
     const orderForm = document.getElementById('order-form');
     if (orderForm) {
         orderForm.addEventListener('submit', handleFormSubmission);
     }
 
-    // Add data-category attributes to selection tiles for hover functionality
-    document.querySelector('.selection-tile:nth-child(1)').setAttribute('data-category', 'hair');
-    document.querySelector('.selection-tile:nth-child(2)').setAttribute('data-category', 'outfits');
-    document.querySelector('.selection-tile:nth-child(3)').setAttribute('data-category', 'accessories');
-    document.querySelector('.selection-tile:nth-child(4)').setAttribute('data-category', 'extras');
-
-    // Add hover overlays
-    addHoverOverlays();
-
-    // Randomly select items on page load
     randomizeMascot();
 }
 
-// Call initialize when the page loads
-document.addEventListener('DOMContentLoaded', initializePage);
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+        initializePage();
+    }, 100);
+});

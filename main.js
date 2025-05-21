@@ -3,6 +3,7 @@ const navMenu = document.querySelector('.main-nav ul');
 
 navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    navToggle.classList.toggle('is-active');
 });
 
 document.addEventListener('DOMContentLoaded', function () {
