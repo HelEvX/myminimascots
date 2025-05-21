@@ -1,10 +1,10 @@
 @import url('/fonts/stylesheet.css');
 @import url('/variables.css');
 
-html,
-body {
-    overflow-x: hidden;
-    width: 100vw;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
@@ -16,7 +16,10 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    overflow-x: hidden;
+    width: 100vw;
 }
+
 
 /* svg styles */
 
@@ -251,6 +254,43 @@ button {
 
 
 /* Custom Checkbox and Radio Button Styling */
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #333;
+    -webkit-box-shadow: 0 0 0 1000px rgba(137, 200, 189, 0.1) inset;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-accent);
+    outline: none;
+}
+
+input,
+textarea,
+select {
+    font-size: var(--font-size-body);
+    font-weight: 550;
+    border: 2px solid var(--primary-accent-light);
+    font-family: var(--font-body);
+    color: var(--gray-dark) !important;
+    border-radius: var(--inputfield-radius);
+    padding: 0.7rem 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
 .custom-checkbox,
 .custom-radio {
     display: flex;
@@ -331,6 +371,28 @@ button {
     cursor: pointer;
 }
 
+/* FORMS */
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter-form input[type="text"],
+.newsletter-form input[type="email"] {
+    box-sizing: border-box;
+}
+
+.newsletter-form label {
+    font-size: var(--font-size-micro);
+    text-align: left;
+}
+
+.newsletter-form button {
+    margin-top: 1rem;
+}
+
+
 /* SCROLL */
 
 .scroll-nav-btn {
@@ -383,6 +445,10 @@ button {
     .custom-checkbox,
     .custom-radio {
         align-items: flex-start;
+    }
+
+    .svg-yarn {
+        fill: var(--gray-dark);
     }
 
 }

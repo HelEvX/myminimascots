@@ -165,31 +165,6 @@ legend {
     font-weight: bold;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
-    -webkit-text-fill-color: #333;
-    -webkit-box-shadow: 0 0 0 1000px rgba(137, 200, 189, 0.1) inset;
-}
-
-
-input,
-textarea,
-select {
-    font-size: var(--font-size-body);
-    font-weight: 550;
-    border: 2px solid var(--primary-accent-light);
-    font-family: var(--font-body);
-    color: var(--gray-dark) !important;
-    border-radius: var(--inputfield-radius);
-    padding: 0.7rem 1rem;
-    width: 100%;
-    margin-bottom: 1rem;
-    background-color: #fff;
-    transition: border-color 0.2s;
-}
-
 .step-two input {
     margin-top: 0.5rem;
 }
@@ -199,13 +174,6 @@ textarea {
     line-height: 1.6;
     margin-top: 0.5rem;
     resize: vertical;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--primary-accent);
-    outline: none;
 }
 
 fieldset {
@@ -549,10 +517,6 @@ input[type="checkbox"].error {
     gap: 1rem;
 }
 
-input[type="checkbox"] {
-    display: none;
-}
-
 .toggle-container .slider {
     position: relative;
     flex: 0 0 42px;
@@ -652,7 +616,6 @@ input[type="checkbox"] {
     pointer-events: auto;
 }
 
-
 /* Radio & Checkbox styling */
 
 .addons-group {
@@ -662,7 +625,7 @@ input[type="checkbox"] {
     border: 2px solid var(--primary-accent-light);
     border-radius: var(--inputfield-radius);
     padding: 0.5rem 1rem 1rem;
-    align-items: flex-end;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
