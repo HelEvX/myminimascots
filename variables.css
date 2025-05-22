@@ -29,6 +29,7 @@
     --banner-radius: 1.2rem;
     --spacing: 1.5rem;
     --content-width: 1200px;
+    --form-width: 1440px;
     --nav-width: 1200px;
     --page-padding: 1rem;
     --wizard-height: 100vh;
@@ -48,7 +49,7 @@
     /* Body and captions */
     --font-size-body: 1.2rem;
     --font-size-caption: 1.4rem;
-    --font-size-summary: 1.6rem;
+    --font-size-modaltitle: 2rem;
 
     /* meta, tag, label, caption */
     --font-size-micro: 0.88rem;
@@ -64,6 +65,7 @@
         --banner-radius: 1rem;
         --spacing: 1.2rem;
         --content-width: 1000px;
+        --form-width: 1200px;
         --nav-width: 1000px;
         --page-padding: 0.8rem;
 
@@ -71,7 +73,6 @@
         --font-size-medium: 4.4rem;
         --font-size-small: 2.8rem;
         --font-size-caption: 1.2rem;
-        --font-size-summary: 1.4rem;
         --font-size-body: 1.08rem;
     }
 }
@@ -84,6 +85,7 @@
         --banner-radius: 0.8rem;
         --spacing: 1rem;
         --content-width: 100vw;
+        --form-width: 100vw;
         --nav-width: 90vw;
         --page-padding: 0.6rem;
 
@@ -91,7 +93,6 @@
         --font-size-medium: 3.8rem;
         --font-size-small: 2.3rem;
         --font-size-caption: 1.1rem;
-        --font-size-summary: 0.8rem;
         --font-size-body: 1rem;
         --font-size-micro: 0.83rem;
         --font-size-small-ui: 0.92rem;
@@ -112,7 +113,6 @@
         --font-size-medium: 3.2rem;
         --font-size-small: 1.74rem;
         --font-size-caption: 1rem;
-        --font-size-summary: 1rem;
         --font-size-body: 0.97rem;
         --font-size-micro: 0.8rem;
         --font-size-small-ui: 0.89rem;
@@ -133,7 +133,7 @@
         --font-size-medium: 2.8rem;
         --font-size-small: 1.55rem;
         --font-size-caption: 0.9rem;
-        --font-size-summary: 0.9rem;
+        --font-size-modaltitle: 1.6rem;
         --font-size-body: 0.92rem;
         --font-size-micro: 0.77rem;
         --font-size-small-ui: 0.86rem;

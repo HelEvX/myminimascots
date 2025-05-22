@@ -131,7 +131,7 @@
                     <h3>Mascot Base</h3>
                     <div id="base-image-container" class="base-image">
                         <button id="randomize-base-btn" class="randomize-btn" title="Random Base">
-                            <i class="fas fa-dice"></i>
+                            <i class="fa-solid fa-dice"></i>
                         </button>
                         <img id="selected-base-image" src="" alt="Select a base mascot">
                     </div>
@@ -144,7 +144,7 @@
                         <div class="selection-tile" data-category="hair">
                             <h4>Hair</h4>
                             <button id="randomize-hair-btn" class="randomize-btn" title="Random Hair">
-                                <i class="fas fa-dice"></i>
+                                <i class="fa-solid fa-dice"></i>
                             </button>
                             <div class="selected-item">
 
@@ -155,7 +155,7 @@
                         <div class="selection-tile" data-category="outfits">
                             <h4>Outfit</h4>
                             <button id="randomize-outfits-btn" class="randomize-btn" title="Random Outfit">
-                                <i class="fas fa-dice"></i>
+                                <i class="fa-solid fa-dice"></i>
                             </button>
                             <div class="selected-item">
                                 <img id="selected-outfits-image" src="" alt="No outfit selected">
@@ -165,7 +165,7 @@
                         <div class="selection-tile" data-category="accessories">
                             <h4>Accessory</h4>
                             <button id="randomize-accessories-btn" class="randomize-btn" title="Random Accessory">
-                                <i class="fas fa-dice"></i>
+                                <i class="fa-solid fa-dice"></i>
                             </button>
                             <div class="selected-item">
                                 <img id="selected-accessories-image" src="" alt="No accessory selected">
@@ -175,7 +175,7 @@
                         <div class="selection-tile" data-category="extras">
                             <h4>Special Prop</h4>
                             <button id="randomize-extras-btn" class="randomize-btn" title="Random Prop">
-                                <i class="fas fa-dice"></i>
+                                <i class="fa-solid fa-dice"></i>
                             </button>
                             <div class="selected-item">
                                 <img id="selected-extras-image" src="" alt="No prop selected">
@@ -213,7 +213,15 @@
                 <span class="modal-close" title="Close">&times;</span>
 
                 <h3>Your Custom Mini Mascot</h3>
-                <p>You're just moments away from securing your unique creation!</p>
+                <div class="modal-paragraphs">
+                    <p>You're just moments away from securing your unique creation! Skip the <a href="/order.html"
+                            target="_blank">Request Form</a> by simply entering
+                        your contact info below.</p>
+                    <p> We'll review your request and email you with some design options, along
+                        with a custom quote and an estimated timeline.</p>
+                </div>
+
+                <!-- <a href="https://example.com">Website</a> -->
 
                 <div class="order-summary">
                     <div class="order-summary-previews">
@@ -245,16 +253,17 @@
                 </div>
 
                 <form id="order-form">
-                    <div class="form-group">
-                        <label for="customer-name">Your Name</label>
-                        <input type="text" id="customer-name" name="customer-name" required>
-                    </div>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="customer-name">Your Name</label>
+                            <input type="text" id="customer-name" name="customer-name" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="customer-email">Email Address</label>
-                        <input type="email" id="customer-email" name="customer-email" required>
+                        <div class="form-group">
+                            <label for="customer-email">Email Address</label>
+                            <input type="email" id="customer-email" name="customer-email" required>
+                        </div>
                     </div>
-
                     <div class="checkbox-list">
                         <label class="custom-checkbox">
                             <input type="checkbox" name="agree_emails" required /> <span class="checkmark"></span> I
@@ -262,10 +271,10 @@
                         <label class="custom-checkbox">
                     </div>
 
-                    <div class="form-actions">
-                        <button type="button" id="cancel-btn" class="button-secondary">Not quite right</button>
-                        <button type="submit" id="submit-btn" class="button-primary">Yes, I want this
-                            mascot!</button>
+                    <div class="button-group">
+                        <button type="button" id="cancel-btn" class="button-primary-ghost">Not Quite Right</button>
+                        <button type="submit" id="submit-btn" class="button-primary">Let's Design This
+                            Mascot!</button>
                     </div>
                 </form>
             </div>

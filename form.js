@@ -381,8 +381,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <img src="images/assets/mascot-face1.svg" alt="Mascot face drawing" class="modal-image" id="face1">
                     <img src="images/assets/mascot-face3.svg" alt="Mascot face drawing" class="modal-image" id="face3">
                 </div>
-                <p>While our little workshop will focus on your current mascot, we'd <em>love</em> to create more for you in the future.</p> 
-                <p><strong>Pop your details below and you'll:</strong></p>
+                <div class="modal-paragraphs">
+                    <p>While our little workshop will focus on your current mascot, we'd <i class="fa-solid fa-heart"> </i><em>love</em> <i class="fa-solid fa-heart"></i> to create more for you in the future.</p> 
+                    <p><strong>Pop your details below and you'll:</strong></p>
+                </div>
                 <ul class="benefits-list">
                     <li>📬 Be the first to know when new mascot slots open up</li>
                     <li>🎁 Receive a special little gift with your next order</li>

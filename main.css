@@ -20,7 +20,6 @@ body {
     width: 100vw;
 }
 
-
 /* svg styles */
 
 .svg-accent {
@@ -126,6 +125,10 @@ h4 {
     font-family: var(--font-title);
     font-size: var(--font-size-caption);
     margin: .5rem 0 .2rem;
+}
+
+p {
+    margin-bottom: 0.8rem;
 }
 
 /* Logo */
@@ -372,6 +375,44 @@ select {
 }
 
 /* FORMS */
+
+/* Checked state for visual feedback */
+input[type="radio"]:checked+span,
+input[type="checkbox"]:checked+span {
+    color: var(--primary-accent-dark);
+}
+
+/* Remove default outline on label click */
+.addons-table label:active {
+    outline: none;
+    border-color: var(--primary-accent);
+}
+
+.addons-group.disabled,
+.addons-group[aria-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(0.2);
+}
+
+.addons-group.disabled label,
+.addons-group[aria-disabled="true"] label {
+    cursor: not-allowed;
+}
+
+
+input.error,
+textarea.error,
+select.error {
+    border-color: var(--error);
+    background: var(--bg-light);
+}
+
+/* Error styling for checkboxes */
+input[type="checkbox"].error {
+    outline: 2px solid var(--error);
+    outline-offset: 2px;
+}
 
 .newsletter-form {
     display: flex;
