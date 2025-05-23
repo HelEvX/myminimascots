@@ -575,7 +575,7 @@ input[type="checkbox"].error {
         align-items: flex-start;
     }
 
-    .svg-yarn {
+    .header-container .svg-yarn {
         fill: var(--gray-dark);
     }
 

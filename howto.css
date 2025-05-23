@@ -50,11 +50,17 @@
 
 /* Hero Subtitle */
 .hero-subtitle {
-    color: var(--bg-light);
+    color: white;
+    background:
+        linear-gradient(135deg,
+            var(--primary-accent-light) 0%,
+            var(--primary-accent) 35%,
+            var(--primary-accent-dark) 65%,
+            var(--primary-accent-deep) 100%);
     font-size: var(--font-size-caption);
     max-width: 600px;
     margin: 0 auto 2.5rem;
-    text-shadow: var(--shadow-text);
+    border-radius: var(--border-radius);
 }
 
 
@@ -90,7 +96,7 @@
     color: var(--primary-accent-deep);
     cursor: pointer;
     text-align: left;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s, color 0.2s;
     outline: none;
 }
 
@@ -145,7 +151,7 @@
     border-radius: 50%;
     background: var(--gray-light);
     border: 2px solid var(--primary-accent);
-    transition: background 0.2s;
+    transition: all 0.2s;
 }
 
 .timeline-dot.active {

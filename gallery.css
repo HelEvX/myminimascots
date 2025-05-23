@@ -24,17 +24,7 @@
     pointer-events: none;
 }
 
-/* Alternative: If you want to use a collage background image */
-/* .gallery-hero.with-collage {
-    background:
-        linear-gradient(135deg,
-            rgba(49, 187, 182, 0.9) 0%,
-            rgba(29, 134, 138, 0.8) 50%,
-            rgba(22, 77, 103, 0.9) 100%),
-        url('/images/gallery-collage.jpg') center/cover no-repeat;
-} */
-
-/* Alternative: Pattern background */
+/* Pattern background */
 .gallery-hero.with-pattern {
     position: relative;
     min-height: 300px;
