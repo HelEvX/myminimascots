@@ -108,7 +108,7 @@
                     <li><a href="how-to.html" class="nav-link">How-To</a></li>
                     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
                     <li class="active"><a href="mascot-mix.html" class="nav-link">Mascot-Mix</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <!-- <li><a href="faq.html" class="nav-link">FAQ</a></li> -->
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="order.html" class="nav-link nav-cta">Order Now</a></li>
                 </ul>
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="selections-display">
-                    <h3>Mascot Features</h3>
+                    <h3> Features</h3>
                     <div class="selection-tiles">
 
                         <div class="selection-tile" data-category="hair">
@@ -186,7 +186,6 @@
             </div>
 
             <div class="action-container">
-                <!-- <button id="randomize-btn" class="floating-btn">Surprise Me!</button> -->
                 <button id="save-design-btn" class="button-primary">Make This My Mascot!</button>
             </div>
 
@@ -213,81 +212,89 @@
                 <span class="modal-close" title="Close">&times;</span>
 
                 <h3>Your Custom Mini Mascot</h3>
-                <div class="modal-paragraphs">
-                    <p>You're just moments away from securing your unique creation! Skip the <a href="/order.html"
-                            target="_blank">Request Form</a> by simply entering
-                        your contact info below.</p>
-                    <p> We'll review your request and email you with some design options, along
-                        with a custom quote and an estimated timeline.</p>
-                </div>
+                <p>You're just moments away from securing your unique creation! Skip the <a href="/order.html"
+                        target="_blank">Request Form</a> by simply entering
+                    your contact info below.</p>
+                <p> We'll review your request and email you with some design options, along
+                    with a custom quote and an estimated timeline.</p>
 
                 <!-- <a href="https://example.com">Website</a> -->
 
                 <div class="order-summary">
                     <div class="order-summary-previews">
-
-                        <div class="summary-base-image">
+                        <div class="summary-tile">
                             <img id="summary-base-image" src="" alt="Your mascot">
                         </div>
+                        <div class="summary-tile" id="summary-hair-tile">
+                            <img id="summary-hair-image" src="" alt="">
+                        </div>
+                        <div class="summary-tile" id="summary-outfits-tile">
+                            <img id="summary-outfits-image" src="" alt="">
+                        </div>
+                        <div class="summary-tile" id="summary-accessories-tile">
+                            <img id="summary-accessories-image" src="" alt="">
+                        </div>
+                        <div class="summary-tile" id="summary-extras-tile">
+                            <img id="summary-extras-image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="order-summary-content">
+                        <div id="order-details">
+                            <!-- This will be filled with JavaScript -->
+                        </div>
 
-                        <div class="summary-selections">
-                            <div class="summary-selection-tiles">
-                                <div class="summary-tile" id="summary-hair-tile">
-                                    <img id="summary-hair-image" src="" alt="">
+                        <form id="order-form">
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label for="customer-name">Your Name</label>
+                                    <input type="text" id="customer-name" name="customer-name" required>
                                 </div>
-                                <div class="summary-tile" id="summary-outfits-tile">
-                                    <img id="summary-outfits-image" src="" alt="">
-                                </div>
-                                <div class="summary-tile" id="summary-accessories-tile">
-                                    <img id="summary-accessories-image" src="" alt="">
-                                </div>
-                                <div class="summary-tile" id="summary-extras-tile">
-                                    <img id="summary-extras-image" src="" alt="">
+
+                                <div class="form-group">
+                                    <label for="customer-email">Email Address</label>
+                                    <input type="email" id="customer-email" name="customer-email" required>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="order-details">
-                        <!-- This will be filled with JavaScript -->
+                            <div class="checkbox-list">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="agree_emails" required /> <span
+                                        class="checkmark"></span> I
+                                    agree to be contacted about my request.</label>
+                                <label class="custom-checkbox">
+                            </div>
+                        </form>
+
                     </div>
                 </div>
+                <div class="button-group">
+                    <button type="button" id="cancel-btn" class="button-primary-ghost">Not Quite Right</button>
+                    <button type="submit" id="submit-btn" class="button-primary">Let's Design This
+                        Mascot!</button>
+                </div>
+            </div>
+        </div>
 
-                <form id="order-form">
-                    <div class="form-group-row">
-                        <div class="form-group">
-                            <label for="customer-name">Your Name</label>
-                            <input type="text" id="customer-name" name="customer-name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="customer-email">Email Address</label>
-                            <input type="email" id="customer-email" name="customer-email" required>
-                        </div>
-                    </div>
-                    <div class="checkbox-list">
-                        <label class="custom-checkbox">
-                            <input type="checkbox" name="agree_emails" required /> <span class="checkmark"></span> I
-                            agree to be contacted about my request.</label>
-                        <label class="custom-checkbox">
-                    </div>
-
-                    <div class="button-group">
-                        <button type="button" id="cancel-btn" class="button-primary-ghost">Not Quite Right</button>
-                        <button type="submit" id="submit-btn" class="button-primary">Let's Design This
-                            Mascot!</button>
-                    </div>
-                </form>
+        <!-- Loading Popup Overlay -->
+        <div id="loadingPopup" class="loading-popup">
+            <div class="loading-popup-content">
+                <img src="images/assets/asterisk1.svg" alt="Loading" class="loading-spinner" />
+                <div class="loading-message">Sending your request, please wait...</div>
             </div>
         </div>
 
         <!-- Thank You Modal (will be shown after form submission) -->
-        <div id="thank-you-modal" class="modal">
+        <div id="thank-you-modal" class="modal modal-success">
             <div class="modal-content thank-you">
-                <h2>Thank You!</h2>
-                <p>Your custom mini mascot design has been saved!</p>
-                <p id="confirmation-email">We'll contact you at <span id="customer-email-display"></span> with payment
-                    details and to confirm your order.</p>
-                <button id="close-thank-you" class="primary-btn">Continue Shopping</button>
+                <h4>Thank You!</h4>
+                <p>Your custom Mini Mascot Mix has been registered. We'll match your choices to our stock of
+                    semi-finished crochet products.</p>
+                <p id="confirmation-email">We'll contact you to discuss details about the final look at <span
+                        id="customer-email-display"></span>.</p>
+                <div class="button-group">
+                    <button id="close-thank-you" class="button-secondary">Continue Mascot Browsing</button>
+                    <img src="/images/assets/tape_face.svg">
+                </div>
+
             </div>
         </div>
     </main>

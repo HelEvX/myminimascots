@@ -473,7 +473,93 @@ input[type="checkbox"].error {
 }
 
 
+/* %%%%%%%%%%%%%%%%%%%% */
 
+.modal-success h4 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-small);
+    margin-bottom: 2rem;
+    padding: 0 4rem;
+}
+
+.modal-success p {
+    font-size: var(--font-size-caption);
+    font-weight: 700;
+    padding: 0 4rem;
+}
+
+#close-thank-you {
+    margin: 3rem 4rem 2rem 4rem;
+}
+
+.thank-you .button-group {
+    justify-content: left;
+}
+
+.thank-you .button-group img {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    width: 200px;
+    height: auto;
+}
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+/* loading */
+
+
+#loadingPopup {
+    display: none;
+}
+
+.loading-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-popup-content {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    box-shadow: var (--shadow-md);
+    position: relative;
+}
+
+.loading-spinner {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+    width: 50px;
+    /* adjust size */
+    height: 50px;
+}
+
+.loading-message {
+    margin-top: 1.2rem;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 @media (max-width: 768px) {
     .scroll-nav-btn {

@@ -30,7 +30,8 @@ const mascotAssets = {
         { id: 'outfit-4', name: 'Colourful Jacket', path: 'images/outfits/mascotmix-outfit4.jpg' },
         { id: 'outfit-5', name: 'Formal Suit', path: 'images/outfits/mascotmix-outfit5.jpg' },
         { id: 'outfit-6', name: 'Feminine Dress', path: 'images/outfits/mascotmix-outfit6.jpg' },
-        { id: 'outfit-7', name: 'Winter Coat', path: 'images/outfits/mascotmix-outfit7.jpg' }
+        { id: 'outfit-7', name: 'Winter Coat', path: 'images/outfits/mascotmix-outfit7.jpg' },
+        { id: 'outfit-8', name: 'Turtleneck & Scarf', path: 'images/outfits/mascotmix-outfit7.jpg' }
     ],
     accessories: [
         { id: 'acc-1', name: 'Carnival', path: 'images/accessories/mascotmix-accessories1.jpg' },
@@ -43,7 +44,7 @@ const mascotAssets = {
         { id: 'acc-8', name: 'Beaded Headdress', path: 'images/accessories/mascotmix-accessories8.jpg' },
         { id: 'acc-9a', name: 'Glasses', path: 'images/accessories/mascotmix-accessories9a.jpg' },
         { id: 'acc-9b', name: 'Necklace', path: 'images/accessories/mascotmix-accessories9b.jpg' },
-        { id: 'acc-0', name: 'Scarf', path: 'images/accessories/mascotmix-accessories0.jpg' }
+        { id: 'acc-0', name: 'Beads', path: 'images/accessories/mascotmix-accessories0.jpg' }
     ],
     extras: [
         { id: 'extra-1', name: 'Tiny Crochet (Vegetable)', path: 'images/extras/mascotmix-extra1.jpg' },
@@ -54,7 +55,6 @@ const mascotAssets = {
     ]
 };
 
-
 const mascotState = {
     bases: null,
     hair: null,
@@ -62,6 +62,47 @@ const mascotState = {
     accessories: null,
     extras: null
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    initializePage();
+
+    const saveDesignBtn = document.getElementById('save-design-btn');
+    if (saveDesignBtn) {
+        saveDesignBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openOrderModal();
+        });
+    }
+});
+
+function initializePage() {
+    const baseTab = document.querySelector('.tab-btn[data-category="bases"]');
+    if (baseTab) {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        baseTab.classList.add('active');
+    }
+
+    loadCategoryItems('bases');
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            loadCategoryItems(btn.dataset.category);
+        });
+    });
+
+    setupRandomizeButtons();
+
+    const randomBase = getRandomItem('bases');
+    if (randomBase) {
+        selectItem('bases', randomBase.id, randomBase.path, randomBase.name);
+    }
+}
 
 function loadCategoryItems(category) {
     const container = document.getElementById('items-container');
@@ -101,7 +142,6 @@ function loadCategoryItems(category) {
 }
 
 function selectItem(category, itemId, itemPath, itemName) {
-
     if (!itemName) {
         const items = mascotAssets[category];
         const item = items.find(i => i.id === itemId);
@@ -120,7 +160,6 @@ function selectItem(category, itemId, itemPath, itemName) {
 }
 
 function updateDisplay() {
-
     if (mascotState.bases && mascotState.bases.path) {
         const baseImage = document.getElementById('selected-base-image');
         if (baseImage) {
@@ -130,11 +169,8 @@ function updateDisplay() {
     }
 
     updateSelectionTile('hair', 'selected-hair-image');
-
     updateSelectionTile('outfits', 'selected-outfits-image');
-
     updateSelectionTile('accessories', 'selected-accessories-image');
-
     updateSelectionTile('extras', 'selected-extras-image');
 }
 
@@ -157,7 +193,6 @@ function updateSelectionTile(category, imageId) {
 }
 
 function highlightSelectedItem(category, itemId) {
-
     document.querySelectorAll(`.item-option[data-category="${category}"]`).forEach(el => {
         el.classList.remove('selected');
     });
@@ -199,10 +234,26 @@ function findItemNameById(category, id) {
     return item ? item.name : null;
 }
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
+function setupRandomizeButtons() {
+    setupRandomizeButton('randomize-base-btn', 'bases');
+    setupRandomizeButton('randomize-hair-btn', 'hair');
+    setupRandomizeButton('randomize-outfits-btn', 'outfits');
+    setupRandomizeButton('randomize-accessories-btn', 'accessories');
+    setupRandomizeButton('randomize-extras-btn', 'extras');
+}
+
+function setupRandomizeButton(buttonId, category) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            randomizeCategory(category);
+        });
+    }
+}
 
 function openOrderModal() {
-
     if (!mascotState.bases) {
         alert('Please select a base mascot first!');
         return;
@@ -221,29 +272,40 @@ function openOrderModal() {
 
     const closeBtn = document.querySelector('.modal-close');
     if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
+        closeBtn.onclick = function (e) {
             e.preventDefault();
             modal.style.display = 'none';
-        });
+        };
     }
 
     const cancelBtn = document.getElementById('cancel-btn');
     if (cancelBtn) {
-        cancelBtn.addEventListener('click', () => {
+        cancelBtn.onclick = function (e) {
             e.preventDefault();
             modal.style.display = 'none';
-        });
+        };
     }
 
-    modal.addEventListener('click', (e) => {
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) {
+        // Remove any existing event listeners
+        submitBtn.onclick = null;
+
+        // Add new event listener
+        submitBtn.onclick = function (e) {
+            e.preventDefault();
+            handleFormSubmission(e);
+        };
+    }
+
+    modal.onclick = function (e) {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
-    });
+    };
 }
 
 function updateSummaryPreview() {
-
     if (mascotState.bases && mascotState.bases.path) {
         const summaryBaseImage = document.getElementById('summary-base-image');
         if (summaryBaseImage) {
@@ -301,17 +363,47 @@ function updateOrderDetails() {
   `;
 }
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
-
 function handleFormSubmission(e) {
     e.preventDefault();
 
+    console.log('Form submission handler triggered');
+
     const customerName = document.getElementById('customer-name').value;
     const customerEmail = document.getElementById('customer-email').value;
-    const consent = document.getElementById('consent').checked;
+    const consentCheckbox = document.querySelector('input[name="agree_emails"]');
+    const consent = consentCheckbox ? consentCheckbox.checked : false;
 
-    if (!customerName || !customerEmail || !consent) {
-        alert('Please fill in all required fields');
+    let isValid = true;
+    let errorMessage = '';
+
+    if (!customerName) {
+        isValid = false;
+        errorMessage += 'Please enter your name.\n';
+        document.getElementById('customer-name').classList.add('error');
+    } else {
+        document.getElementById('customer-name').classList.remove('error');
+    }
+
+    if (!customerEmail) {
+        isValid = false;
+        errorMessage += 'Please enter your email address.\n';
+        document.getElementById('customer-email').classList.add('error');
+    } else {
+        document.getElementById('customer-email').classList.remove('error');
+    }
+
+    if (!consent) {
+        isValid = false;
+        errorMessage += 'Please agree to be contacted about your request.';
+        if (consentCheckbox) {
+            consentCheckbox.parentElement.classList.add('error');
+        }
+    } else if (consentCheckbox) {
+        consentCheckbox.parentElement.classList.remove('error');
+    }
+
+    if (!isValid) {
+        alert(errorMessage);
         return;
     }
 
@@ -346,39 +438,47 @@ function handleFormSubmission(e) {
     };
 
     console.log('Order data:', orderData);
-    submitOrderData(orderData);
+
+    const loadingPopup = document.getElementById('loadingPopup');
+    if (loadingPopup) {
+        loadingPopup.style.display = 'flex';
+
+        const MIN_LOADER_TIME = 800;
+
+        setTimeout(function () {
+            loadingPopup.style.display = 'none';
+            submitOrderData(orderData);
+        }, MIN_LOADER_TIME);
+    } else {
+        submitOrderData(orderData);
+    }
 }
 
 function submitOrderData(orderData) {
+    const orderModal = document.getElementById('order-modal');
+    if (orderModal) {
+        orderModal.style.display = 'none';
+    }
 
-    setTimeout(() => {
+    const thankYouModal = document.getElementById('thank-you-modal');
+    const emailDisplay = document.getElementById('customer-email-display');
 
-        const orderModal = document.getElementById('order-modal');
-        if (orderModal) {
-            orderModal.style.display = 'none';
+    if (thankYouModal && emailDisplay) {
+        emailDisplay.textContent = orderData.customer.email;
+        thankYouModal.style.display = 'flex';
+
+        const closeThankYouBtn = document.getElementById('close-thank-you');
+        if (closeThankYouBtn) {
+            closeThankYouBtn.onclick = function (e) {
+                e.preventDefault();
+                thankYouModal.style.display = 'none';
+                resetMascotBuilder();
+            };
         }
-
-        const thankYouModal = document.getElementById('thank-you-modal');
-        const emailDisplay = document.getElementById('customer-email-display');
-
-        if (thankYouModal && emailDisplay) {
-            emailDisplay.textContent = orderData.customer.email;
-            thankYouModal.style.display = 'flex';
-
-            const closeThankYouBtn = document.getElementById('close-thank-you');
-            if (closeThankYouBtn) {
-                closeThankYouBtn.addEventListener('click', () => {
-                    e.preventDefault();
-                    thankYouModal.style.display = 'none';
-                    resetMascotBuilder();
-                });
-            }
-        }
-    }, 1000);
+    }
 }
 
 function resetMascotBuilder() {
-
     mascotState.hair = null;
     mascotState.outfits = null;
     mascotState.accessories = null;
@@ -396,68 +496,3 @@ function resetMascotBuilder() {
         orderForm.reset();
     }
 }
-
-function setupRandomizeButtons() {
-    setupRandomizeButton('randomize-base-btn', 'bases');
-    setupRandomizeButton('randomize-hair-btn', 'hair');
-    setupRandomizeButton('randomize-outfits-btn', 'outfits');
-    setupRandomizeButton('randomize-accessories-btn', 'accessories');
-    setupRandomizeButton('randomize-extras-btn', 'extras');
-}
-
-function setupRandomizeButton(buttonId, category) {
-    const button = document.getElementById(buttonId);
-    if (button) {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            randomizeCategory(category);
-        });
-    }
-}
-
-
-function initializePage() {
-    const baseTab = document.querySelector('.tab-btn[data-category="bases"]');
-    if (baseTab) {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        baseTab.classList.add('active');
-    }
-
-    loadCategoryItems('bases');
-
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            loadCategoryItems(btn.dataset.category);
-        });
-    });
-
-    setupRandomizeButtons();
-
-    const saveDesignBtn = document.getElementById('save-design-btn');
-    if (saveDesignBtn) {
-        saveDesignBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openOrderModal();
-        });
-    }
-
-    const orderForm = document.getElementById('order-form');
-    if (orderForm) {
-        orderForm.addEventListener('submit', handleFormSubmission);
-    }
-
-    randomizeMascot();
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(function () {
-        initializePage();
-    }, 100);
-});

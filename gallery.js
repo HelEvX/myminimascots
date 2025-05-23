@@ -1,43 +1,33 @@
+// Gallery filtering functionality
 document.addEventListener('DOMContentLoaded', function () {
-    const grid = document.getElementById('masonryGrid');
-    if (!grid) return;
+    const filterBtns = document.querySelectorAll('.nav-btn, .filter-tag');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-    function setRowSpan(item, content, rowHeight, rowGap) {
-        // Ensure height is calculated after rendering
-        setTimeout(() => {
-            const itemHeight = content.offsetHeight;
-            const rowSpan = Math.ceil((itemHeight + rowGap) / (rowHeight + rowGap));
-            item.style.gridRowEnd = `span ${rowSpan}`;
-        }, 10); // 10ms delay to ensure correct height
-    }
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const filter = this.getAttribute('data-filter');
 
-    function resizeAllGridItems() {
-        const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap'));
-        Array.from(grid.children).forEach(item => {
-            const content = item.querySelector('img, video');
-            if (content) {
-                // For images
-                if (content.tagName === 'IMG') {
-                    if (content.complete) {
-                        setRowSpan(item, content, rowHeight, rowGap);
-                    } else {
-                        content.onload = () => setRowSpan(item, content, rowHeight, rowGap);
-                    }
+            // Update active states
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter items
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
                 }
-                // For videos
-                if (content.tagName === 'VIDEO') {
-                    if (content.readyState > 0) {
-                        setRowSpan(item, content, rowHeight, rowGap);
-                    } else {
-                        content.onloadedmetadata = () => setRowSpan(item, content, rowHeight, rowGap);
-                    }
-                }
-            }
+            });
+        });
+    });
+
+    // Load more functionality (placeholder)
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function () {
+            // Add logic to load more images
+            console.log('Loading more images...');
         });
     }
-
-    window.addEventListener('resize', resizeAllGridItems);
-    window.addEventListener('load', resizeAllGridItems);
-    resizeAllGridItems();
 });
