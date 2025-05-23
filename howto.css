@@ -1,3 +1,66 @@
+.howto-hero {
+    position: relative;
+    background: linear-gradient(135deg,
+            var(--primary-accent-deep) 0%,
+            var(--primary-accent-dark) 50%,
+            var(--primary-accent) 100%);
+    padding: 4rem 0 5rem;
+    overflow: hidden;
+}
+
+/* Background pattern/texture overlay */
+.howto-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 0% 100%, var(--primary-accent-deep) 0%, transparent 30%),
+        radial-gradient(circle at 100% 0%, var(--bg-light) 0%, transparent 50%);
+    pointer-events: none;
+    background-blend-mode: screen, screen;
+}
+
+.howto-hero.with-collage {
+    background:
+        linear-gradient(135deg,
+            var(--primary-accent) 3%,
+            var(--primary-accent-deep) 57%,
+            var(--gray-dark) 100%),
+        url('/images/faces/polaroid-1.jpg') center/cover no-repeat;
+    background-blend-mode: screen, normal;
+}
+
+.howto-hero .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    align-items: center;
+}
+
+/* Hero Title */
+.howto-hero h1 {
+    color: var(--bg-light);
+    margin-bottom: 1rem;
+    text-shadow: var(--shadow-text);
+    position: relative;
+}
+
+/* Hero Subtitle */
+.hero-subtitle {
+    color: var(--bg-light);
+    font-size: var(--font-size-caption);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    text-shadow: var(--shadow-text);
+}
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+
 .howto-infographic {
     background: var(--bg-medium);
     padding: 2.5rem 0;

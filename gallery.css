@@ -67,7 +67,7 @@
 .gallery-hero h1 {
     color: var(--bg-light);
     margin-bottom: 1rem;
-    text-shadow: var(--shadow-sm);
+    text-shadow: var(--shadow-text);
     position: relative;
 }
 
@@ -102,7 +102,7 @@
     font-weight: 400;
     max-width: 600px;
     margin: 0 auto 2.5rem;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: var(--shadow-text);
     line-height: 1.5;
 }
 
@@ -146,59 +146,6 @@
     font-weight: 700;
 }
 
-/* Optional: Floating brand elements */
-.hero-brand-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.brand-element {
-    position: absolute;
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
-}
-
-.brand-element.logo-1 {
-    top: 10%;
-    left: 5%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
-}
-
-.brand-element.logo-2 {
-    top: 20%;
-    right: 8%;
-    width: 60px;
-    height: 60px;
-    animation-delay: 2s;
-}
-
-.brand-element.pattern-1 {
-    bottom: 15%;
-    left: 10%;
-    width: 100px;
-    height: 100px;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-10px) rotate(5deg);
-    }
-}
-
 /* Responsive Design */
 
 /* 992px screens */
@@ -225,10 +172,6 @@
     /* Hide decorative lines on smaller screens */
     .gallery-hero h1::before,
     .gallery-hero h1::after {
-        display: none;
-    }
-
-    .brand-element {
         display: none;
     }
 }
