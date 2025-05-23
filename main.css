@@ -29,6 +29,14 @@ body {
     justify-content: space-between;
 }
 
+.container-fullwidth {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* svg styles */
 
 .svg-accent {
@@ -255,6 +263,76 @@ button {
     background: var(--bg-light);
     box-shadow: var(--shadow-md);
 }
+
+
+/* Navigation Arrows */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary-accent);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-accent);
+}
+
+.carousel-nav:hover {
+    background: var(--primary-accent);
+    color: var(--bg-light);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav.prev {
+    left: 20px;
+}
+
+.carousel-nav.next {
+    right: 20px;
+}
+
+
+body.touch-device .carousel-nav {
+    display: none !important;
+}
+
+
+/* Pagination Dots */
+.carousel-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
+.pagination-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.pagination-dot.active {
+    background: var(--primary-accent);
+    transform: scale(1.3);
+}
+
+.pagination-dot:hover {
+    background: var(--primary-accent-light);
+    transform: scale(1.1);
+}
+
 
 
 /* Custom Checkbox and Radio Button Styling */

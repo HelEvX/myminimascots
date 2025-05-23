@@ -323,13 +323,17 @@
 
         <!-- Featured Mascots Gallery -->
         <section id="featured" class="featured-gallery">
-            <div class="container">
+            <div class="container-fullwidth">
                 <h2>Featured Mascots</h2>
                 <div class="gallery-scroll-wrapper">
-                    <button class="button-primary-icon gallery-arrow gallery-arrow-left" type="button"
-                        aria-label="Scroll left">
-                        <i class="fa-solid fa-arrow-left"></i>
+                    <!-- GALLERY NAV -->
+                    <button class="carousel-nav prev gallery-arrow-left" id="prevBtn">
+                        <i class="fa-solid fa-chevron-left"></i>
                     </button>
+                    <button class="carousel-nav next gallery-arrow-right" id="nextBtn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
                     <div class="gallery-scroll" id="gallery-scroll">
                         <div class="gallery-item">
                             <div class="gallery-polaroid">
@@ -386,10 +390,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="button-primary-icon gallery-arrow gallery-arrow-right" type="button"
-                        aria-label="Scroll right">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
                     <div class="gallery-scroll-indicator">
                         <div class="gallery-scroll-bar">
                             <div class="gallery-scroll-thumb"></div>

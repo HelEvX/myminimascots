@@ -1,12 +1,13 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.main-nav ul');
-
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('is-active');
-});
-
 document.addEventListener('DOMContentLoaded', function () {
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.main-nav ul');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('is-active');
+    });
+
     const sections = [
         'manifesto',
         'featured',
@@ -74,11 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', toggleScrollBtn);
     toggleScrollBtn();
 
-});
 
-// GALLERY SCROLL
+    // GALLERY SCROLL
 
-document.addEventListener('DOMContentLoaded', function () {
     const scrollContainer = document.getElementById('gallery-scroll');
     const leftArrow = document.querySelector('.gallery-arrow-left');
     const rightArrow = document.querySelector('.gallery-arrow-right');
@@ -156,6 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Always show indicator on touch devices
     if (isTouch) scrollBar.style.opacity = 1;
+
+
 });
 
 
