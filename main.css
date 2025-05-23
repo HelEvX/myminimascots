@@ -13,11 +13,20 @@ body {
     font-weight: 550;
     background-color: var(--bg-light);
     color: var(--gray-dark);
-    margin: 0;
-    padding: 0;
     line-height: 1.6;
     overflow-x: hidden;
     width: 100vw;
+}
+
+
+.container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--page-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* svg styles */
@@ -90,16 +99,8 @@ body {
     justify-content: center;
 }
 
+/*  */
 
-.container {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 0 var(--page-padding);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
 
 h1 {
     font-family: var(--font-heading);

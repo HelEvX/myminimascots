@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gallery - My Mini Mascots</title>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="gallery.css">
-    <!-- Google Fonts for consistency -->
-    <link href="https://fonts.googleapis.com/css?family=Fredoka:700|Bree+Serif|Lato:400,700&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -98,95 +102,355 @@
     </header>
 
     <main>
-        <!-- Intro Text -->
-        <section class="gallery-intro">
+        <!-- Hero/Intro Section -->
+        <!-- alt: with-collage -->
+        <section class="gallery-hero with-pattern">
             <div class="container">
-                <h1>Gallery</h1>
-                <p>Discover our handmade mascots, behind-the-scenes moments, and happy customers! Click any image to see
-                    more on Pinterest.</p>
+                <h1>Mascot Gallery</h1>
+                <p class="hero-subtitle">Discover the magic of custom crochet mascots - from fandom favourites to
+                    original creations</p>
+
+                <!-- Quick Navigation for Different User Needs -->
+                <div class="gallery-nav">
+                    <button class="nav-btn active" data-filter="all">All Mascots</button>
+                    <button class="nav-btn" data-filter="finished">Finished Mascots</button>
+                    <button class="nav-btn" data-filter="characters">Character Recreations</button>
+                    <button class="nav-btn" data-filter="original">Original Designs</button>
+                    <button class="nav-btn" data-filter="details">Details & Props</button>
+                </div>
             </div>
         </section>
 
-        <!-- Featured Project Stories -->
-        <section class="gallery-projects">
+        <!-- Featured Showcase -->
+        <section class="gallery-featured">
             <div class="container">
-                <h2>Featured Projects</h2>
-                <div class="project-stories">
-                    <div class="project-story">
-                        <img src="/images/stands/stand-Winter.jpg" alt="Chef mascot in progress" loading="lazy">
-                        <div class="project-info">
-                            <h3>Chef Mascot</h3>
-                            <p>From sketch to finished chef! See the full story on Pinterest.</p>
-                            <a href="https://www.pinterest.com/yourboard/chef-mascot" class="button-link"
-                                target="_blank">See on Pinterest</a>
+                <h2>Featured Creations</h2>
+                <div class="featured-carousel">
+                    <div class="carousel-wrapper">
+                        <div class="featured-grid" id="featuredGrid">
+                            <!-- Character Recreation -->
+                            <div class="featured-item" data-category="characters">
+                                <div class="featured-visual">
+                                    <div class="comparison-view">
+                                        <div class="original-reference">
+                                            <h4>Original Character</h4>
+                                            <div class="embed-container">
+                                                <img src="/images/process/process-anne0.jpg"
+                                                    alt="Original character reference" loading="lazy">
+                                                <p class="source-credit">Source: Foil Arms and Hog</p>
+                                            </div>
+                                        </div>
+                                        <div class="mascot-creation">
+                                            <h4>Custom Mascot</h4>
+                                            <img src="/images/process/process-anne-closeup.jpg"
+                                                alt="Custom mascot recreation" loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="featured-content">
+                                    <h3>Character Recreation</h3>
+                                    <p>See how we bring beloved characters to life with careful attention to detail and
+                                        personality.</p>
+                                    <div class="feature-links">
+                                        <a href="https://www.pinterest.com/yourboard/character-recreations"
+                                            class="pinterest-link" target="_blank">More on Pinterest</a>
+                                        <a href="#process-link" class="process-link">See How It's Made</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Original Design Example -->
+                            <div class="featured-item" data-category="original">
+                                <div class="featured-visual">
+                                    <div class="single-view">
+                                        <img src="/images/process/process-Duck.jpg" alt="Original mascot design"
+                                            loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="featured-content">
+                                    <h3>Original Design</h3>
+                                    <p>From your imagination to reality - completely custom mascots designed just for
+                                        you.</p>
+                                    <div class="feature-links">
+                                        <a href="https://www.pinterest.com/yourboard/original-designs"
+                                            class="pinterest-link" target="_blank">More on Pinterest</a>
+                                        <a href="#order-link" class="order-link">Start Your Order</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Process/Details Example -->
+                            <div class="featured-item" data-category="details">
+                                <div class="featured-visual">
+                                    <div class="detail-showcase">
+                                        <div class="detail-grid">
+                                            <img src="/images/process/process-anne-hair1.jpg" alt="Mascot hair detail"
+                                                loading="lazy">
+                                            <img src="/images/process/process-anne-hair2.jpg" alt="Mascot outfit detail"
+                                                loading="lazy">
+                                            <img src="/images/process/process-anne-hair3.jpg" alt="Mascot accessories"
+                                                loading="lazy">
+                                            <img src="/images/process/process-anne-hair4.jpg" alt="Display stand"
+                                                loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="featured-content">
+                                    <h3>Craftsmanship Details</h3>
+                                    <p>Every mascot features carefully crafted details - from custom hair to tiny
+                                        accessories.</p>
+                                    <div class="feature-links">
+                                        <a href="https://www.pinterest.com/yourboard/mascot-details"
+                                            class="pinterest-link" target="_blank">More on Pinterest</a>
+                                        <a href="how-to.html" class="process-link">See Full Process</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-story">
-                        <img src="/images/stands/stand-Winter.jpg" alt="Pirate mascot">
-                        <div class="project-info">
-                            <h3>Pirate Mascot</h3>
-                            <p>Ahoy! A swashbuckling mascot adventure. See the transformation.</p>
-                            <a href="https://www.pinterest.com/yourboard/pirate-mascot" class="button-link"
-                                target="_blank">See on Pinterest</a>
-                        </div>
-                    </div>
-                    <div class="project-story">
-                        <img src="/images/stands/stand-Winter.jpg" alt="Mother mascot">
-                        <div class="project-info">
-                            <h3>Mother Mascot</h3>
-                            <p>A heartfelt tribute to motherhood, from first stitch to final smile.</p>
-                            <a href="https://www.pinterest.com/yourboard/mother-mascot" class="button-link"
-                                target="_blank">See on Pinterest</a>
-                        </div>
+
+                    <!-- GALLERY NAV -->
+                    <button class="carousel-nav prev" id="prevBtn">‹</button>
+                    <button class="carousel-nav next" id="nextBtn">›</button>
+
+                    <div class="carousel-pagination" id="paginationDots">
+                        <div class="pagination-dot active" data-slide="0"></div>
+                        <div class="pagination-dot" data-slide="1"></div>
+                        <div class="pagination-dot" data-slide="2"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Masonry Gallery Grid -->
-        <section class="gallery-masonry">
+        <!-- Main Gallery Grid -->
+        <section class="gallery-main">
             <div class="container">
-                <h2>All Mascots & Moments</h2>
-                <div class="masonry-grid" id="masonryGrid">
-                    <!-- Example images/videos; replace with your own -->
-                    <a href="https://www.pinterest.com/yourboard/pin1" target="_blank" class="masonry-item">
-                        <img src="/images/stands/stand-Winter.jpg" alt="Finished mascot smiling" loading="lazy">
-                        <span class="pinterest-icon" title="See on Pinterest"></span>
-                    </a>
-                    <a href="https://www.pinterest.com/yourboard/pin2" target="_blank" class="masonry-item">
-                        <img src="/images/stands/stand-Winter.jpg" alt="Mascot close-up" loading="lazy">
-                        <span class="pinterest-icon" title="See on Pinterest"></span>
-                    </a>
-                    <a href="https://www.pinterest.com/yourboard/pin3" target="_blank" class="masonry-item">
-                        <video src="/images/IG-story.mp4" poster="/images/stands/stand-Winter.jpg" controls muted
-                            preload="metadata" loading="lazy"></video>
-                        <span class="pinterest-icon" title="See on Pinterest"></span>
-                    </a>
-                    <a href="https://www.pinterest.com/yourboard/pin4" target="_blank" class="masonry-item">
-                        <img src="/images/stands/stand-Winter.jpg" alt="Mascot in the workshop" loading="lazy">
-                        <span class="pinterest-icon" title="See on Pinterest"></span>
-                    </a>
-                    <!-- Add more images/videos as needed -->
+                <h2>Complete Gallery</h2>
+
+                <!-- Filter Tags -->
+                <div class="filter-tags">
+                    <span class="filter-tag active" data-filter="all">All</span>
+                    <span class="filter-tag" data-filter="finished">Finished Mascots</span>
+                    <span class="filter-tag" data-filter="wip">Work in Progress</span>
+                    <span class="filter-tag" data-filter="characters">Character Recreations</span>
+                    <span class="filter-tag" data-filter="original">Original Designs</span>
+                    <span class="filter-tag" data-filter="details">Details & Close-ups</span>
+                    <span class="filter-tag" data-filter="props">Props & Accessories</span>
+                </div>
+
+                <!-- Masonry Grid -->
+                <div class="masonry-grid" id="galleryGrid">
+                    <!-- Finished Mascots -->
+                    <div class="gallery-item" data-category="finished characters">
+                        <a href="https://www.pinterest.com/yourboard/finished-Mascots" target="_blank">
+                            <img src="/images/instagram/mascot-collages-MaryMcCormack.jpg"
+                                alt="Finished character mascot" loading="lazy">
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Character Mascot</h4>
+                                    <p>Custom recreation</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="gallery-item" data-category="finished original">
+                        <a href="https://www.pinterest.com/yourboard/original-designs" target="_blank">
+                            <img src="/images/instagram/mascot-collages-AviaryTalent.jpg" alt="Original design mascot"
+                                loading="lazy">
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Original Design</h4>
+                                    <p>Custom creation</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Work in Progress -->
+                    <div class="gallery-item" data-category="wip">
+                        <a href="https://www.pinterest.com/yourboard/behind-scenes" target="_blank">
+                            <img src="/images/process/process-fah2.jpg" alt="Mascot work in progress" loading="lazy">
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>In Progress</h4>
+                                    <p>Behind the scenes</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Video Content -->
+                    <div class="gallery-item" data-category="finished">
+                        <a href="https://www.pinterest.com/yourboard/mascot-videos" target="_blank">
+                            <video src="/images/IG-story.mp4" poster="/images/faces/polaroid-1.jpg" controls muted
+                                preload="metadata" loading="lazy"></video>
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Mascot Showcase</h4>
+                                    <p>See it in action</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Detail Shots -->
+                    <div class="gallery-item" data-category="details">
+                        <a href="https://www.pinterest.com/yourboard/mascot-details" target="_blank">
+                            <img src="/images/faces/polaroid-1.jpg" alt="Mascot hair detail" loading="lazy">
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Hair Details</h4>
+                                    <p>Craftsmanship close-up</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="gallery-item" data-category="props details">
+                        <a href="https://www.pinterest.com/yourboard/mascot-props" target="_blank">
+                            <img src="/images/faces/polaroid-1.jpg" alt="Mascot accessories" loading="lazy">
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Custom Props</h4>
+                                    <p>Tiny details matter</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Character Comparison -->
+                    <div class="gallery-item comparison-item" data-category="characters">
+                        <a href="https://www.pinterest.com/yourboard/character-comparisons" target="_blank">
+                            <div class="comparison-layout">
+                                <div class="comparison-half">
+                                    <img src="/images/process/process-anne0.jpg" alt="Original character"
+                                        loading="lazy">
+                                    <span class="comparison-label">Original</span>
+                                </div>
+                                <div class="comparison-half">
+                                    <img src="/images/process/process-anne-finished.jpg" alt="Mascot recreation"
+                                        loading="lazy">
+                                    <span class="comparison-label">Mascot</span>
+                                </div>
+                            </div>
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Before & After</h4>
+                                    <p>Character recreation</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Display Stands -->
+                    <div class="gallery-item" data-category="props">
+                        <a href="https://www.pinterest.com/yourboard/display-stands" target="_blank">
+                            <img src="/images/faces/polaroid-1.jpg" alt="Custom display stand" loading="lazy">
+                            <div class="item-overlay">
+                                <span class="pinterest-icon"></span>
+                                <div class="item-info">
+                                    <h4>Display Stand</h4>
+                                    <p>Show off your mascot</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Add more items as needed -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button class="load-more-btn" id="loadMoreBtn">Load More Mascots</button>
                 </div>
             </div>
         </section>
 
-        <!-- Social CTA -->
-        <section class="gallery-social-cta">
+        <!-- Customer Stories Section -->
+        <section class="gallery-customers">
             <div class="container">
-                <h3>See Even More on Social</h3>
-                <a href="https://www.instagram.com/yourprofile" class="button-instagram" target="_blank">Instagram</a>
-                <a href="https://www.facebook.com/yourprofile" class="button-facebook" target="_blank">Facebook</a>
+                <h2>Happy Customers</h2>
+                <p>See how our mascots bring joy to their new homes! Check out customer photos and stories on our social
+                    media.</p>
+
+                <div class="customer-cta">
+                    <a href="https://www.instagram.com/stories/highlights/yourprofile" class="instagram-highlights-btn"
+                        target="_blank">
+                        <span class="instagram-icon"></span>
+                        View Customer Stories on Instagram
+                    </a>
+                    <p class="customer-note">User-generated content and customer selfies with their mascots</p>
+                </div>
             </div>
         </section>
 
-        <!-- Banner: CTA to How-To Guide -->
-        <section class="gallery-howto-banner">
+        <!-- Social Media Links -->
+        <section class="gallery-social">
             <div class="container">
-                <h3>Curious about how mascots are made?</h3>
-                <a href="how-to.html" class="button-primary">See the Process</a>
+                <h2>Follow Our Journey</h2>
+                <div class="social-grid">
+                    <a href="https://www.pinterest.com/yourprofile" class="social-card pinterest" target="_blank">
+                        <div class="social-icon pinterest-icon"></div>
+                        <h3>Pinterest</h3>
+                        <p>Organized boards with all our mascot creations, process shots, and inspiration</p>
+                        <span class="social-cta">Browse Boards →</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/yourprofile" class="social-card instagram" target="_blank">
+                        <div class="social-icon instagram-icon"></div>
+                        <h3>Instagram</h3>
+                        <p>Daily updates, behind-the-scenes content, and customer story highlights</p>
+                        <span class="social-cta">Follow Us →</span>
+                    </a>
+
+                    <a href="https://www.facebook.com/yourprofile" class="social-card facebook" target="_blank">
+                        <div class="social-icon facebook-icon"></div>
+                        <h3>Facebook</h3>
+                        <p>Community discussions and longer-form mascot creation stories</p>
+                        <span class="social-cta">Like Page →</span>
+                    </a>
+                </div>
             </div>
         </section>
+
+        <!-- Call to Action Banners -->
+        <section class="gallery-cta-banners">
+            <div class="container">
+                <!-- For Inspiration Seekers -->
+                <div class="cta-banner inspiration">
+                    <div class="cta-content">
+                        <h3>Ready to Create Your Own?</h3>
+                        <p>Start your custom mascot journey today</p>
+                        <a href="order.html" class="button-primary">Start Your Order</a>
+                    </div>
+                    <div class="cta-visual">
+                        <img src="/images/faces/polaroid-1.jpg" alt="Custom mascot creation" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- For Process Curious -->
+                <div class="cta-banner process">
+                    <div class="cta-content">
+                        <h3>Curious How They're Made?</h3>
+                        <p>Discover the craftsmanship behind every mascot</p>
+                        <a href="how-to.html" class="button-secondary">See the Process</a>
+                    </div>
+                    <div class="cta-visual">
+                        <img src="/images/faces/polaroid-1.jpg" alt="Mascot creation process" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
     <!-- Footer -->
