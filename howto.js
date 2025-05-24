@@ -1,11 +1,12 @@
 class FinishedCarousel {
     constructor() {
         this.currentSlide = 0;
-        this.totalSlides = 4; // number of slides
+        this.totalSlides = 15; // number of slides
         this.grid = document.getElementById('finishedGrid');
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
         this.isTransitioning = false;
+        this.slideWidth = 440; // Width of each slide (400px image + 40px padding)
 
         this.init();
     }
@@ -13,7 +14,7 @@ class FinishedCarousel {
     init() {
         this.createInfiniteLoop();
         this.setupEventListeners();
-        this.startAutoPlay(); // Enable autoplay
+        this.startAutoPlay();
         this.addTouchSupport();
     }
 
@@ -32,7 +33,14 @@ class FinishedCarousel {
 
         // Start at the first real slide (index 1 now because of prepended clone)
         this.currentSlide = 1;
-        this.grid.style.transform = `translateX(-100%)`;
+
+        // To center: move left by (slideIndex * slideWidth) - (carousel center - slide center)
+        const carouselCenter = 360; // 720px / 2
+        const slideCenter = 220; // 440px / 2
+        const centerOffset = carouselCenter - slideCenter; // 140px
+
+        const initialTransform = (this.currentSlide * this.slideWidth) - centerOffset;
+        this.grid.style.transform = `translateX(-${initialTransform}px)`;
         this.grid.style.transition = 'none';
     }
 
@@ -49,12 +57,18 @@ class FinishedCarousel {
     goToSlide(slideIndex, withTransition = true) {
         if (this.isTransitioning && withTransition) return;
 
-        this.isTransitioning = withTransition; // Only block if animating
+        this.isTransitioning = withTransition;
         this.currentSlide = slideIndex;
 
         this.grid.style.transition = withTransition ? 'transform 0.5s ease-in-out' : 'none';
-        const translateX = -slideIndex * 100;
-        this.grid.style.transform = `translateX(${translateX}%)`;
+
+        // Calculate transform to center the target slide
+        const carouselCenter = 360; // 720px / 2
+        const slideCenter = 220; // 440px / 2
+        const centerOffset = carouselCenter - slideCenter; // 140px
+
+        const translateX = (slideIndex * this.slideWidth) - centerOffset;
+        this.grid.style.transform = `translateX(-${translateX}px)`;
     }
 
     nextSlide() {
@@ -78,7 +92,7 @@ class FinishedCarousel {
     }
 
     startAutoPlay() {
-        // Slow autoplay - 12 seconds between slides (same as original)
+        // Slow autoplay - 12 seconds between slides
         this.autoPlayInterval = setInterval(() => {
             this.nextSlide();
         }, 12000);
