@@ -268,7 +268,6 @@
     padding: 0 1rem;
 }
 
-/* Section Title */
 .gallery-featured h2 {
     text-align: center;
     margin-bottom: 3.5rem;
@@ -287,7 +286,6 @@
     border-radius: 2px;
 }
 
-/* Carousel Container */
 .featured-carousel {
     position: relative;
     margin: 0 auto;
@@ -830,6 +828,25 @@
 .load-more-btn:hover {
     background: var(--primary-accent-light);
     transform: translateY(-2px);
+}
+
+
+
+
+
+/* %%%%%%%%%%%%%%%%% */
+
+
+.cta-visual {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 120px;
+}
+
+.cta-visual img {
+    width: auto;
+    height: 100%;
 }
 
 /* Responsive Design */

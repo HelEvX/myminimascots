@@ -58,6 +58,13 @@ body {
     stroke-width: 3px;
 }
 
+.svg-yellowstroke {
+    fill: none;
+    stroke: var(--secondary-accent-dark);
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+}
+
 .svg-white {
     fill: #fff;
 }
@@ -126,7 +133,7 @@ h2 {
 h3 {
     font-family: var(--font-title);
     font-size: var(--font-size-small);
-    margin: 1.2rem 0 0 0;
+    margin: 0.6rem 0 0 0;
     letter-spacing: 1px;
 }
 
@@ -627,6 +634,56 @@ input[type="checkbox"].error {
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Action Banner */
+.action-banner {
+    background: var(--secondary-accent);
+    padding: 3rem 0 2.5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.action-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.action-content p {
+    font-size: var(--font-size-caption);
+    margin-bottom: 2rem;
+}
+
+.action-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2rem;
+    width: 100vw;
+    height: 125px;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.action-line svg {
+    height: 100%;
+    min-width: 3250px;
+    width: 3250px;
+    max-width: none;
+    display: block;
 }
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */

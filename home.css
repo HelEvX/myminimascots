@@ -877,24 +877,7 @@
 }
 
 
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-/* Action Banner */
-.action-banner {
-    background: var(--secondary-accent);
-    padding: 3rem 0 2.5rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-}
-
-.action-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -1173,13 +1156,6 @@
 
     .newsletter-hook {
         display: none;
-    }
-
-    /*  */
-
-    .action-mascot {
-        position: static;
-        margin-top: 1rem;
     }
 
 }
