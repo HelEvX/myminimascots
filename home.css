@@ -102,11 +102,24 @@
     display: block;
 }
 
+
 .hero-cta {
+    background: var(--primary-accent-light);
+    color: var(--gray-dark);
+    font-size: var(--font-size-modaltitle);
+    border-radius: 50%;
+    border: 4px solid transparent;
     position: absolute;
     bottom: 30%;
     right: 18%;
-    animation: float-1 6s ease-in-out infinite alternate;
+    height: 180px;
+    width: 180px;
+    animation: float-1 8s ease-in-out infinite alternate;
+}
+
+.hero-cta:hover {
+    background: var(--bg-light);
+    border: 4px solid var(--primary-accent-dark);
 }
 
 .polaroid-border {
@@ -915,6 +928,8 @@
         right: auto;
         left: 6%;
         top: 8%;
+        width: 100px;
+        height: 100px;
         font-size: var(--font-size-caption);
     }
 
@@ -1040,7 +1055,7 @@
     }
 
     .hero-cta {
-        top: -10%;
+        top: 5%;
         bottom: auto;
         left: 30%;
         padding: 1rem;
@@ -1176,10 +1191,8 @@
     }
 
     .hero-cta {
-        left: 30%;
-        top: 5%;
-        width: 120px;
-        height: 120px;
+        left: 20%;
+        top: 10%;
     }
 
     .hero-hook,

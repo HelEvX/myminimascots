@@ -228,20 +228,6 @@ button {
     color: var(--bg-light);
 }
 
-.button-primary-round {
-    background: var(--primary-accent-light);
-    color: var(--gray-dark);
-    font-size: var(--font-size-small);
-    padding: 2rem;
-    border-radius: 50%;
-    border: 4px solid transparent;
-}
-
-.button-primary-round:hover {
-    background: var(--bg-light);
-    border: 4px solid var(--primary-accent-dark);
-}
-
 .button-primary-icon {
     background: var(--primary-accent-light);
     color: var(--gray-dark);
