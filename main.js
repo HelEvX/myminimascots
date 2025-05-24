@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // NAVBAR
+
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.main-nav ul');
 
@@ -8,69 +10,117 @@ document.addEventListener('DOMContentLoaded', function () {
         navToggle.classList.toggle('is-active');
     });
 
-    const sections = [
-        'manifesto',
-        'featured',
-        'testimonials',
-        'blog',
-        'newsletter'
-    ];
-
-    let currentStep = 0;
+    // SCROLLBUTTON
 
     const scrollBtn = document.getElementById('scroll-nav-btn');
     const scrollArrow = document.getElementById('scroll-arrow');
     const hero = document.getElementById('hero');
     const heroBtn = document.getElementById('hero-cuddle-btn');
 
+    // Homepage-specific logic
+    const sections = [
+        'manifesto',
+        'featured',
+        'testimonials',
+        'blog',
+        'newsletter',
+        'action'
+    ];
+    let currentStep = 0;
+
+    // Detect homepage (edit as needed for your site)
+    const isHomepage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
     function toggleScrollBtn() {
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        if (heroBottom < 50) {
-            scrollBtn.style.display = 'flex';
+        if (isHomepage && hero) {
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            if (heroBottom < 50) {
+                scrollBtn.style.display = 'flex';
+            } else {
+                scrollBtn.style.display = 'none';
+                currentStep = 0; // reset if user scrolls back up
+                scrollArrow.style.transform = 'rotate(0deg)';
+                scrollBtn.setAttribute('aria-label', 'Scroll down');
+            }
         } else {
-            scrollBtn.style.display = 'none';
-            currentStep = 0; // reset if user scrolls back up
-            scrollArrow.style.transform = 'rotate(0deg)';
-            scrollBtn.setAttribute('aria-label', 'Scroll down');
+            // On other pages, always show the button after scrolling a bit
+            if (window.scrollY > 50) {
+                scrollBtn.style.display = 'flex';
+            } else {
+                scrollBtn.style.display = 'none';
+                scrollArrow.style.transform = 'rotate(0deg)';
+                scrollBtn.setAttribute('aria-label', 'Scroll down');
+            }
         }
     }
 
-    if (heroBtn) {
-        heroBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            const firstSection = document.getElementById(sections[0]);
-            if (firstSection) {
-                scrollBtn.disabled = true;
-                scrollBtn.style.display = 'flex';
+    // Homepage scroll logic
+    if (isHomepage) {
+        if (heroBtn) {
+            heroBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const firstSection = document.getElementById(sections[0]);
+                if (firstSection) {
+                    scrollBtn.disabled = true;
+                    scrollBtn.style.display = 'flex';
 
-                firstSection.scrollIntoView({ behavior: 'smooth' });
+                    firstSection.scrollIntoView({ behavior: 'smooth' });
 
-                setTimeout(() => {
-                    scrollBtn.disabled = false;
-                    currentStep = 1;
-                }, 800);
+                    setTimeout(() => {
+                        scrollBtn.disabled = false;
+                        currentStep = 1;
+                    }, 800);
+                }
+            });
+        }
+
+        scrollBtn.addEventListener('click', function () {
+            if (currentStep < sections.length) {
+                const nextSection = document.getElementById(sections[currentStep]);
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                    currentStep++;
+                }
+                if (currentStep === sections.length) {
+                    scrollArrow.style.transform = 'rotate(180deg)';
+                    scrollBtn.setAttribute('aria-label', 'Scroll to top');
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                currentStep = 0;
+                scrollArrow.style.transform = 'rotate(0deg)';
+                scrollBtn.setAttribute('aria-label', 'Scroll down');
+            }
+        });
+
+    } else {
+        // General scroll logic for other pages
+        let atEnd = false;
+
+        scrollBtn.addEventListener('click', function () {
+            if (!atEnd) {
+                const viewportHeight = window.innerHeight * 0.8;
+                const targetScroll = window.scrollY + viewportHeight;
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+                if (targetScroll < maxScroll - 10) {
+                    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                } else {
+                    // If near the bottom, rotate arrow and set atEnd
+                    window.scrollTo({ top: maxScroll, behavior: 'smooth' });
+                    scrollArrow.style.transform = 'rotate(180deg)';
+                    scrollBtn.setAttribute('aria-label', 'Scroll to top');
+                    atEnd = true;
+                }
+            } else {
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                scrollArrow.style.transform = 'rotate(0deg)';
+                scrollBtn.setAttribute('aria-label', 'Scroll down');
+                atEnd = false;
             }
         });
     }
-
-    scrollBtn.addEventListener('click', function () {
-        if (currentStep < sections.length) {
-            const nextSection = document.getElementById(sections[currentStep]);
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-                currentStep++;
-            }
-            if (currentStep === sections.length) {
-                scrollArrow.style.transform = 'rotate(180deg)';
-                scrollBtn.setAttribute('aria-label', 'Scroll to top');
-            }
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            currentStep = 0;
-            scrollArrow.style.transform = 'rotate(0deg)';
-            scrollBtn.setAttribute('aria-label', 'Scroll down');
-        }
-    });
 
     window.addEventListener('scroll', toggleScrollBtn);
     toggleScrollBtn();

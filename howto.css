@@ -34,16 +34,14 @@
 }
 
 .howto-hero .container {
-    position: relative;
     z-index: 2;
     text-align: center;
-    align-items: center;
 }
 
 /* Hero Title */
 .howto-hero h1 {
     color: var(--bg-light);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-shadow: var(--shadow-text);
     position: relative;
 }
@@ -59,7 +57,8 @@
             var(--primary-accent-deep) 100%);
     font-size: var(--font-size-caption);
     max-width: 600px;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto;
+    padding: 0.5rem;
     border-radius: var(--border-radius);
 }
 
@@ -75,18 +74,39 @@
 .infographic-flex {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 4rem;
     align-items: flex-start;
     justify-content: center;
+    height: 100%;
+    max-height: 720px;
 }
 
 .infographic-steps {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    position: relative;
+    height: 720px;
+    justify-content: space-between;
+}
+
+.infographic-steps::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -1.5rem;
+    transform: translateX(50%);
+    width: 4px;
+    background: linear-gradient(to bottom,
+            var(--primary-accent-light, #B3E5FC) 0%,
+            var(--primary-accent, #039BE5) 100%);
+    border-radius: 2px;
+    z-index: 0;
 }
 
 .step-tile {
+    position: relative;
+    z-index: 1;
     background: var(--primary-accent-light);
     border: none;
     border-radius: var(--border-radius);
@@ -100,6 +120,26 @@
     outline: none;
 }
 
+.step-tile::before {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 3px solid var(--primary-accent, #039BE5);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.2s, border-color 0.2s;
+}
+
+.step-tile.active::before {
+    background: var(--primary-accent, #039BE5);
+    border-color: var(--primary-accent-dark, #0277BD);
+}
+
 .step-tile.active,
 .step-tile:hover {
     background: var(--primary-accent);
@@ -108,34 +148,38 @@
 
 .infographic-details {
     flex: 1;
-    min-width: 260px;
-    max-width: 420px;
-    position: relative;
+    max-height: 720px;
+    height: 100%;
 }
 
 .step-detail {
     display: none;
     background: #fff;
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    padding: 2rem;
-    position: absolute;
-    width: 100%;
-    min-height: 320px;
-    left: 0;
-    top: 0;
+    box-shadow: var(--shadow-md);
+    padding: 1.2rem;
+    height: 720px;
     animation: fadeIn 0.3s;
 }
 
 .step-detail.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.step-detail h3 {
+    margin: 0;
 }
 
 .step-detail img {
     width: 100%;
-    max-width: 220px;
     border-radius: var(--border-radius);
-    margin-bottom: 1rem;
+}
+
+.step-text {
+    text-align: center;
+    padding: 1rem 2rem;
+    flex: 1;
 }
 
 .timeline {
@@ -160,7 +204,6 @@
 
 .timeline-label {
     text-align: center;
-    font-size: 0.95rem;
     color: var(--gray-medium);
     margin-bottom: 0.5rem;
 }

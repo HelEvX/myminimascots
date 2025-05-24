@@ -278,11 +278,6 @@ fieldset {
     color: var(--primary-accent);
 }
 
-.form-step a {
-    color: var(--primary-accent-dark);
-    text-decoration: underline;
-}
-
 
 /* Colour Picker */
 

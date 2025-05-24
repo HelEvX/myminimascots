@@ -5,36 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Mini Mascots - Handmade Mascots from Somerset</title>
-
-    <meta name="description"
-        content="Explore our custom crochet workshop and bring your favourite characters and creatures to life in mini mascot form! For lovers of unique gifts and niche fandoms.">
+    <title>Blog 1</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="My Mini Mascots Homepage" />
-    <meta property="og:description"
-        content="Explore our custom crochet workshop and bring your favourite characters and creatures to life in mini mascot form! For lovers of unique gifts and niche fandoms." />
-    <meta property="og:image" content="https://myminimascots.netlify.app/images/home-thumbnail.jpg" />
-    <meta property="og:url" content="https://myminimascots.netlify.app" />
-
-    <!-- X (Twitter) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="My Mini Mascots Homepage" />
-    <meta name="twitter:description"
-        content="Explore our custom crochet workshop and bring your favourite characters and creatures to life in mini mascot form! For lovers of unique gifts and niche fandoms." />
-    <meta name="twitter:image" content="https://myminimascots.netlify.app/images/home-thumbnail.jpg" />
-    <meta name="twitter:image:alt" content="A cute mascot face with the brand name My Mini Mascots." />
-
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="blog.css" />
 </head>
 
 <body>
@@ -105,7 +86,7 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="how-to.html" class="nav-link">How-To</a></li>
                     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
                     <li><a href="mascot-mix.html" class="nav-link">Mascot-Mix</a></li>
@@ -121,451 +102,219 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero">
-            <div class="hero-bg"></div>
-            <div class="hero-graphics">
-                <button id="hero-cuddle-btn" class="button-primary-round hero-cta">Click <br> to <br> Cuddle!</button>
-                <svg class="hero-hook" viewBox="0 0 54.9 279.1">
-                    <path class="svg-dark"
-                        d="M38.3,241.6c.4,10.8-3,24.7-9.5,33.4-1.9,2.6-7.8,6.2-10.4,2.6-4.1-5.7-4.9-24.5-5.1-31.9.1-10.3.3-44.7.2-77.5h21.2c0,11.3.3,30.7.1,38.5-4.3,12.2-9.7,27-7.9,40.1,1.2,9,4.3,4.2,5.6-1.6.5-2.1,1.2-12.3,3.1-12.8,2.1-.5,2.8,7.7,2.8,9.1h0Z" />
-                    <path class="svg-accent"
-                        d="M13.5,168.2c0-11.1-.2-34-.4-46.6-5.1-39.4-6.4-58.5-6.3-67.8.3-12.7.3-38.1,7.9-48.1,5.1-6.7,17.9-8.5,21.4.3,4.4,10.9,4.3,32.5,4.5,44.7,0,9.4-1.1,26.5-6.1,65,0,16.8,0,41.3.2,52.5H13.5Z" />
-                </svg>
-                <svg class="hero-eye" viewBox="0 0 106.4 106.4">
-                    <defs>
-                        <filter id="luminosity-noclip" x="0" y="0" width="106.4" height="106.4"
-                            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-                            <feFlood flood-color="#fff" result="bg" />
-                            <feBlend in="SourceGraphic" in2="bg" />
-                        </filter>
-                        <mask id="mask" x="0" y="0" width="106.4" height="106.4" maskUnits="userSpaceOnUse">
-                            <g class="svg-clip">
-                                <path
-                                    d="M28.9,85.4c2-.5,4-1.4,5.8-2.6,1.8-1.3,3.6-2.5,5.2-3.8,1.7-1.3,3.5-1.4,5.7-.4,0,3.9.1,6.9.4,9.2.3,2.2,1.4,4.3,3.3,6.3,3.9,3.9,7.8,3.9,11.6,0s5.8-9.7,5.8-17.5l11.6,11.6,9.6-9.6v-4.1c-1-1-2.2-2.9-3.8-5.8-1.6-2.9-2.8-4.9-3.8-5.8,3.9,0,6.9-.1,9.2-.4,2.2-.3,4.3-1.4,6.3-3.3,3.9-3.9,3.9-7.8,0-11.6l-2-2-13.4-1.7-4.1-4.1,11.6-11.6-11.6-11.6-11.6,11.6c1-2.9,1.1-5.7.3-8.4-.8-2.7-2.1-5-4.1-7-1.9-1.9-4-3-6.1-3.2-2.1-.2-4.7.2-7.6,1.2,0,1.9,0,4.5-.3,7.6-.2,3.1-.8,5.1-1.7,6.1l-1.7,1.7c-2.9-2.9-6.2-5-9.8-6.3-3.6-1.3-6.8-.4-9.8,2.5-3.9,3.9-5.1,7.2-3.6,10,1.5,2.8,4.6,6.7,9.5,11.5l-17.5,1.7c0,1.6,0,3,.3,4.4,0,1.2,0,2.4,0,3.8s0,2.5-.3,3.5l2,2c1.9,1.9,4,3.1,6.3,3.3,2.2.3,5.3.4,9.2.4-2.9,2.9-5.7,6.2-8.3,9.8-2.6,3.6-2.5,6.8.4,9.8,2.5,2.5,4.8,3.5,6.8,3.1Z" />
-                            </g>
-                        </mask>
-                    </defs>
-                    <g class="svg-mask">
-                        <path class="svg-dark"
-                            d="M5.7,38.1C2.5,44.7.6,51.1.1,57.6c-.5,6.4.4,12.6,2.7,18.6,2.3,6,5.9,11.5,10.9,16.5,5,5,10.5,8.6,16.5,10.9,6,2.3,12.2,3.2,18.6,2.7,6.4-.5,12.9-2.3,19.4-5.6,6.5-3.2,12.8-7.8,18.7-13.8,5.9-5.9,10.5-12.2,13.8-18.7,3.2-6.5,5.1-13,5.6-19.4.5-6.4-.4-12.6-2.7-18.6-2.3-6-5.9-11.5-10.9-16.5-5-5-10.5-8.6-16.5-10.9C70.2.5,64-.4,57.6.1c-6.4.5-12.9,2.3-19.4,5.6-6.5,3.2-12.8,7.8-18.7,13.8-5.9,5.9-10.5,12.2-13.8,18.7Z" />
-                    </g>
-                </svg>
-                <svg class="hero-asterisk2" viewBox="0 0 67.3 67.3">
-                    <path class="svg-yellow"
-                        d="M0,32.6s0,0,0,0c0-3.9,2.3-6.4,6.4-7.1,1.5-.2,3-.4,4.4-.5.6,0,.9-.8.5-1.3-.4-.5-.8-.9-1.1-1.3-1.3-1.6-1.9-3.7-1.9-6.1v-2.7c0-.3.1-.5.3-.6l.4-.3c.5-.4,1.1-.9,1.7-1.5l1.9-1.9c.6-.8,1.4-1.7,2.2-2.5l.6-.6c.3-.3.7-.3,1,0l7,5.7c.5.4,1.2,0,1.3-.6.2-2.8.5-5,1-6.6C26.8,1.5,29.8,0,34.7,0c3.7,0,6.5,1.7,8,4.8,1.1,2.3,1.7,4.7,1.9,7.3,0,.1.1.2.2.2h0c0,0,1,0,3.1-1.9,1.2-1.1,2.3-2,3.2-2.9,1.1-1.1,2.9-1.3,4.2-.5,1.6,1,2.9,2,3.8,3.1,1.3,1.6,1.9,3.6,1.9,6,0,2.4-.6,4.6-1.8,6.7,0,.2-.2.3-.3.5-.3.5,0,1.3.7,1.3h6.8c.4,0,.8.3.8.8v14.2c0,.4-.3.8-.8.8h-10.8c-.4,0-.8.3-.8.8v1c0,.2,0,.3.2.5l5.3,6.9c.5.6.8,1.4.8,2.2v1.5c0,2.1-.8,4.1-2.3,5.6-1.5,1.5-3.5,2.3-5.7,2.3-2.4,0-4.4-.7-6-1.9-.6-.5-1.2-1-2-1.6-.4-.4-1.1-.2-1.3.4,0,.3-.2.6-.3.9-.8,2.7-1,4-1,4.6v.4c0,.2,0,.4-.2.5l-2.7,2.7c-.1.1-.3.2-.5.2h-11.5c-.4,0-.8-.3-.8-.8v-8c0-.6-.7-1-1.2-.6-3.1,2.1-6.3,3.2-9.4,3.2-4.3,0-7.8-3.5-7.8-7.9,0-2.4.6-4.5,1.9-6.1.8-1.1,2-2.4,3.4-3.9.3-.3.3-.7,0-.9-.3-.2-.6-.3-.9-.3-1.6-.2-3.2-.5-4.9-.8-1.8-.3-3.5-1-5-1.9-.9-.5-2.3-1.2-2.7-3.4,0,0,0,0,0-.1v-3.2c0,0,0,0,0,0H0Z" />
-                </svg>
-                <svg class="hero-asterisk3" viewBox="0 0 67.3 67.3">
-                    <path class="svg-dark"
-                        d="M0,32.6s0,0,0,0c0-3.9,2.3-6.4,6.4-7.1,1.5-.2,3-.4,4.4-.5.6,0,.9-.8.5-1.3-.4-.5-.8-.9-1.1-1.3-1.3-1.6-1.9-3.7-1.9-6.1v-2.7c0-.3.1-.5.3-.6l.4-.3c.5-.4,1.1-.9,1.7-1.5l1.9-1.9c.6-.8,1.4-1.7,2.2-2.5l.6-.6c.3-.3.7-.3,1,0l7,5.7c.5.4,1.2,0,1.3-.6.2-2.8.5-5,1-6.6C26.8,1.5,29.8,0,34.7,0c3.7,0,6.5,1.7,8,4.8,1.1,2.3,1.7,4.7,1.9,7.3,0,.1.1.2.2.2h0c0,0,1,0,3.1-1.9,1.2-1.1,2.3-2,3.2-2.9,1.1-1.1,2.9-1.3,4.2-.5,1.6,1,2.9,2,3.8,3.1,1.3,1.6,1.9,3.6,1.9,6,0,2.4-.6,4.6-1.8,6.7,0,.2-.2.3-.3.5-.3.5,0,1.3.7,1.3h6.8c.4,0,.8.3.8.8v14.2c0,.4-.3.8-.8.8h-10.8c-.4,0-.8.3-.8.8v1c0,.2,0,.3.2.5l5.3,6.9c.5.6.8,1.4.8,2.2v1.5c0,2.1-.8,4.1-2.3,5.6-1.5,1.5-3.5,2.3-5.7,2.3-2.4,0-4.4-.7-6-1.9-.6-.5-1.2-1-2-1.6-.4-.4-1.1-.2-1.3.4,0,.3-.2.6-.3.9-.8,2.7-1,4-1,4.6v.4c0,.2,0,.4-.2.5l-2.7,2.7c-.1.1-.3.2-.5.2h-11.5c-.4,0-.8-.3-.8-.8v-8c0-.6-.7-1-1.2-.6-3.1,2.1-6.3,3.2-9.4,3.2-4.3,0-7.8-3.5-7.8-7.9,0-2.4.6-4.5,1.9-6.1.8-1.1,2-2.4,3.4-3.9.3-.3.3-.7,0-.9-.3-.2-.6-.3-.9-.3-1.6-.2-3.2-.5-4.9-.8-1.8-.3-3.5-1-5-1.9-.9-.5-2.3-1.2-2.7-3.4,0,0,0,0,0-.1v-3.2c0,0,0,0,0,0H0Z" />
-                </svg>
-                <svg class="hero-asterisk1" viewBox="0 0 53.9 54.6">
-                    <path class="svg-accent"
-                        d="M28.5,0c-1.9-.3-3.2.2-3.9,1.4-.5.8-.6,1.5-.5,2.3l.3,20.2-14.6-13.9c-1-.9-2.1-1.3-3.1-1.1-1,.2-1.9.8-2.6,2l-3.4,5.8c-.7,1.2-.8,2.3-.5,3.2.4,1,1.2,1.7,2.5,2.1l19.3,5.7-17.6,9.8c-.8.4-1.3,1-1.7,1.6-.8,1.3-.5,2.7.8,4.1l4.5,5.2c.8,1,1.8,1.5,2.8,1.4,1.1,0,2-.6,2.8-1.7l11.7-16.6,3.6,19.8c.2,1.5.8,2.5,1.8,3,1,.5,2.1.4,3.4-.2l6.2-2.6c.9-.3,1.6-.9,2-1.7.7-1.2.5-2.5-.6-4l-12.2-16.2,20.1,2.5c1.8.2,3-.3,3.7-1.5s.6-1.6.5-2.6l-.8-6.7c0-1.4-.5-2.4-1.5-3.1-.9-.6-2.1-.7-3.5,0l-19,6.7,8.6-18.4c.5-1.2.6-2.4.1-3.3-.5-1-1.3-1.6-2.6-1.8L28.5,0Z" />
-                </svg>
-                <svg class="hero-twine" viewBox="0 0 49.9 57.1">
-                    <path class="svg-darkstroke"
-                        d="M48.6,40.8c-6,3.3-15.7,2.5-25.9-2.3-5.9-2.8-10.9-9.2-13.9-14.4-2.5-4.2-4-9.6-1.3-14,1.9-3.2,5.6-5.4,9.5-6.4,7.4-2.1,15.7-.5,20.9,4,1.9,1.6,5.2,5.2,3,9-5.6,10-30.3,20.8-38.5,39.3" />
-                </svg>
-            </div>
-            <div class="hero-line">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3250 130">
-                    <defs>
-                        <style>
-                            .aj {
-                                isolation: isolate;
-                            }
-                        </style>
-                    </defs>
-                    <g class="aj">
-                        <g id="j">
-                            <path class="svg-darkstroke"
-                                d="M.68,51.15c42.06,33.13,110.16,15.91,135.15-32.09,6.64-12.59,1.31-15.65-9.67-10.38-13.16,6.22-24.19,18.13-29.32,32.14-.58,1.72-.97,3.48-1.03,5.26-.1,3.38,1.34,5.94,4.16,7.47,1.72.95,3.92,1.53,6.37,1.88,51.16,5.01,104.04-11.59,144.5-44.61,1.84-1.51,3.16-2.72,4.53-4.17,1.61-1.74,2.13-2.9,1.48-3.12-.66-.14-1.41.23-2.07.54-2.1,1.04-5.46,3.66-7.82,6.84-10.18,14.24-8.15,36.16,1.28,50.61,3.78,5.95,9.56,11.33,15.74,14.34,30.22,13.18,94.47,1.83,111.05-24.75,2.56-3.87,4.18-11.5-2.12-9.93-1.22.37-2.61,1.17-3.98,2.35-2.56,2.27-4.85,5.58-6.05,8.96-7.58,21.22,11.11,38.85,30.36,44.01,3.65,1.05,7.37,1.74,11.1,2.22,33.98,4,66.24-3.13,98.41-13.57,63.42-21.38,136.11-54.84,225.99-35.08,6.48,1.2,12.54,2.28,18.11,3.12,93.73,12.51,186.54,33.04,276.67,62.75,3.14,1.19,5.75,2.64,6.95,3.88,3.69,4.25-6.61,1.86-6.52-5.16,0-3.67,2.75-6.58,5.81-8.31,32.81-15.69,92.94,6.19,125.19,17.89,14.55,6.43,15.6-1.86,21.5-12.88,6.05-11.74,14.48-23.74,23.75-34.08,80.49-96.43,258.74-31.05,199.41,7.68-5.06,1.94-3.83-2.77-1.71-6.81.95-1.79,2.03-3.46,3.29-5.19,36.4-49.2,112.73,11.76,165.47,8.76,19.9-1.48,39.22-12.98,58.12-18.78,18.96-6.3,36.2-4.49,47.64,12.61,9.63,13.8,13.5,34.16,31.77,39.42,63.96,17.78,164.43-15.03,229.29-36.83,2.94-1.37,4.87-2.69,4.81-4.98-.53-3.78-5.53-6.27-9.01-7.8-22.6-9.54-55.93,6.08-60.48,31.69-.24,2.62.29,4.89,1.6,6.57,1.61,2.1,4.45,3.26,7.92,3.73,74.22,2.86,148.98-25.6,205.45-75.91.91-.81,1.8-1.62,2.62-2.38,2.19-2.02,3.86-3.69,4.74-4.45,1.07-.93,1-.53.36,1.34-.48,1.34-.86,2.63-1.26,4.08-3.01,9.72,1.11,21.1,9.49,26.77,42.8,24.61,105.68,5.72,150.69-11.27,2.43-1.14,4.12-2.38,4.66-3.6.58-1.24-.04-2.44-1.61-3.32-23.27-9.54-37.53,31.76-11.78,45.58,11.22,6.03,24.7,6.43,36.84,3.54,18.9-4.37,34.96-16.38,52.7-23.65,70.36-30.39,142.43,41.76,213.21,29.17,15.5-2.76,30.53-9.03,45.77-13.3,13.45-3.61,25.33-6.6,38.09-3.18,1.12.33,2.21.73,3.27,1.2,4.37,1.87,7.9,5.33,11.93,6.91,2.43.98,5.14,1.02,7.65.18,98.76-69.5,240.31-60.84,327.1,26.49.6.61,1.2,1.21,1.79,1.8,2.31,2.32,4.45,4.28,6.32,5.15.29.14.57.25.84.34,1.94.63,3.59-.04,5.19-1.82,1.04-1.14,2.06-2.72,3.16-4.5,13.65-25.77,56.69-31,74.63-7.73,1.33,1.78,1.92,3.15,1.73,3.65-.2.6-1.46.02-3.2-1.74-23.9-24.18,3.09-67.29,33.96-54.56,2.03.68,4.04,1.36,5.98,1.85,3.77.98,7.28,1.12,10.59-.03,2.23-.75,4.37-2.05,6.51-3.65,34.51-29.61,88.81-30.12,123.5-.88" />
-                        </g>
-                    </g>
-                </svg>
-            </div>
-            <div class="polaroid-border">
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-8.jpg" alt="Mascot 8" class="polaroid-img">
-                    <img src="images/assets/tape_8.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-1.jpg" alt="Mascot 1" class="polaroid-img">
-                    <img src="images/assets/tape_1.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-2.jpg" alt="Mascot 2" class="polaroid-img">
-                    <img src="images/assets/tape_2.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-3.jpg" alt="Mascot 3" class="polaroid-img">
-                    <img src="images/assets/tape_3.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-4.jpg" alt="Mascot 4" class="polaroid-img">
-                    <img src="images/assets/tape_4.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-5.jpg" alt="Mascot 5" class="polaroid-img">
-                    <img src="images/assets/tape_5.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-6.jpg" alt="Mascot 6" class="polaroid-img">
-                    <img src="images/assets/tape_6.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-9.jpg" alt="Mascot 9" class="polaroid-img">
-                    <img src="images/assets/tape_9.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-10.jpg" alt="Mascot 10" class="polaroid-img">
-                    <img src="images/assets/tape_10.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-11.jpg" alt="Mascot 11" class="polaroid-img">
-                    <img src="images/assets/tape_11.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-7.jpg" alt="Mascot 7" class="polaroid-img">
-                    <img src="images/assets/tape_7.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-                <div class="polaroid-wrap">
-                    <img src="images/faces/polaroid-12.jpg" alt="Mascot 12" class="polaroid-img">
-                    <img src="images/assets/tape_12.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Brand Manifesto -->
-        <section id="manifesto" class="manifesto">
-            <div class="manifesto-bg"></div> <!-- Textured background SVG -->
-            <div class="container manifesto-content">
-                <div class="manifesto-heading-wrap">
-                    <svg id="refined_design" viewBox="0 0 49.9 57.1" class="manifesto-doodle">
-                        <path class="svg-darkstroke"
-                            d="M48.6,40.8c-6,3.3-15.7,2.5-25.9-2.3-5.9-2.8-10.9-9.2-13.9-14.4-2.5-4.2-4-9.6-1.3-14,1.9-3.2,5.6-5.4,9.5-6.4,7.4-2.1,15.7-.5,20.9,4,1.9,1.6,5.2,5.2,3,9-5.6,10-30.3,20.8-38.5,39.3" />
-                    </svg>
-                    <h2>
-                        Our Promise
-                    </h2>
-                    <svg id="refined_design" viewBox="0 0 53.9 54.6" class="manifesto-star1">
-                        <path class="svg-accent"
-                            d="M28.5,0c-1.9-.3-3.2.2-3.9,1.4-.5.8-.6,1.5-.5,2.3l.3,20.2-14.6-13.9c-1-.9-2.1-1.3-3.1-1.1-1,.2-1.9.8-2.6,2l-3.4,5.8c-.7,1.2-.8,2.3-.5,3.2.4,1,1.2,1.7,2.5,2.1l19.3,5.7-17.6,9.8c-.8.4-1.3,1-1.7,1.6-.8,1.3-.5,2.7.8,4.1l4.5,5.2c.8,1,1.8,1.5,2.8,1.4,1.1,0,2-.6,2.8-1.7l11.7-16.6,3.6,19.8c.2,1.5.8,2.5,1.8,3,1,.5,2.1.4,3.4-.2l6.2-2.6c.9-.3,1.6-.9,2-1.7.7-1.2.5-2.5-.6-4l-12.2-16.2,20.1,2.5c1.8.2,3-.3,3.7-1.5s.6-1.6.5-2.6l-.8-6.7c0-1.4-.5-2.4-1.5-3.1-.9-.6-2.1-.7-3.5,0l-19,6.7,8.6-18.4c.5-1.2.6-2.4.1-3.3-.5-1-1.3-1.6-2.6-1.8L28.5,0Z" />
-                    </svg>
-                    <svg id="refined_design" viewBox="0 0 67.3 67.3" class="manifesto-star2">
-                        <path class="svg-yellow"
-                            d="M0,32.6s0,0,0,0c0-3.9,2.3-6.4,6.4-7.1,1.5-.2,3-.4,4.4-.5.6,0,.9-.8.5-1.3-.4-.5-.8-.9-1.1-1.3-1.3-1.6-1.9-3.7-1.9-6.1v-2.7c0-.3.1-.5.3-.6l.4-.3c.5-.4,1.1-.9,1.7-1.5l1.9-1.9c.6-.8,1.4-1.7,2.2-2.5l.6-.6c.3-.3.7-.3,1,0l7,5.7c.5.4,1.2,0,1.3-.6.2-2.8.5-5,1-6.6C26.8,1.5,29.8,0,34.7,0c3.7,0,6.5,1.7,8,4.8,1.1,2.3,1.7,4.7,1.9,7.3,0,.1.1.2.2.2h0c0,0,1,0,3.1-1.9,1.2-1.1,2.3-2,3.2-2.9,1.1-1.1,2.9-1.3,4.2-.5,1.6,1,2.9,2,3.8,3.1,1.3,1.6,1.9,3.6,1.9,6,0,2.4-.6,4.6-1.8,6.7,0,.2-.2.3-.3.5-.3.5,0,1.3.7,1.3h6.8c.4,0,.8.3.8.8v14.2c0,.4-.3.8-.8.8h-10.8c-.4,0-.8.3-.8.8v1c0,.2,0,.3.2.5l5.3,6.9c.5.6.8,1.4.8,2.2v1.5c0,2.1-.8,4.1-2.3,5.6-1.5,1.5-3.5,2.3-5.7,2.3-2.4,0-4.4-.7-6-1.9-.6-.5-1.2-1-2-1.6-.4-.4-1.1-.2-1.3.4,0,.3-.2.6-.3.9-.8,2.7-1,4-1,4.6v.4c0,.2,0,.4-.2.5l-2.7,2.7c-.1.1-.3.2-.5.2h-11.5c-.4,0-.8-.3-.8-.8v-8c0-.6-.7-1-1.2-.6-3.1,2.1-6.3,3.2-9.4,3.2-4.3,0-7.8-3.5-7.8-7.9,0-2.4.6-4.5,1.9-6.1.8-1.1,2-2.4,3.4-3.9.3-.3.3-.7,0-.9-.3-.2-.6-.3-.9-.3-1.6-.2-3.2-.5-4.9-.8-1.8-.3-3.5-1-5-1.9-.9-.5-2.3-1.2-2.7-3.4,0,0,0,0,0-.1v-3.2c0,0,0,0,0,0H0Z" />
-                    </svg>
-                    <svg id="refined_design" viewBox="0 0 53.9 54.6" class="manifesto-star3">
-                        <path class="svg-dark"
-                            d="M28.5,0c-1.9-.3-3.2.2-3.9,1.4-.5.8-.6,1.5-.5,2.3l.3,20.2-14.6-13.9c-1-.9-2.1-1.3-3.1-1.1-1,.2-1.9.8-2.6,2l-3.4,5.8c-.7,1.2-.8,2.3-.5,3.2.4,1,1.2,1.7,2.5,2.1l19.3,5.7-17.6,9.8c-.8.4-1.3,1-1.7,1.6-.8,1.3-.5,2.7.8,4.1l4.5,5.2c.8,1,1.8,1.5,2.8,1.4,1.1,0,2-.6,2.8-1.7l11.7-16.6,3.6,19.8c.2,1.5.8,2.5,1.8,3,1,.5,2.1.4,3.4-.2l6.2-2.6c.9-.3,1.6-.9,2-1.7.7-1.2.5-2.5-.6-4l-12.2-16.2,20.1,2.5c1.8.2,3-.3,3.7-1.5s.6-1.6.5-2.6l-.8-6.7c0-1.4-.5-2.4-1.5-3.1-.9-.6-2.1-.7-3.5,0l-19,6.7,8.6-18.4c.5-1.2.6-2.4.1-3.3-.5-1-1.3-1.6-2.6-1.8L28.5,0Z" />
-                    </svg>
-                    <svg id="refined_design" viewBox="0 0 67.3 67.3" class="manifesto-star4">
-                        <path class="svg-pastel"
-                            d="M0,32.6s0,0,0,0c0-3.9,2.3-6.4,6.4-7.1,1.5-.2,3-.4,4.4-.5.6,0,.9-.8.5-1.3-.4-.5-.8-.9-1.1-1.3-1.3-1.6-1.9-3.7-1.9-6.1v-2.7c0-.3.1-.5.3-.6l.4-.3c.5-.4,1.1-.9,1.7-1.5l1.9-1.9c.6-.8,1.4-1.7,2.2-2.5l.6-.6c.3-.3.7-.3,1,0l7,5.7c.5.4,1.2,0,1.3-.6.2-2.8.5-5,1-6.6C26.8,1.5,29.8,0,34.7,0c3.7,0,6.5,1.7,8,4.8,1.1,2.3,1.7,4.7,1.9,7.3,0,.1.1.2.2.2h0c0,0,1,0,3.1-1.9,1.2-1.1,2.3-2,3.2-2.9,1.1-1.1,2.9-1.3,4.2-.5,1.6,1,2.9,2,3.8,3.1,1.3,1.6,1.9,3.6,1.9,6,0,2.4-.6,4.6-1.8,6.7,0,.2-.2.3-.3.5-.3.5,0,1.3.7,1.3h6.8c.4,0,.8.3.8.8v14.2c0,.4-.3.8-.8.8h-10.8c-.4,0-.8.3-.8.8v1c0,.2,0,.3.2.5l5.3,6.9c.5.6.8,1.4.8,2.2v1.5c0,2.1-.8,4.1-2.3,5.6-1.5,1.5-3.5,2.3-5.7,2.3-2.4,0-4.4-.7-6-1.9-.6-.5-1.2-1-2-1.6-.4-.4-1.1-.2-1.3.4,0,.3-.2.6-.3.9-.8,2.7-1,4-1,4.6v.4c0,.2,0,.4-.2.5l-2.7,2.7c-.1.1-.3.2-.5.2h-11.5c-.4,0-.8-.3-.8-.8v-8c0-.6-.7-1-1.2-.6-3.1,2.1-6.3,3.2-9.4,3.2-4.3,0-7.8-3.5-7.8-7.9,0-2.4.6-4.5,1.9-6.1.8-1.1,2-2.4,3.4-3.9.3-.3.3-.7,0-.9-.3-.2-.6-.3-.9-.3-1.6-.2-3.2-.5-4.9-.8-1.8-.3-3.5-1-5-1.9-.9-.5-2.3-1.2-2.7-3.4,0,0,0,0,0-.1v-3.2c0,0,0,0,0,0H0Z" />
-                    </svg>
-                    <svg id="refined_design" viewBox="0 0 53.9 54.6" class="manifesto-star5">
-                        <path class="svg-teal"
-                            d="M28.5,0c-1.9-.3-3.2.2-3.9,1.4-.5.8-.6,1.5-.5,2.3l.3,20.2-14.6-13.9c-1-.9-2.1-1.3-3.1-1.1-1,.2-1.9.8-2.6,2l-3.4,5.8c-.7,1.2-.8,2.3-.5,3.2.4,1,1.2,1.7,2.5,2.1l19.3,5.7-17.6,9.8c-.8.4-1.3,1-1.7,1.6-.8,1.3-.5,2.7.8,4.1l4.5,5.2c.8,1,1.8,1.5,2.8,1.4,1.1,0,2-.6,2.8-1.7l11.7-16.6,3.6,19.8c.2,1.5.8,2.5,1.8,3,1,.5,2.1.4,3.4-.2l6.2-2.6c.9-.3,1.6-.9,2-1.7.7-1.2.5-2.5-.6-4l-12.2-16.2,20.1,2.5c1.8.2,3-.3,3.7-1.5s.6-1.6.5-2.6l-.8-6.7c0-1.4-.5-2.4-1.5-3.1-.9-.6-2.1-.7-3.5,0l-19,6.7,8.6-18.4c.5-1.2.6-2.4.1-3.3-.5-1-1.3-1.6-2.6-1.8L28.5,0Z" />
-                    </svg>
-                </div>
-                <div class="manifesto-main">
-                    <div class="manifesto-text">
-                        <p>
-                            We believe in the magic of fandom and the joy of handmade crafts. Our mission is to create
-                            one-of-a-kind crochet mascots that resonate with your personal stories and cherished
-                            memories. Each doll is a labor of love, meticulously crafted in our village near Somerset,
-                            UK, and designed to bring smiles to fans of all ages. Join our community of enthusiasts who
-                            celebrate creativity and individuality!
-                        </p>
-                        <button class="button-secondary manifesto-cta" onclick="window.location.href='about.html'">
-                            Get to know me better
-                        </button>
-                    </div>
-                    <div class="manifesto-image-wrap">
-                        <img src="images/finished/manifesto-landscape.jpg" alt="Handmade mascots in the workshop"
-                            class="manifesto-landscape">
-                        <img src="images/assets/tape_face.svg" alt="" class="manifesto-stamp" aria-hidden="true">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Process Banner -->
-        <section id="process" class="process-banner">
-            <div class="container process-content">
-                <div class="polaroid-process-container">
-                    <div class="process-wrap process-left">
-                        <img src="images/faces/polaroid-8.jpg" alt="Mascot 8" class="polaroid-img">
-                        <img src="images/assets/tape_8.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                    </div>
-                    <div class="process-wrap process-right">
-                        <img src="images/faces/polaroid-1.jpg" alt="Mascot 1" class="polaroid-img">
-                        <img src="images/assets/tape_1.svg" alt="" class="polaroid-tape tape-top" aria-hidden="true">
-                    </div>
-                </div>
-                <h3>How Does It Work?</h3>
-                <p>From your idea to your doorstep in just a few easy steps.</p>
-                <div class="button-group">
-                    <button class="button-primary" type="button" onclick="window.location.href='order.html'">
-                        Start Your Order
-                    </button>
-                    <button class="button-primary-ghost" type="button" onclick="window.location.href='how-to.html'">
-                        See How It's Made
-                    </button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Featured Mascots Gallery -->
-        <section id="featured" class="featured-gallery">
-            <div class="container-fullwidth">
-                <h2>Featured Mascots</h2>
-                <div class="gallery-scroll-wrapper">
-                    <!-- GALLERY NAV -->
-                    <button class="carousel-nav prev gallery-arrow-left" id="prevBtn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-nav next gallery-arrow-right" id="nextBtn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                    <div class="gallery-scroll" id="gallery-scroll">
-                        <div class="gallery-item">
-                            <div class="gallery-polaroid">
-                                <img src="/images/faces/polaroid-5.jpg" alt="Dog mascot" class="gallery-polaroid-img">
-                                <img src="images/assets/tape_5.svg" alt="" class="gallery-polaroid-tape"
-                                    aria-hidden="true">
-                                <h4 class="polaroid-caption">Friends & Fam</h4>
-                                <button type="submit" class="button-secondary">View</button>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <div class="gallery-polaroid">
-                                <img src="/images/faces/polaroid-6.jpg" alt="Dog mascot" class="gallery-polaroid-img">
-                                <img src="images/assets/tape_6.svg" alt="" class="gallery-polaroid-tape"
-                                    aria-hidden="true">
-                                <h4 class="polaroid-caption">Creatures</h4>
-                                <button type="submit" class="button-secondary">View</button>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <div class="gallery-polaroid">
-                                <img src="/images/faces/polaroid-7.jpg" alt="Dog mascot" class="gallery-polaroid-img">
-                                <img src="images/assets/tape_7.svg" alt="" class="gallery-polaroid-tape"
-                                    aria-hidden="true">
-                                <h4 class="polaroid-caption">Fandom</h4>
-                                <button type="submit" class="button-secondary">View</button>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <div class="gallery-polaroid">
-                                <img src="/images/faces/polaroid-11.jpg" alt="Dog mascot" class="gallery-polaroid-img">
-                                <img src="images/assets/tape_11.svg" alt="" class="gallery-polaroid-tape"
-                                    aria-hidden="true">
-                                <h4 class="polaroid-caption">Originals</h4>
-                                <button type="submit" class="button-secondary">View</button>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <div class="gallery-polaroid">
-                                <img src="/images/faces/polaroid-9.jpg" alt="Dog mascot" class="gallery-polaroid-img">
-                                <img src="images/assets/tape_9.svg" alt="" class="gallery-polaroid-tape"
-                                    aria-hidden="true">
-                                <h4 class="polaroid-caption">Movies</h4>
-                                <button type="submit" class="button-secondary">View</button>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <div class="gallery-polaroid">
-                                <img src="/images/faces/polaroid-4.jpg" alt="Dog mascot" class="gallery-polaroid-img">
-                                <img src="images/assets/tape_4.svg" alt="" class="gallery-polaroid-tape"
-                                    aria-hidden="true">
-                                <h4 class="polaroid-caption">Artists</h4>
-                                <button type="submit" class="button-secondary">View</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-scroll-indicator">
-                        <div class="gallery-scroll-bar">
-                            <div class="gallery-scroll-thumb"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section id="testimonials" class="testimonials">
+        <!-- Blog Header with Pattern Background -->
+        <section class="blog-header">
+            <div class="blog-bg"></div>
             <div class="container">
-                <h2>What Our Customers Say</h2>
-                <div class="testimonials-masonry">
-                    <figure class="testimonial-item">
-                        <img src="/images/reviews/review01.png" alt="Instagram feedback">
-                    </figure>
-                    <figure class="testimonial-item">
-                        <img src="/images/reviews/review02.png" alt="Instagram feedback">
-                    </figure>
-                    <figure class="testimonial-item">
-                        <img src="/images/reviews/review03.png" alt="Instagram feedback">
-                    </figure>
-                    <figure class="testimonial-item">
-                        <img src="/images/reviews/review04.png" alt="Instagram feedback">
-                    </figure>
-                    <figure class="testimonial-item">
-                        <img src="/images/reviews/review02.png" alt="Instagram feedback">
-                    </figure>
-                    <figure class="testimonial-item">
-                        <img src="/images/reviews/review03.png" alt="Instagram feedback">
-                    </figure>
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <a href="/blog">Blog</a>
+                    <span>/</span>
+                    <span>Behind the Scenes: How a Mascot is Born</span>
+                </nav>
+
+                <!-- Hero Section -->
+                <div class="blog-hero">
+                    <h1>Behind the Scenes: How a Mascot is Born</h1>
+
+                    <div class="blog-meta">
+                        <time datetime="2024-05-12">12 May 2024</time>
+                        <div class="blog-tags">
+                            <span class="tag">Workshop</span>
+                            <span class="tag">Behind the Scenes</span>
+                        </div>
+                    </div>
+
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIzMDAiIHJ4PSI4IiBmaWxsPSIjRkVGOUVEIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCI+QmxvZyBIZXJvIEltYWdlPC90ZXh0Pgo8L3N2Zz4="
+                        alt="Behind the Scenes: How a Mascot is Born" class="hero-image">
                 </div>
             </div>
         </section>
 
+        <!-- Main Content -->
+        <div class="container">
+            <div class="blog-content-wrapper">
+                <!-- Article Content -->
+                <article class="blog-content">
+                    <p>Peek into the creative process and see how your mascot comes to life, from sketch to stitch.
+                        Discover
+                        the care and craftsmanship that goes into every custom creation, making each mascot truly
+                        one-of-a-kind.</p>
 
-        <!-- Blog Preview -->
-        <section id="blog" class="blog-preview">
-            <div class="blog-bg"></div> <!-- Textured background SVG -->
-            <div class="container">
-                <h2>From the Workshop</h2>
-                <div class="blog-cards">
-                    <article class="blog-card">
-                        <img src="images/faces/polaroid-1.jpg" alt="Blog post 1">
-                        <div class="blog-meta">
-                            <time datetime="2024-05-12">12 May 2024</time>
-                            <span class="blog-tags">
-                                <span class="tag">Workshop</span>
-                                <span class="tag">Behind the Scenes</span>
-                            </span>
-                        </div>
-                        <h4>Behind the Scenes: How a Mascot is Born</h4>
-                        <p>Peek into the creative process and see how your mascot comes to life, from sketch to stitch.
-                            Discover the care and creativity that goes into every step of the journey.</p>
-                        <button class="button-secondary">
-                            Read More
-                        </button>
-                    </article>
-                    <article class="blog-card">
-                        <img src="images/instagram/mascot-collages-FAH2.jpg" alt="Blog post 2">
-                        <div class="blog-meta">
-                            <time datetime="2024-05-12">12 May 2024</time>
-                            <span class="blog-tags">
-                                <span class="tag">Workshop</span>
-                                <span class="tag">Behind the Scenes</span>
-                            </span>
-                        </div>
-                        <h4>Behind the Scenes: How a Mascot is Born</h4>
-                        <p>Peek into the creative process and see how your mascot comes to life, from sketch to stitch.
-                            Discover the care and creativity that goes into every step of the journey…</p>
-                        <button class="button-secondary">
-                            Read More
-                        </button>
-                    </article>
-                    <article class="blog-card">
-                        <img src="images/process/process-bodies.jpg" alt="Blog post 3">
-                        <div class="blog-meta">
-                            <time datetime="2024-05-12">12 May 2024</time>
-                            <span class="blog-tags">
-                                <span class="tag">Workshop</span>
-                                <span class="tag">Behind the Scenes</span>
-                            </span>
-                        </div>
-                        <h4>Behind the Scenes: How a Mascot is Born</h4>
-                        <p>Peek into the creative process and see how your mascot comes to life, from sketch to stitch.
-                            Discover the care and creativity that goes into every step of the journey…</p>
-                        <button class="button-secondary">
-                            Read More
-                        </button>
-                    </article>
-                </div>
-            </div>
-        </section>
+                    <h2>The Initial Concept</h2>
+                    <p>Every mascot begins with a conversation. We sit down with our clients to understand their vision,
+                        their brand personality, and the story they want their mascot to tell. This collaborative
+                        process is
+                        the foundation of everything that follows.</p>
 
-        <!-- Newsletter Banner -->
-        <section id="newsletter" class="newsletter-banner">
-            <div class="newsletter-graphics">
-                <svg class="newsletter-hook" viewBox="0 0 54.9 279.1">
-                    <path class="svg-dark"
-                        d="M38.3,241.6c.4,10.8-3,24.7-9.5,33.4-1.9,2.6-7.8,6.2-10.4,2.6-4.1-5.7-4.9-24.5-5.1-31.9.1-10.3.3-44.7.2-77.5h21.2c0,11.3.3,30.7.1,38.5-4.3,12.2-9.7,27-7.9,40.1,1.2,9,4.3,4.2,5.6-1.6.5-2.1,1.2-12.3,3.1-12.8,2.1-.5,2.8,7.7,2.8,9.1h0Z" />
-                    <path class="svg-yellow"
-                        d="M13.5,168.2c0-11.1-.2-34-.4-46.6-5.1-39.4-6.4-58.5-6.3-67.8.3-12.7.3-38.1,7.9-48.1,5.1-6.7,17.9-8.5,21.4.3,4.4,10.9,4.3,32.5,4.5,44.7,0,9.4-1.1,26.5-6.1,65,0,16.8,0,41.3.2,52.5H13.5Z" />
-                </svg>
-                <svg class="newsletter-eye" viewBox="0 0 106.4 106.4">
-                    <defs>
-                        <filter id="luminosity-noclip" x="0" y="0" width="106.4" height="106.4"
-                            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-                            <feFlood flood-color="#fff" result="bg" />
-                            <feBlend in="SourceGraphic" in2="bg" />
-                        </filter>
-                        <mask id="mask" x="0" y="0" width="106.4" height="106.4" maskUnits="userSpaceOnUse">
-                            <g class="svg-clip">
-                                <path
-                                    d="M28.9,85.4c2-.5,4-1.4,5.8-2.6,1.8-1.3,3.6-2.5,5.2-3.8,1.7-1.3,3.5-1.4,5.7-.4,0,3.9.1,6.9.4,9.2.3,2.2,1.4,4.3,3.3,6.3,3.9,3.9,7.8,3.9,11.6,0s5.8-9.7,5.8-17.5l11.6,11.6,9.6-9.6v-4.1c-1-1-2.2-2.9-3.8-5.8-1.6-2.9-2.8-4.9-3.8-5.8,3.9,0,6.9-.1,9.2-.4,2.2-.3,4.3-1.4,6.3-3.3,3.9-3.9,3.9-7.8,0-11.6l-2-2-13.4-1.7-4.1-4.1,11.6-11.6-11.6-11.6-11.6,11.6c1-2.9,1.1-5.7.3-8.4-.8-2.7-2.1-5-4.1-7-1.9-1.9-4-3-6.1-3.2-2.1-.2-4.7.2-7.6,1.2,0,1.9,0,4.5-.3,7.6-.2,3.1-.8,5.1-1.7,6.1l-1.7,1.7c-2.9-2.9-6.2-5-9.8-6.3-3.6-1.3-6.8-.4-9.8,2.5-3.9,3.9-5.1,7.2-3.6,10,1.5,2.8,4.6,6.7,9.5,11.5l-17.5,1.7c0,1.6,0,3,.3,4.4,0,1.2,0,2.4,0,3.8s0,2.5-.3,3.5l2,2c1.9,1.9,4,3.1,6.3,3.3,2.2.3,5.3.4,9.2.4-2.9,2.9-5.7,6.2-8.3,9.8-2.6,3.6-2.5,6.8.4,9.8,2.5,2.5,4.8,3.5,6.8,3.1Z" />
-                            </g>
-                        </mask>
-                    </defs>
-                    <g class="svg-mask">
-                        <path class="svg-dark"
-                            d="M5.7,38.1C2.5,44.7.6,51.1.1,57.6c-.5,6.4.4,12.6,2.7,18.6,2.3,6,5.9,11.5,10.9,16.5,5,5,10.5,8.6,16.5,10.9,6,2.3,12.2,3.2,18.6,2.7,6.4-.5,12.9-2.3,19.4-5.6,6.5-3.2,12.8-7.8,18.7-13.8,5.9-5.9,10.5-12.2,13.8-18.7,3.2-6.5,5.1-13,5.6-19.4.5-6.4-.4-12.6-2.7-18.6-2.3-6-5.9-11.5-10.9-16.5-5-5-10.5-8.6-16.5-10.9C70.2.5,64-.4,57.6.1c-6.4.5-12.9,2.3-19.4,5.6-6.5,3.2-12.8,7.8-18.7,13.8-5.9,5.9-10.5,12.2-13.8,18.7Z" />
-                    </g>
-                </svg>
-                <svg class="newsletter-asterisk2" viewBox="0 0 67.3 67.3">
-                    <path class="svg-yellow"
-                        d="M0,32.6s0,0,0,0c0-3.9,2.3-6.4,6.4-7.1,1.5-.2,3-.4,4.4-.5.6,0,.9-.8.5-1.3-.4-.5-.8-.9-1.1-1.3-1.3-1.6-1.9-3.7-1.9-6.1v-2.7c0-.3.1-.5.3-.6l.4-.3c.5-.4,1.1-.9,1.7-1.5l1.9-1.9c.6-.8,1.4-1.7,2.2-2.5l.6-.6c.3-.3.7-.3,1,0l7,5.7c.5.4,1.2,0,1.3-.6.2-2.8.5-5,1-6.6C26.8,1.5,29.8,0,34.7,0c3.7,0,6.5,1.7,8,4.8,1.1,2.3,1.7,4.7,1.9,7.3,0,.1.1.2.2.2h0c0,0,1,0,3.1-1.9,1.2-1.1,2.3-2,3.2-2.9,1.1-1.1,2.9-1.3,4.2-.5,1.6,1,2.9,2,3.8,3.1,1.3,1.6,1.9,3.6,1.9,6,0,2.4-.6,4.6-1.8,6.7,0,.2-.2.3-.3.5-.3.5,0,1.3.7,1.3h6.8c.4,0,.8.3.8.8v14.2c0,.4-.3.8-.8.8h-10.8c-.4,0-.8.3-.8.8v1c0,.2,0,.3.2.5l5.3,6.9c.5.6.8,1.4.8,2.2v1.5c0,2.1-.8,4.1-2.3,5.6-1.5,1.5-3.5,2.3-5.7,2.3-2.4,0-4.4-.7-6-1.9-.6-.5-1.2-1-2-1.6-.4-.4-1.1-.2-1.3.4,0,.3-.2.6-.3.9-.8,2.7-1,4-1,4.6v.4c0,.2,0,.4-.2.5l-2.7,2.7c-.1.1-.3.2-.5.2h-11.5c-.4,0-.8-.3-.8-.8v-8c0-.6-.7-1-1.2-.6-3.1,2.1-6.3,3.2-9.4,3.2-4.3,0-7.8-3.5-7.8-7.9,0-2.4.6-4.5,1.9-6.1.8-1.1,2-2.4,3.4-3.9.3-.3.3-.7,0-.9-.3-.2-.6-.3-.9-.3-1.6-.2-3.2-.5-4.9-.8-1.8-.3-3.5-1-5-1.9-.9-.5-2.3-1.2-2.7-3.4,0,0,0,0,0-.1v-3.2c0,0,0,0,0,0H0Z" />
-                </svg>
-                <svg class="newsletter-asterisk3" viewBox="0 0 67.3 67.3">
-                    <path class="svg-teal"
-                        d="M0,32.6s0,0,0,0c0-3.9,2.3-6.4,6.4-7.1,1.5-.2,3-.4,4.4-.5.6,0,.9-.8.5-1.3-.4-.5-.8-.9-1.1-1.3-1.3-1.6-1.9-3.7-1.9-6.1v-2.7c0-.3.1-.5.3-.6l.4-.3c.5-.4,1.1-.9,1.7-1.5l1.9-1.9c.6-.8,1.4-1.7,2.2-2.5l.6-.6c.3-.3.7-.3,1,0l7,5.7c.5.4,1.2,0,1.3-.6.2-2.8.5-5,1-6.6C26.8,1.5,29.8,0,34.7,0c3.7,0,6.5,1.7,8,4.8,1.1,2.3,1.7,4.7,1.9,7.3,0,.1.1.2.2.2h0c0,0,1,0,3.1-1.9,1.2-1.1,2.3-2,3.2-2.9,1.1-1.1,2.9-1.3,4.2-.5,1.6,1,2.9,2,3.8,3.1,1.3,1.6,1.9,3.6,1.9,6,0,2.4-.6,4.6-1.8,6.7,0,.2-.2.3-.3.5-.3.5,0,1.3.7,1.3h6.8c.4,0,.8.3.8.8v14.2c0,.4-.3.8-.8.8h-10.8c-.4,0-.8.3-.8.8v1c0,.2,0,.3.2.5l5.3,6.9c.5.6.8,1.4.8,2.2v1.5c0,2.1-.8,4.1-2.3,5.6-1.5,1.5-3.5,2.3-5.7,2.3-2.4,0-4.4-.7-6-1.9-.6-.5-1.2-1-2-1.6-.4-.4-1.1-.2-1.3.4,0,.3-.2.6-.3.9-.8,2.7-1,4-1,4.6v.4c0,.2,0,.4-.2.5l-2.7,2.7c-.1.1-.3.2-.5.2h-11.5c-.4,0-.8-.3-.8-.8v-8c0-.6-.7-1-1.2-.6-3.1,2.1-6.3,3.2-9.4,3.2-4.3,0-7.8-3.5-7.8-7.9,0-2.4.6-4.5,1.9-6.1.8-1.1,2-2.4,3.4-3.9.3-.3.3-.7,0-.9-.3-.2-.6-.3-.9-.3-1.6-.2-3.2-.5-4.9-.8-1.8-.3-3.5-1-5-1.9-.9-.5-2.3-1.2-2.7-3.4,0,0,0,0,0-.1v-3.2c0,0,0,0,0,0H0Z" />
-                </svg>
-                <svg class="newsletter-asterisk1" viewBox="0 0 53.9 54.6">
-                    <path class="svg-yarn"
-                        d="M28.5,0c-1.9-.3-3.2.2-3.9,1.4-.5.8-.6,1.5-.5,2.3l.3,20.2-14.6-13.9c-1-.9-2.1-1.3-3.1-1.1-1,.2-1.9.8-2.6,2l-3.4,5.8c-.7,1.2-.8,2.3-.5,3.2.4,1,1.2,1.7,2.5,2.1l19.3,5.7-17.6,9.8c-.8.4-1.3,1-1.7,1.6-.8,1.3-.5,2.7.8,4.1l4.5,5.2c.8,1,1.8,1.5,2.8,1.4,1.1,0,2-.6,2.8-1.7l11.7-16.6,3.6,19.8c.2,1.5.8,2.5,1.8,3,1,.5,2.1.4,3.4-.2l6.2-2.6c.9-.3,1.6-.9,2-1.7.7-1.2.5-2.5-.6-4l-12.2-16.2,20.1,2.5c1.8.2,3-.3,3.7-1.5s.6-1.6.5-2.6l-.8-6.7c0-1.4-.5-2.4-1.5-3.1-.9-.6-2.1-.7-3.5,0l-19,6.7,8.6-18.4c.5-1.2.6-2.4.1-3.3-.5-1-1.3-1.6-2.6-1.8L28.5,0Z" />
-                </svg>
-                <svg class="newsletter-twine" viewBox="0 0 49.9 57.1">
-                    <path class="svg-darkstroke"
-                        d="M48.6,40.8c-6,3.3-15.7,2.5-25.9-2.3-5.9-2.8-10.9-9.2-13.9-14.4-2.5-4.2-4-9.6-1.3-14,1.9-3.2,5.6-5.4,9.5-6.4,7.4-2.1,15.7-.5,20.9,4,1.9,1.6,5.2,5.2,3,9-5.6,10-30.3,20.8-38.5,39.3" />
-                </svg>
-            </div>
-            <div class="newsletter-inner">
-                <img class="newsletter-mascot" src="images/assets/tape_face.svg" alt="Mascot">
-                <h3>Stay in the Loop!</h3>
-                <p class="newsletter-microcopy">Sign up for exclusive updates, behind-the-scenes peeks, and special
-                    offers from the workshop.</p>
-                <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true"
-                    netlify-honeypot="bot-field" action="">
-                    <!-- Hidden input for Netlify bot protection -->
-                    <input type="hidden" name="form-name" value="newsletter">
-                    <p style="display:none;">
-                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    <p>During this phase, we explore color schemes, personality traits, and functional requirements.
+                        Will
+                        this mascot need to be poseable? Should it have removable accessories? These details matter
+                        immensely in the final design.</p>
+
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDYwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyMDAiIHJ4PSI4IiBmaWxsPSIjRkVGOUVEIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiI+U2tldGNoaW5nIFByb2Nlc3M8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Initial sketching process showing various mascot concepts">
+                    <p class="pinterest-caption">Initial concept sketches - perfect for Pinterest inspiration boards!
                     </p>
-                    <input type="text" name="firstName" placeholder="First Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" name="gdpr" required> <span class="checkmark"></span>
-                        I agree to receive emails from My Mini Mascots and understand I can unsubscribe at any time.
-                    </label>
-                    <button type="submit" class="button-primary">Subscribe</button>
-                </form>
 
+                    <h3>From Sketch to Pattern</h3>
+                    <p>Once we've agreed on the design direction, our artists create detailed sketches from multiple
+                        angles.
+                        These sketches become the blueprint for creating the crochet pattern - a meticulous process that
+                        requires both artistic vision and technical expertise.</p>
+
+                    <p>Each body part is carefully mapped out, considering how the pieces will connect and ensuring the
+                        proportions will work in three dimensions. This stage often involves several iterations to
+                        perfect
+                        the design.</p>
+
+                    <h2>The Art of Crochet Pattern Design</h2>
+                    <p>Creating a crochet pattern for a custom mascot is unlike following a standard pattern from a
+                        book.
+                        Every mascot is unique, requiring custom calculations for sizing, shaping, and construction
+                        techniques.</p>
+
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDYwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyMDAiIHJ4PSI4IiBmaWxsPSIjRkVGOUVEIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiI+WWFybiBTZWxlY3Rpb24gJiBDb2xvciBQYWxldHRlPC90ZXh0Pgo8L3N2Zz4="
+                        alt="Yarn selection and color palette planning">
+                    <p class="pinterest-caption">Choosing the perfect yarn colors - great for color inspiration pins!
+                    </p>
+
+                    <h4>Material Selection</h4>
+                    <p>The choice of yarn is crucial to the final product. We consider factors like durability, color
+                        fastness, texture, and how well different yarns work together. For mascots that will see heavy
+                        use,
+                        we often recommend cotton blends for their washability and durability.</p>
+
+                    <h3>Bringing It to Life</h3>
+                    <p>The actual creation process can take anywhere from 20 to 80 hours, depending on the complexity of
+                        the
+                        design. Every stitch is placed with intention, every color change carefully planned to create
+                        the
+                        desired effect.</p>
+
+                    <p>As the mascot takes shape, we often make small adjustments to ensure the proportions look right
+                        in
+                        reality, not just on paper. This is where experience and artistic intuition become invaluable.
+                    </p>
+
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDYwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi0vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyMDAiIHJ4PSI4IiBmaWxsPSIjRkVGOUVEIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiI+RmluYWwgQXNzZW1ibHkgJiBEZXRhaWxzPC90ZXh0Pgo8L3N2Zz4="
+                        alt="Final assembly and detail work on the completed mascot">
+                    <p class="pinterest-caption">The finished mascot ready for its new home - perfect for showcasing
+                        craftsmanship!</p>
+
+                    <h2>The Final Touches</h2>
+                    <p>The last stage involves adding all the small details that bring personality to the mascot -
+                        embroidered features, carefully positioned accessories, and final quality checks to ensure
+                        everything is perfect.</p>
+
+                    <p>Each mascot undergoes a thorough inspection before shipping, and we include care instructions to
+                        help
+                        ensure your mascot stays looking its best for years to come.</p>
+
+                    <!-- Social Sharing -->
+                    <div class="social-share">
+                        <button class="share-button share-pinterest" onclick="shareOnPinterest()"
+                            title="Share on Pinterest">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </button>
+                        <button class="share-button share-facebook" onclick="shareOnFacebook()"
+                            title="Share on Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </button>
+                        <button class="share-button share-instagram" onclick="shareOnInstagram()"
+                            title="Share on Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Categories -->
+                    <div class="sidebar-section">
+                        <h3>Categories</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <a href="/blog/category/workshop"
+                                style="color: var(--primary-accent-dark); text-decoration: none;">Workshop (5)</a>
+                            <a href="/blog/category/behind-the-scenes"
+                                style="color: var(--primary-accent-dark); text-decoration: none;">Behind the Scenes
+                                (3)</a>
+                            <a href="/blog/category/tutorials"
+                                style="color: var(--primary-accent-dark); text-decoration: none;">Tutorials (7)</a>
+                            <a href="/blog/category/inspiration"
+                                style="color: var(--primary-accent-dark); text-decoration: none;">Inspiration (4)</a>
+                        </div>
+                    </div>
+
+                    <!-- Related Posts -->
+                    <div class="sidebar-section">
+                        <h3>Related Posts</h3>
+                        <div class="related-posts">
+                            <a href="/blog/choosing-the-right-yarn" class="blog-card-small">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDI4MCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI4MCIgcng9IjQiIGZpbGw9IiNGRUY5RUQiLz4KPHR5cGVYPSIxNDAiIHk9IjY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+WWFybiBTZWxlY3Rpb248L3RleHQ+Cjwvc3ZnPg=="
+                                    alt="Choosing the Right Yarn">
+                                <h4>Choosing the Right Yarn for Your Project</h4>
+                                <p>A comprehensive guide to selecting the perfect materials for long-lasting, beautiful
+                                    mascots.</p>
+                                <div class="blog-meta">
+                                    <time datetime="2024-05-08">8 May 2024</time>
+                                    <div class="blog-tags">
+                                        <span class="tag">Tutorial</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/blog/color-theory-mascots" class="blog-card-small">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDI4MCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI4MCIgcng9IjQiIGZpbGw9IiNGRUY5RUQiLz4KPHR5cGVYPSIxNDAiIHk9IjY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+Q29sb3IgVGhlb3J5PC90ZXh0Pgo8L3N2Zz4="
+                                    alt="Color Theory for Mascots">
+                                <h4>Color Theory in Mascot Design</h4>
+                                <p>Understanding how colors work together to create mascots that truly represent your
+                                    brand.
+                                </p>
+                                <div class="blog-meta">
+                                    <time datetime="2024-05-05">5 May 2024</time>
+                                    <div class="blog-tags">
+                                        <span class="tag">Design</span>
+                                        <span class="tag">Inspiration</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/blog/mascot-care-guide" class="blog-card-small">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDI4MCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjNFQUUwIi8+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI4MCIgcng9IjQiIGZpbGw9IiNGRUY5RUQiLz4KPHR5cGVYPSIxNDAiIHk9IjY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2NDYzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+Q2FyZSBHdWlkZTwvdGV4dD4KPC9zdmc+"
+                                    alt="Mascot Care Guide">
+                                <h4>How to Care for Your Crochet Mascot</h4>
+                                <p>Essential tips for keeping your mascot looking fresh and vibrant for years to come.
+                                </p>
+                                <div class="blog-meta">
+                                    <time datetime="2024-05-01">1 May 2024</time>
+                                    <div class="blog-tags">
+                                        <span class="tag">Care Tips</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="sidebar-section">
+                        <h3>Stay Updated</h3>
+                        <p style="font-size: var(--font-size-micro); margin-bottom: 1.5rem; color: var(--gray-medium);">
+                            Get
+                            the latest blog posts and behind-the-scenes content delivered to your inbox.</p>
+                        <form style="display: flex; flex-direction: column; gap: 1rem;">
+                            <input type="email" placeholder="Your email address"
+                                style="padding: 0.75rem; border: 2px solid var(--gray-light); border-radius: var(--inputfield-radius); font-size: var(--font-size-micro);">
+                            <button type="submit" class="button-secondary">Subscribe</button>
+                        </form>
+                    </div>
+                </aside>
             </div>
-        </section>
-
-
-        <!-- Action Banner -->
-        <section id="action" class="action-banner">
-            <div class="container action-content">
-                <h3>Ready to Create Your Mascot?</h3>
-                <button class="button-primary" type="button" onclick="window.location.href='order.html'">
-                    Start Your Order
-                </button>
-            </div>
-        </section>
-
+        </div>
     </main>
+
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -640,6 +389,7 @@
 
 
     <script src="main.js"></script>
+    <script src="blog.js"></script>
     <!-- Fontawesome Icons -->
     <script src="https://kit.fontawesome.com/7118d8a9c9.js" crossorigin="anonymous"></script>
 </body>

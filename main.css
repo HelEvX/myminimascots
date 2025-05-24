@@ -140,6 +140,11 @@ p {
     margin-bottom: 0.8rem;
 }
 
+a {
+    color: var(--primary-accent-dark);
+    text-decoration: underline;
+}
+
 /* Logo */
 
 .nav-logo-stroke {

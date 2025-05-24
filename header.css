@@ -3,7 +3,7 @@
     color: var(--bg-light);
 }
 
-a {
+.header a {
     text-decoration: none;
     color: inherit;
     white-space: nowrap;

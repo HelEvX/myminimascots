@@ -16,6 +16,8 @@
 
 .site-footer a {
     color: var(--secondary-accent);
+    text-decoration: none;
+    font-size: var(--font-size-small-ui);
 }
 
 .footer-middle {
