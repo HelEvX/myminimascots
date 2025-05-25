@@ -139,11 +139,20 @@ class FinishedCarousel {
     }
 }
 
+function createSeamlessScroll() {
+    const track = document.getElementById('testimonials-track');
+    if (!track) return;
+    const cards = Array.from(track.children); // static array
+
+    // Only clone the original cards, not the clones
+    for (let i = 0; i < cards.length; i++) {
+        const clone = cards[i].cloneNode(true);
+        track.appendChild(clone);
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Initialize the Finished carousel
-    new FinishedCarousel();
 
     // Process Steps
     const stepTiles = document.querySelectorAll('.step-tile');
@@ -160,4 +169,12 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('.step-detail[data-step="' + step + '"]').classList.add('active');
         });
     });
+
+    // Initialize the Finished carousel
+    new FinishedCarousel();
+
+    // Initialise Testimonials Scroll
+    createSeamlessScroll();
+
+
 });

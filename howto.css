@@ -192,13 +192,13 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(20%, -50%);
+    transform: translate(30%, -50%);
     font-family: var(--font-body);
     text-align: left;
     background-color: var(--bg-light);
     border: 2px solid var(--secondary-accent);
     padding: 0.2rem 1rem;
-    width: 40%;
+    width: 36%;
     border-radius: var(--card-radius);
     z-index: 10;
     transition: opacity 0.2s;
@@ -215,7 +215,12 @@
 .waitlist-note {
     font-size: 12px;
     color: var(--gray-medium);
-    margin: 0;
+    margin-bottom: 0.4rem;
+}
+
+.waitlist-note span {
+    color: var(--primary-accent-dark);
+    font-weight: bold;
 }
 
 .waitlist-tooltip:hover .tooltip-text,
@@ -325,11 +330,215 @@
 
 /* %%%%%%%% */
 
+.howto-pinterest {
+    background: var(--bg-light);
+    border-radius: var(--card-radius);
+    padding: 2.5rem 1.5rem;
+    margin-bottom: var(--spacing);
+}
+
 .howto-pinterest h2 {
     text-align: center;
 }
 
+.howto-pinterest h3 {
+    font-size: var(--font-size-modaltitle);
+    margin-bottom: 2rem;
+}
 
+.howto-pinterest p:first-of-type {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.howto-pinterest ol {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem 2rem;
+    margin: 0 0 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+    counter-reset: pinterest-steps;
+    list-style: none;
+}
+
+.howto-pinterest ol li {
+    position: relative;
+    padding-left: 2.8rem;
+    margin-bottom: 1.2rem;
+    border-left: 4px solid var(--primary-accent);
+    background: none;
+}
+
+.howto-pinterest ol li::before {
+    counter-increment: pinterest-steps;
+    content: counter(pinterest-steps) ".";
+    position: absolute;
+    left: 0.6rem;
+    top: 0;
+    font-family: var(--font-title);
+    font-size: var(--font-size-caption);
+    color: var(--primary-accent);
+    font-weight: bold;
+}
+
+.howto-pinterest .tool-highlight {
+    background: rgba(251, 211, 103, 0.36);
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.3rem;
+    font-weight: 600;
+}
+
+.howto-pinterest p:last-of-type {
+    background: rgba(251, 211, 103, 0.36);
+    border-left: 4px solid var(--secondary-accent);
+    padding: 1rem 1.2rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    font-size: var(--font-size-body);
+}
+
+
+/* FAQ */
+
+.faq-section {
+    max-width: var(--content-width);
+    margin: 3rem auto 2rem auto;
+}
+
+.faq-section h2 {
+    text-align: center;
+    color: var(--primary-accent-deep);
+}
+
+.faq-accordion {
+    border-radius: var(--banner-radius);
+    background-color: white;
+}
+
+.faq-item {
+    padding: var(--spacing);
+}
+
+.faq-item button {
+    box-shadow: none;
+}
+
+.faq-item+.faq-item {
+    border-top: 4px solid var(--bg-light);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-accent-deep);
+    transition: color 0.2s;
+}
+
+.faq-question:focus,
+.faq-question:hover {
+    color: var(--primary-accent);
+}
+
+.faq-arrow {
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    margin-left: 0.5em;
+    border-right: 3px solid var(--primary-accent);
+    border-bottom: 3px solid var(--primary-accent);
+    transform: rotate(45deg);
+    transition: transform 0.3s cubic-bezier(.4, 2, .6, 1), border-color 0.3s;
+}
+
+.faq-question[aria-expanded="true"] .faq-arrow {
+    transform: rotate(-135deg);
+    border-color: var(--secondary-accent-dark);
+}
+
+.faq-answer {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(.4, 2, .6, 1), opacity 0.3s;
+    max-height: 0;
+    opacity: 0;
+    padding: 0 0;
+}
+
+.faq-answer[open],
+/* for JS fallback */
+.faq-answer[aria-hidden="false"] {
+    max-height: 400px;
+    opacity: 1;
+    padding: 1.5rem 0 0.5rem 0;
+}
+
+
+/* %%%%%%%%%% */
+
+.testimonials-scroll {
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
+    padding: 0.5rem 0 2rem;
+    width: 100%;
+    margin: 2.5rem auto;
+}
+
+.testimonials-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    gap: 30px;
+}
+
+.testimonial-card {
+    max-width: 300px;
+    background: white;
+    border-radius: var(--card-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    flex: 1 0 auto;
+}
+
+.quote-icon {
+    color: var(--primary-accent);
+    font-size: var(--font-size-small);
+    margin-bottom: 20px;
+}
+
+.review-text {
+    font-size: var(--font-size-micro);
+    color: var(--gray-medium);
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.customer-name {
+    font-weight: bold;
+    color: var(--primary-accent-dark);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.testimonials-track:hover {
+    animation-play-state: paused;
+}
 
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -354,6 +563,16 @@
 }
 
 @media (max-width: 768px) {
+
+    .tooltip-text {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        font-family: var(--font-body);
+        padding: 0.2rem 1rem;
+        width: 90%;
+    }
+
     .finished-carousel {
         width: 320px;
         height: 280px;
@@ -382,9 +601,36 @@
     .carousel-nav.next {
         right: -50px;
     }
+
+    .faq-section {
+        padding: 0 0.5rem;
+    }
+
+    .faq-accordion {
+        padding: 0.5rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+        padding: 1rem 0 1rem 0;
+    }
+
+    .faq-answer {
+        font-size: 0.97rem;
+    }
+
+    .testimonial-card {
+        min-width: 280px;
+        padding: 20px;
+    }
+
+    .testimonials h2 {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
+
     .finished-carousel {
         width: 280px;
         height: 240px;

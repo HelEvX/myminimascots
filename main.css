@@ -149,7 +149,12 @@ p {
 
 a {
     color: var(--primary-accent-dark);
-    text-decoration: underline;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-accent);
 }
 
 /* Logo */
