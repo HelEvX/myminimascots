@@ -488,6 +488,14 @@
     transform: translateY(-2px);
 }
 
+.process-banner {
+    margin: 3rem auto 5rem;
+}
+
+.process-banner .container {
+    gap: 2rem;
+}
+
 /* Responsive Design */
 @media (max-width: 1440px) {
     .gallery-featured {

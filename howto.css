@@ -544,10 +544,27 @@
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+    .tooltip-text {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        font-family: var(--font-body);
+        padding: 0.2rem 1rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+
     .infographic-flex {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .infographic-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .infographic-details {
@@ -559,18 +576,21 @@
         position: static;
         width: 100%;
         min-height: 0;
+        padding: 0;
     }
-}
 
-@media (max-width: 768px) {
+    .step-tile {
+        flex: 1 1 50%;
+    }
 
-    .tooltip-text {
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 20%);
-        font-family: var(--font-body);
-        padding: 0.2rem 1rem;
-        width: 90%;
+    .step-tile:last-child {
+        flex: 0 1 auto;
+        width: 50%;
+    }
+
+    .infographic-steps::before,
+    .step-tile::before {
+        display: none;
     }
 
     .finished-carousel {
@@ -630,6 +650,14 @@
 }
 
 @media (max-width: 480px) {
+
+    .infographic-steps {
+        flex-direction: column;
+    }
+
+    .step-tile:last-child {
+        width: 100%;
+    }
 
     .finished-carousel {
         width: 280px;
