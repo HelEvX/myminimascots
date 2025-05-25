@@ -341,21 +341,15 @@
 .manifesto-text {
     display: flex;
     flex-direction: column;
-    height: 320px;
-    justify-content: space-between;
-    max-width: 500px;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    flex: 1 0 0;
     text-align: left;
-}
-
-.manifesto-text p {
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 .manifesto-image-wrap {
     position: relative;
-    flex: 1 1 340px;
-    max-width: 420px;
+    flex: 0 1 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -973,17 +967,6 @@
         left: 30%;
     }
 
-    .manifesto-image-wrap {
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .manifesto-text {
-        height: 240px;
-        text-align: center;
-        margin: 0 auto;
-    }
-
     .manifesto-cta {
         margin-left: auto;
         margin-right: auto;
@@ -1095,10 +1078,6 @@
         gap: 5.5rem;
     }
 
-    .manifesto-text {
-        height: 220px;
-    }
-
     .manifesto-stamp {
         width: 120px;
         top: -60px;
@@ -1180,12 +1159,6 @@
 
     .polaroid-wrap {
         width: 30%;
-    }
-
-    /*  */
-
-    .manifesto-text {
-        height: 320px;
     }
 
     /*  */
